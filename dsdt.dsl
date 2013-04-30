@@ -1,4 +1,23 @@
-DefinitionBlock ("dsdt.aml", "DSDT", 2, "Intel ", "CALPELLA", 0x06040000)
+/*
+ * Intel ACPI Component Architecture
+ * AML Disassembler version 20120320-64 [Mar 21 2012]
+ * Copyright (c) 2000 - 2012 Intel Corporation
+ * 
+ * Disassembly of /Applications/tools/driver_install/p330/acpi/aida64/dsdt.aml, Tue Apr 30 23:52:18 2013
+ *
+ * Original Table Header:
+ *     Signature        "DSDT"
+ *     Length           0x0000A196 (41366)
+ *     Revision         0x02
+ *     Checksum         0xEF
+ *     OEM ID           "Intel "
+ *     OEM Table ID     "CALPELLA"
+ *     OEM Revision     0x06040000 (100925440)
+ *     Compiler ID      "INTL"
+ *     Compiler Version 0x20060912 (537266450)
+ */
+
+DefinitionBlock ("/Applications/tools/driver_install/p330/acpi/aida64/dsdt.aml", "DSDT", 2, "Intel ", "CALPELLA", 0x06040000)
 {
     External (TNOT, MethodObj)    // 0 Arguments
     External (PDC7)
@@ -15,36 +34,7 @@ DefinitionBlock ("dsdt.aml", "DSDT", 2, "Intel ", "CALPELLA", 0x06040000)
     External (HDOS, MethodObj)    // 0 Arguments
     External (\_PR_.CPU0._PPC)
     External (\_SB_.PCI0.IEIT.EITV, MethodObj)    // 0 Arguments
-    Method (DTGP, 5, NotSerialized)
-    {
-        If (LEqual (Arg0, Buffer (0x10)
-                {
-                    /* 0000 */    0xC6, 0xB7, 0xB5, 0xA0, 0x18, 0x13, 0x1C, 0x44, 
-                    /* 0008 */    0xB0, 0xC9, 0xFE, 0x69, 0x5E, 0xAF, 0x94, 0x9B
-                }))
-        {
-            If (LEqual (Arg1, One))
-            {
-                If (LEqual (Arg2, Zero))
-                {
-                    Store (Buffer (One)
-                        {
-                            0x03
-                        }, Arg4)
-                    Return (One)
-                }
-                If (LEqual (Arg2, One))
-                {
-                    Return (One)
-                }
-            }
-        }
-        Store (Buffer (One)
-            {
-                0x00
-            }, Arg4)
-        Return (Zero)
-    }
+
     Name (SP2O, 0x4E)
     Name (SP1O, 0x164E)
     Name (IO1B, 0x0600)
@@ -129,12 +119,13 @@ DefinitionBlock ("dsdt.aml", "DSDT", 2, "Intel ", "CALPELLA", 0x06040000)
     Name (SOOT, 0x35)
     Name (PDBR, 0x4D)
     Name (SMBL, 0x10)
-    OperationRegion (PNVS, SystemMemory, 0xAB79BDA4, 0x0100)
+    OperationRegion (PNVS, SystemMemory, 0xDB79BDA4, 0x0100)
     Field (PNVS, AnyAcc, Lock, Preserve)
     {
         SLEP,   8
     }
-    OperationRegion (GNVS, SystemMemory, 0xAB79BBA4, 0x0200)
+
+    OperationRegion (GNVS, SystemMemory, 0xDB79BBA4, 0x0200)
     Field (GNVS, AnyAcc, Lock, Preserve)
     {
         OSYS,   16, 
@@ -163,16 +154,16 @@ DefinitionBlock ("dsdt.aml", "DSDT", 2, "Intel ", "CALPELLA", 0x06040000)
         DTS1,   8, 
         DTS2,   8, 
         DTSF,   8, 
-                Offset (0x25), 
+        Offset (0x25), 
         REVN,   8, 
-                Offset (0x28), 
+        Offset (0x28), 
         APIC,   8, 
         TCNT,   8, 
         PCP0,   8, 
         PCP1,   8, 
         PPCM,   8, 
         PPMF,   32, 
-                Offset (0x32), 
+        Offset (0x32), 
         NATP,   8, 
         CMAP,   8, 
         CMBP,   8, 
@@ -198,22 +189,22 @@ DefinitionBlock ("dsdt.aml", "DSDT", 2, "Intel ", "CALPELLA", 0x06040000)
         DID5,   32, 
         KSV0,   32, 
         KSV1,   8, 
-                Offset (0x67), 
+        Offset (0x67), 
         BLCS,   8, 
         BRTL,   8, 
         ALSE,   8, 
         ALAF,   8, 
         LLOW,   8, 
         LHIH,   8, 
-                Offset (0x6E), 
+        Offset (0x6E), 
         EMAE,   8, 
         EMAP,   16, 
         EMAL,   16, 
-                Offset (0x74), 
+        Offset (0x74), 
         MEFE,   8, 
         DSTS,   8, 
-                Offset (0x78), 
-                Offset (0x7A), 
+        Offset (0x78), 
+        Offset (0x7A), 
         MORD,   8, 
         TCGP,   8, 
         PPRP,   32, 
@@ -224,7 +215,7 @@ DefinitionBlock ("dsdt.aml", "DSDT", 2, "Intel ", "CALPELLA", 0x06040000)
         IDEM,   8, 
         GTF1,   56, 
         BID,    8, 
-                Offset (0xAA), 
+        Offset (0xAA), 
         ASLB,   32, 
         IBTT,   8, 
         IPAT,   8, 
@@ -252,12 +243,12 @@ DefinitionBlock ("dsdt.aml", "DSDT", 2, "Intel ", "CALPELLA", 0x06040000)
         NXD8,   32, 
         GSMI,   8, 
         PAVP,   8, 
-                Offset (0xE1), 
+        Offset (0xE1), 
         OSCC,   8, 
         NEXP,   8, 
         SDGV,   8, 
         SDDV,   8, 
-                Offset (0xEB), 
+        Offset (0xEB), 
         DSEN,   8, 
         ECON,   8, 
         GPIC,   8, 
@@ -266,7 +257,7 @@ DefinitionBlock ("dsdt.aml", "DSDT", 2, "Intel ", "CALPELLA", 0x06040000)
         VFN0,   8, 
         VFN1,   8, 
         VDRV,   8, 
-                Offset (0x100), 
+        Offset (0x100), 
         NVGA,   32, 
         NVHA,   32, 
         AMDA,   32, 
@@ -286,7 +277,7 @@ DefinitionBlock ("dsdt.aml", "DSDT", 2, "Intel ", "CALPELLA", 0x06040000)
         OBS6,   32, 
         OBS7,   32, 
         OBS8,   32, 
-                Offset (0x157), 
+        Offset (0x157), 
         ATMC,   8, 
         PTMC,   8, 
         ATRA,   8, 
@@ -306,6 +297,7 @@ DefinitionBlock ("dsdt.aml", "DSDT", 2, "Intel ", "CALPELLA", 0x06040000)
         ALFP,   8, 
         IMON,   8
     }
+
     Scope (_SB)
     {
         Name (PR00, Package (0x2B)
@@ -317,6 +309,7 @@ DefinitionBlock ("dsdt.aml", "DSDT", 2, "Intel ", "CALPELLA", 0x06040000)
                 LNKA, 
                 Zero
             }, 
+
             Package (0x04)
             {
                 0x0001FFFF, 
@@ -324,6 +317,7 @@ DefinitionBlock ("dsdt.aml", "DSDT", 2, "Intel ", "CALPELLA", 0x06040000)
                 LNKB, 
                 Zero
             }, 
+
             Package (0x04)
             {
                 0x0001FFFF, 
@@ -331,6 +325,7 @@ DefinitionBlock ("dsdt.aml", "DSDT", 2, "Intel ", "CALPELLA", 0x06040000)
                 LNKC, 
                 Zero
             }, 
+
             Package (0x04)
             {
                 0x0001FFFF, 
@@ -338,6 +333,7 @@ DefinitionBlock ("dsdt.aml", "DSDT", 2, "Intel ", "CALPELLA", 0x06040000)
                 LNKD, 
                 Zero
             }, 
+
             Package (0x04)
             {
                 0x0002FFFF, 
@@ -345,6 +341,7 @@ DefinitionBlock ("dsdt.aml", "DSDT", 2, "Intel ", "CALPELLA", 0x06040000)
                 LNKA, 
                 Zero
             }, 
+
             Package (0x04)
             {
                 0x001FFFFF, 
@@ -352,6 +349,7 @@ DefinitionBlock ("dsdt.aml", "DSDT", 2, "Intel ", "CALPELLA", 0x06040000)
                 LNKF, 
                 Zero
             }, 
+
             Package (0x04)
             {
                 0x001FFFFF, 
@@ -359,6 +357,7 @@ DefinitionBlock ("dsdt.aml", "DSDT", 2, "Intel ", "CALPELLA", 0x06040000)
                 LNKD, 
                 Zero
             }, 
+
             Package (0x04)
             {
                 0x001FFFFF, 
@@ -366,6 +365,7 @@ DefinitionBlock ("dsdt.aml", "DSDT", 2, "Intel ", "CALPELLA", 0x06040000)
                 LNKC, 
                 Zero
             }, 
+
             Package (0x04)
             {
                 0x001FFFFF, 
@@ -373,6 +373,7 @@ DefinitionBlock ("dsdt.aml", "DSDT", 2, "Intel ", "CALPELLA", 0x06040000)
                 LNKA, 
                 Zero
             }, 
+
             Package (0x04)
             {
                 0x001DFFFF, 
@@ -380,6 +381,7 @@ DefinitionBlock ("dsdt.aml", "DSDT", 2, "Intel ", "CALPELLA", 0x06040000)
                 LNKH, 
                 Zero
             }, 
+
             Package (0x04)
             {
                 0x001DFFFF, 
@@ -387,6 +389,7 @@ DefinitionBlock ("dsdt.aml", "DSDT", 2, "Intel ", "CALPELLA", 0x06040000)
                 LNKD, 
                 Zero
             }, 
+
             Package (0x04)
             {
                 0x001DFFFF, 
@@ -394,6 +397,7 @@ DefinitionBlock ("dsdt.aml", "DSDT", 2, "Intel ", "CALPELLA", 0x06040000)
                 LNKA, 
                 Zero
             }, 
+
             Package (0x04)
             {
                 0x001DFFFF, 
@@ -401,6 +405,7 @@ DefinitionBlock ("dsdt.aml", "DSDT", 2, "Intel ", "CALPELLA", 0x06040000)
                 LNKC, 
                 Zero
             }, 
+
             Package (0x04)
             {
                 0x001AFFFF, 
@@ -408,6 +413,7 @@ DefinitionBlock ("dsdt.aml", "DSDT", 2, "Intel ", "CALPELLA", 0x06040000)
                 LNKA, 
                 Zero
             }, 
+
             Package (0x04)
             {
                 0x001AFFFF, 
@@ -415,6 +421,7 @@ DefinitionBlock ("dsdt.aml", "DSDT", 2, "Intel ", "CALPELLA", 0x06040000)
                 LNKF, 
                 Zero
             }, 
+
             Package (0x04)
             {
                 0x001AFFFF, 
@@ -422,6 +429,7 @@ DefinitionBlock ("dsdt.aml", "DSDT", 2, "Intel ", "CALPELLA", 0x06040000)
                 LNKC, 
                 Zero
             }, 
+
             Package (0x04)
             {
                 0x001AFFFF, 
@@ -429,6 +437,7 @@ DefinitionBlock ("dsdt.aml", "DSDT", 2, "Intel ", "CALPELLA", 0x06040000)
                 LNKD, 
                 Zero
             }, 
+
             Package (0x04)
             {
                 0x001BFFFF, 
@@ -436,6 +445,7 @@ DefinitionBlock ("dsdt.aml", "DSDT", 2, "Intel ", "CALPELLA", 0x06040000)
                 LNKG, 
                 Zero
             }, 
+
             Package (0x04)
             {
                 0x001CFFFF, 
@@ -443,6 +453,7 @@ DefinitionBlock ("dsdt.aml", "DSDT", 2, "Intel ", "CALPELLA", 0x06040000)
                 LNKA, 
                 Zero
             }, 
+
             Package (0x04)
             {
                 0x001CFFFF, 
@@ -450,6 +461,7 @@ DefinitionBlock ("dsdt.aml", "DSDT", 2, "Intel ", "CALPELLA", 0x06040000)
                 LNKB, 
                 Zero
             }, 
+
             Package (0x04)
             {
                 0x001CFFFF, 
@@ -457,6 +469,7 @@ DefinitionBlock ("dsdt.aml", "DSDT", 2, "Intel ", "CALPELLA", 0x06040000)
                 LNKC, 
                 Zero
             }, 
+
             Package (0x04)
             {
                 0x001CFFFF, 
@@ -464,6 +477,7 @@ DefinitionBlock ("dsdt.aml", "DSDT", 2, "Intel ", "CALPELLA", 0x06040000)
                 LNKD, 
                 Zero
             }, 
+
             Package (0x04)
             {
                 0x0019FFFF, 
@@ -471,6 +485,7 @@ DefinitionBlock ("dsdt.aml", "DSDT", 2, "Intel ", "CALPELLA", 0x06040000)
                 LNKE, 
                 Zero
             }, 
+
             Package (0x04)
             {
                 0x0016FFFF, 
@@ -478,6 +493,7 @@ DefinitionBlock ("dsdt.aml", "DSDT", 2, "Intel ", "CALPELLA", 0x06040000)
                 LNKA, 
                 Zero
             }, 
+
             Package (0x04)
             {
                 0x0016FFFF, 
@@ -485,6 +501,7 @@ DefinitionBlock ("dsdt.aml", "DSDT", 2, "Intel ", "CALPELLA", 0x06040000)
                 LNKD, 
                 Zero
             }, 
+
             Package (0x04)
             {
                 0x0016FFFF, 
@@ -492,6 +509,7 @@ DefinitionBlock ("dsdt.aml", "DSDT", 2, "Intel ", "CALPELLA", 0x06040000)
                 LNKC, 
                 Zero
             }, 
+
             Package (0x04)
             {
                 0x0016FFFF, 
@@ -499,6 +517,7 @@ DefinitionBlock ("dsdt.aml", "DSDT", 2, "Intel ", "CALPELLA", 0x06040000)
                 LNKB, 
                 Zero
             }, 
+
             Package (0x04)
             {
                 0x0003FFFF, 
@@ -506,6 +525,7 @@ DefinitionBlock ("dsdt.aml", "DSDT", 2, "Intel ", "CALPELLA", 0x06040000)
                 LNKA, 
                 Zero
             }, 
+
             Package (0x04)
             {
                 0x0003FFFF, 
@@ -513,6 +533,7 @@ DefinitionBlock ("dsdt.aml", "DSDT", 2, "Intel ", "CALPELLA", 0x06040000)
                 LNKB, 
                 Zero
             }, 
+
             Package (0x04)
             {
                 0x0003FFFF, 
@@ -520,6 +541,7 @@ DefinitionBlock ("dsdt.aml", "DSDT", 2, "Intel ", "CALPELLA", 0x06040000)
                 LNKC, 
                 Zero
             }, 
+
             Package (0x04)
             {
                 0x0003FFFF, 
@@ -527,6 +549,7 @@ DefinitionBlock ("dsdt.aml", "DSDT", 2, "Intel ", "CALPELLA", 0x06040000)
                 LNKD, 
                 Zero
             }, 
+
             Package (0x04)
             {
                 0x0004FFFF, 
@@ -534,6 +557,7 @@ DefinitionBlock ("dsdt.aml", "DSDT", 2, "Intel ", "CALPELLA", 0x06040000)
                 LNKA, 
                 Zero
             }, 
+
             Package (0x04)
             {
                 0x0004FFFF, 
@@ -541,6 +565,7 @@ DefinitionBlock ("dsdt.aml", "DSDT", 2, "Intel ", "CALPELLA", 0x06040000)
                 LNKB, 
                 Zero
             }, 
+
             Package (0x04)
             {
                 0x0004FFFF, 
@@ -548,6 +573,7 @@ DefinitionBlock ("dsdt.aml", "DSDT", 2, "Intel ", "CALPELLA", 0x06040000)
                 LNKC, 
                 Zero
             }, 
+
             Package (0x04)
             {
                 0x0004FFFF, 
@@ -555,6 +581,7 @@ DefinitionBlock ("dsdt.aml", "DSDT", 2, "Intel ", "CALPELLA", 0x06040000)
                 LNKD, 
                 Zero
             }, 
+
             Package (0x04)
             {
                 0x0005FFFF, 
@@ -562,6 +589,7 @@ DefinitionBlock ("dsdt.aml", "DSDT", 2, "Intel ", "CALPELLA", 0x06040000)
                 LNKA, 
                 Zero
             }, 
+
             Package (0x04)
             {
                 0x0005FFFF, 
@@ -569,6 +597,7 @@ DefinitionBlock ("dsdt.aml", "DSDT", 2, "Intel ", "CALPELLA", 0x06040000)
                 LNKB, 
                 Zero
             }, 
+
             Package (0x04)
             {
                 0x0005FFFF, 
@@ -576,6 +605,7 @@ DefinitionBlock ("dsdt.aml", "DSDT", 2, "Intel ", "CALPELLA", 0x06040000)
                 LNKC, 
                 Zero
             }, 
+
             Package (0x04)
             {
                 0x0005FFFF, 
@@ -583,6 +613,7 @@ DefinitionBlock ("dsdt.aml", "DSDT", 2, "Intel ", "CALPELLA", 0x06040000)
                 LNKD, 
                 Zero
             }, 
+
             Package (0x04)
             {
                 0x0006FFFF, 
@@ -590,6 +621,7 @@ DefinitionBlock ("dsdt.aml", "DSDT", 2, "Intel ", "CALPELLA", 0x06040000)
                 LNKA, 
                 Zero
             }, 
+
             Package (0x04)
             {
                 0x0006FFFF, 
@@ -597,6 +629,7 @@ DefinitionBlock ("dsdt.aml", "DSDT", 2, "Intel ", "CALPELLA", 0x06040000)
                 LNKB, 
                 Zero
             }, 
+
             Package (0x04)
             {
                 0x0006FFFF, 
@@ -604,6 +637,7 @@ DefinitionBlock ("dsdt.aml", "DSDT", 2, "Intel ", "CALPELLA", 0x06040000)
                 LNKC, 
                 Zero
             }, 
+
             Package (0x04)
             {
                 0x0006FFFF, 
@@ -621,6 +655,7 @@ DefinitionBlock ("dsdt.aml", "DSDT", 2, "Intel ", "CALPELLA", 0x06040000)
                 Zero, 
                 0x10
             }, 
+
             Package (0x04)
             {
                 0x0001FFFF, 
@@ -628,6 +663,7 @@ DefinitionBlock ("dsdt.aml", "DSDT", 2, "Intel ", "CALPELLA", 0x06040000)
                 Zero, 
                 0x11
             }, 
+
             Package (0x04)
             {
                 0x0001FFFF, 
@@ -635,6 +671,7 @@ DefinitionBlock ("dsdt.aml", "DSDT", 2, "Intel ", "CALPELLA", 0x06040000)
                 Zero, 
                 0x12
             }, 
+
             Package (0x04)
             {
                 0x0001FFFF, 
@@ -642,6 +679,7 @@ DefinitionBlock ("dsdt.aml", "DSDT", 2, "Intel ", "CALPELLA", 0x06040000)
                 Zero, 
                 0x13
             }, 
+
             Package (0x04)
             {
                 0x0002FFFF, 
@@ -649,6 +687,7 @@ DefinitionBlock ("dsdt.aml", "DSDT", 2, "Intel ", "CALPELLA", 0x06040000)
                 Zero, 
                 0x10
             }, 
+
             Package (0x04)
             {
                 0x001FFFFF, 
@@ -656,6 +695,7 @@ DefinitionBlock ("dsdt.aml", "DSDT", 2, "Intel ", "CALPELLA", 0x06040000)
                 Zero, 
                 0x15
             }, 
+
             Package (0x04)
             {
                 0x001FFFFF, 
@@ -663,6 +703,7 @@ DefinitionBlock ("dsdt.aml", "DSDT", 2, "Intel ", "CALPELLA", 0x06040000)
                 Zero, 
                 0x13
             }, 
+
             Package (0x04)
             {
                 0x001FFFFF, 
@@ -670,6 +711,7 @@ DefinitionBlock ("dsdt.aml", "DSDT", 2, "Intel ", "CALPELLA", 0x06040000)
                 Zero, 
                 0x12
             }, 
+
             Package (0x04)
             {
                 0x001FFFFF, 
@@ -677,6 +719,7 @@ DefinitionBlock ("dsdt.aml", "DSDT", 2, "Intel ", "CALPELLA", 0x06040000)
                 Zero, 
                 0x10
             }, 
+
             Package (0x04)
             {
                 0x001DFFFF, 
@@ -684,6 +727,7 @@ DefinitionBlock ("dsdt.aml", "DSDT", 2, "Intel ", "CALPELLA", 0x06040000)
                 Zero, 
                 0x17
             }, 
+
             Package (0x04)
             {
                 0x001DFFFF, 
@@ -691,6 +735,7 @@ DefinitionBlock ("dsdt.aml", "DSDT", 2, "Intel ", "CALPELLA", 0x06040000)
                 Zero, 
                 0x13
             }, 
+
             Package (0x04)
             {
                 0x001DFFFF, 
@@ -698,6 +743,7 @@ DefinitionBlock ("dsdt.aml", "DSDT", 2, "Intel ", "CALPELLA", 0x06040000)
                 Zero, 
                 0x10
             }, 
+
             Package (0x04)
             {
                 0x001DFFFF, 
@@ -705,6 +751,7 @@ DefinitionBlock ("dsdt.aml", "DSDT", 2, "Intel ", "CALPELLA", 0x06040000)
                 Zero, 
                 0x12
             }, 
+
             Package (0x04)
             {
                 0x001AFFFF, 
@@ -712,6 +759,7 @@ DefinitionBlock ("dsdt.aml", "DSDT", 2, "Intel ", "CALPELLA", 0x06040000)
                 Zero, 
                 0x10
             }, 
+
             Package (0x04)
             {
                 0x001AFFFF, 
@@ -719,6 +767,7 @@ DefinitionBlock ("dsdt.aml", "DSDT", 2, "Intel ", "CALPELLA", 0x06040000)
                 Zero, 
                 0x15
             }, 
+
             Package (0x04)
             {
                 0x001AFFFF, 
@@ -726,6 +775,7 @@ DefinitionBlock ("dsdt.aml", "DSDT", 2, "Intel ", "CALPELLA", 0x06040000)
                 Zero, 
                 0x12
             }, 
+
             Package (0x04)
             {
                 0x001AFFFF, 
@@ -733,6 +783,7 @@ DefinitionBlock ("dsdt.aml", "DSDT", 2, "Intel ", "CALPELLA", 0x06040000)
                 Zero, 
                 0x13
             }, 
+
             Package (0x04)
             {
                 0x001BFFFF, 
@@ -740,6 +791,7 @@ DefinitionBlock ("dsdt.aml", "DSDT", 2, "Intel ", "CALPELLA", 0x06040000)
                 Zero, 
                 0x16
             }, 
+
             Package (0x04)
             {
                 0x001CFFFF, 
@@ -747,6 +799,7 @@ DefinitionBlock ("dsdt.aml", "DSDT", 2, "Intel ", "CALPELLA", 0x06040000)
                 Zero, 
                 0x10
             }, 
+
             Package (0x04)
             {
                 0x001CFFFF, 
@@ -754,6 +807,7 @@ DefinitionBlock ("dsdt.aml", "DSDT", 2, "Intel ", "CALPELLA", 0x06040000)
                 Zero, 
                 0x11
             }, 
+
             Package (0x04)
             {
                 0x001CFFFF, 
@@ -761,6 +815,7 @@ DefinitionBlock ("dsdt.aml", "DSDT", 2, "Intel ", "CALPELLA", 0x06040000)
                 Zero, 
                 0x12
             }, 
+
             Package (0x04)
             {
                 0x001CFFFF, 
@@ -768,6 +823,7 @@ DefinitionBlock ("dsdt.aml", "DSDT", 2, "Intel ", "CALPELLA", 0x06040000)
                 Zero, 
                 0x13
             }, 
+
             Package (0x04)
             {
                 0x0019FFFF, 
@@ -775,6 +831,7 @@ DefinitionBlock ("dsdt.aml", "DSDT", 2, "Intel ", "CALPELLA", 0x06040000)
                 Zero, 
                 0x14
             }, 
+
             Package (0x04)
             {
                 0x0016FFFF, 
@@ -782,6 +839,7 @@ DefinitionBlock ("dsdt.aml", "DSDT", 2, "Intel ", "CALPELLA", 0x06040000)
                 Zero, 
                 0x10
             }, 
+
             Package (0x04)
             {
                 0x0016FFFF, 
@@ -789,6 +847,7 @@ DefinitionBlock ("dsdt.aml", "DSDT", 2, "Intel ", "CALPELLA", 0x06040000)
                 Zero, 
                 0x13
             }, 
+
             Package (0x04)
             {
                 0x0016FFFF, 
@@ -796,6 +855,7 @@ DefinitionBlock ("dsdt.aml", "DSDT", 2, "Intel ", "CALPELLA", 0x06040000)
                 Zero, 
                 0x12
             }, 
+
             Package (0x04)
             {
                 0x0016FFFF, 
@@ -803,6 +863,7 @@ DefinitionBlock ("dsdt.aml", "DSDT", 2, "Intel ", "CALPELLA", 0x06040000)
                 Zero, 
                 0x11
             }, 
+
             Package (0x04)
             {
                 0x0003FFFF, 
@@ -810,6 +871,7 @@ DefinitionBlock ("dsdt.aml", "DSDT", 2, "Intel ", "CALPELLA", 0x06040000)
                 Zero, 
                 0x10
             }, 
+
             Package (0x04)
             {
                 0x0003FFFF, 
@@ -817,6 +879,7 @@ DefinitionBlock ("dsdt.aml", "DSDT", 2, "Intel ", "CALPELLA", 0x06040000)
                 Zero, 
                 0x11
             }, 
+
             Package (0x04)
             {
                 0x0003FFFF, 
@@ -824,6 +887,7 @@ DefinitionBlock ("dsdt.aml", "DSDT", 2, "Intel ", "CALPELLA", 0x06040000)
                 Zero, 
                 0x12
             }, 
+
             Package (0x04)
             {
                 0x0003FFFF, 
@@ -831,6 +895,7 @@ DefinitionBlock ("dsdt.aml", "DSDT", 2, "Intel ", "CALPELLA", 0x06040000)
                 Zero, 
                 0x13
             }, 
+
             Package (0x04)
             {
                 0x0004FFFF, 
@@ -838,6 +903,7 @@ DefinitionBlock ("dsdt.aml", "DSDT", 2, "Intel ", "CALPELLA", 0x06040000)
                 Zero, 
                 0x10
             }, 
+
             Package (0x04)
             {
                 0x0004FFFF, 
@@ -845,6 +911,7 @@ DefinitionBlock ("dsdt.aml", "DSDT", 2, "Intel ", "CALPELLA", 0x06040000)
                 Zero, 
                 0x11
             }, 
+
             Package (0x04)
             {
                 0x0004FFFF, 
@@ -852,6 +919,7 @@ DefinitionBlock ("dsdt.aml", "DSDT", 2, "Intel ", "CALPELLA", 0x06040000)
                 Zero, 
                 0x12
             }, 
+
             Package (0x04)
             {
                 0x0004FFFF, 
@@ -859,6 +927,7 @@ DefinitionBlock ("dsdt.aml", "DSDT", 2, "Intel ", "CALPELLA", 0x06040000)
                 Zero, 
                 0x13
             }, 
+
             Package (0x04)
             {
                 0x0005FFFF, 
@@ -866,6 +935,7 @@ DefinitionBlock ("dsdt.aml", "DSDT", 2, "Intel ", "CALPELLA", 0x06040000)
                 Zero, 
                 0x10
             }, 
+
             Package (0x04)
             {
                 0x0005FFFF, 
@@ -873,6 +943,7 @@ DefinitionBlock ("dsdt.aml", "DSDT", 2, "Intel ", "CALPELLA", 0x06040000)
                 Zero, 
                 0x11
             }, 
+
             Package (0x04)
             {
                 0x0005FFFF, 
@@ -880,6 +951,7 @@ DefinitionBlock ("dsdt.aml", "DSDT", 2, "Intel ", "CALPELLA", 0x06040000)
                 Zero, 
                 0x12
             }, 
+
             Package (0x04)
             {
                 0x0005FFFF, 
@@ -887,6 +959,7 @@ DefinitionBlock ("dsdt.aml", "DSDT", 2, "Intel ", "CALPELLA", 0x06040000)
                 Zero, 
                 0x13
             }, 
+
             Package (0x04)
             {
                 0x0006FFFF, 
@@ -894,6 +967,7 @@ DefinitionBlock ("dsdt.aml", "DSDT", 2, "Intel ", "CALPELLA", 0x06040000)
                 Zero, 
                 0x10
             }, 
+
             Package (0x04)
             {
                 0x0006FFFF, 
@@ -901,6 +975,7 @@ DefinitionBlock ("dsdt.aml", "DSDT", 2, "Intel ", "CALPELLA", 0x06040000)
                 Zero, 
                 0x11
             }, 
+
             Package (0x04)
             {
                 0x0006FFFF, 
@@ -908,6 +983,7 @@ DefinitionBlock ("dsdt.aml", "DSDT", 2, "Intel ", "CALPELLA", 0x06040000)
                 Zero, 
                 0x12
             }, 
+
             Package (0x04)
             {
                 0x0006FFFF, 
@@ -925,6 +1001,7 @@ DefinitionBlock ("dsdt.aml", "DSDT", 2, "Intel ", "CALPELLA", 0x06040000)
                 LNKA, 
                 Zero
             }, 
+
             Package (0x04)
             {
                 0xFFFF, 
@@ -932,6 +1009,7 @@ DefinitionBlock ("dsdt.aml", "DSDT", 2, "Intel ", "CALPELLA", 0x06040000)
                 LNKB, 
                 Zero
             }, 
+
             Package (0x04)
             {
                 0xFFFF, 
@@ -939,6 +1017,7 @@ DefinitionBlock ("dsdt.aml", "DSDT", 2, "Intel ", "CALPELLA", 0x06040000)
                 LNKC, 
                 Zero
             }, 
+
             Package (0x04)
             {
                 0xFFFF, 
@@ -956,6 +1035,7 @@ DefinitionBlock ("dsdt.aml", "DSDT", 2, "Intel ", "CALPELLA", 0x06040000)
                 Zero, 
                 0x10
             }, 
+
             Package (0x04)
             {
                 0xFFFF, 
@@ -963,6 +1043,7 @@ DefinitionBlock ("dsdt.aml", "DSDT", 2, "Intel ", "CALPELLA", 0x06040000)
                 Zero, 
                 0x11
             }, 
+
             Package (0x04)
             {
                 0xFFFF, 
@@ -970,6 +1051,7 @@ DefinitionBlock ("dsdt.aml", "DSDT", 2, "Intel ", "CALPELLA", 0x06040000)
                 Zero, 
                 0x12
             }, 
+
             Package (0x04)
             {
                 0xFFFF, 
@@ -987,6 +1069,7 @@ DefinitionBlock ("dsdt.aml", "DSDT", 2, "Intel ", "CALPELLA", 0x06040000)
                 LNKA, 
                 Zero
             }, 
+
             Package (0x04)
             {
                 0xFFFF, 
@@ -994,6 +1077,7 @@ DefinitionBlock ("dsdt.aml", "DSDT", 2, "Intel ", "CALPELLA", 0x06040000)
                 LNKB, 
                 Zero
             }, 
+
             Package (0x04)
             {
                 0xFFFF, 
@@ -1001,6 +1085,7 @@ DefinitionBlock ("dsdt.aml", "DSDT", 2, "Intel ", "CALPELLA", 0x06040000)
                 LNKC, 
                 Zero
             }, 
+
             Package (0x04)
             {
                 0xFFFF, 
@@ -1018,6 +1103,7 @@ DefinitionBlock ("dsdt.aml", "DSDT", 2, "Intel ", "CALPELLA", 0x06040000)
                 Zero, 
                 0x10
             }, 
+
             Package (0x04)
             {
                 0xFFFF, 
@@ -1025,6 +1111,7 @@ DefinitionBlock ("dsdt.aml", "DSDT", 2, "Intel ", "CALPELLA", 0x06040000)
                 Zero, 
                 0x11
             }, 
+
             Package (0x04)
             {
                 0xFFFF, 
@@ -1032,6 +1119,7 @@ DefinitionBlock ("dsdt.aml", "DSDT", 2, "Intel ", "CALPELLA", 0x06040000)
                 Zero, 
                 0x12
             }, 
+
             Package (0x04)
             {
                 0xFFFF, 
@@ -1049,6 +1137,7 @@ DefinitionBlock ("dsdt.aml", "DSDT", 2, "Intel ", "CALPELLA", 0x06040000)
                 LNKB, 
                 Zero
             }, 
+
             Package (0x04)
             {
                 0xFFFF, 
@@ -1056,6 +1145,7 @@ DefinitionBlock ("dsdt.aml", "DSDT", 2, "Intel ", "CALPELLA", 0x06040000)
                 LNKC, 
                 Zero
             }, 
+
             Package (0x04)
             {
                 0xFFFF, 
@@ -1063,6 +1153,7 @@ DefinitionBlock ("dsdt.aml", "DSDT", 2, "Intel ", "CALPELLA", 0x06040000)
                 LNKD, 
                 Zero
             }, 
+
             Package (0x04)
             {
                 0xFFFF, 
@@ -1080,6 +1171,7 @@ DefinitionBlock ("dsdt.aml", "DSDT", 2, "Intel ", "CALPELLA", 0x06040000)
                 Zero, 
                 0x11
             }, 
+
             Package (0x04)
             {
                 0xFFFF, 
@@ -1087,6 +1179,7 @@ DefinitionBlock ("dsdt.aml", "DSDT", 2, "Intel ", "CALPELLA", 0x06040000)
                 Zero, 
                 0x12
             }, 
+
             Package (0x04)
             {
                 0xFFFF, 
@@ -1094,6 +1187,7 @@ DefinitionBlock ("dsdt.aml", "DSDT", 2, "Intel ", "CALPELLA", 0x06040000)
                 Zero, 
                 0x13
             }, 
+
             Package (0x04)
             {
                 0xFFFF, 
@@ -1111,6 +1205,7 @@ DefinitionBlock ("dsdt.aml", "DSDT", 2, "Intel ", "CALPELLA", 0x06040000)
                 LNKC, 
                 Zero
             }, 
+
             Package (0x04)
             {
                 0xFFFF, 
@@ -1118,6 +1213,7 @@ DefinitionBlock ("dsdt.aml", "DSDT", 2, "Intel ", "CALPELLA", 0x06040000)
                 LNKD, 
                 Zero
             }, 
+
             Package (0x04)
             {
                 0xFFFF, 
@@ -1125,6 +1221,7 @@ DefinitionBlock ("dsdt.aml", "DSDT", 2, "Intel ", "CALPELLA", 0x06040000)
                 LNKA, 
                 Zero
             }, 
+
             Package (0x04)
             {
                 0xFFFF, 
@@ -1142,6 +1239,7 @@ DefinitionBlock ("dsdt.aml", "DSDT", 2, "Intel ", "CALPELLA", 0x06040000)
                 Zero, 
                 0x12
             }, 
+
             Package (0x04)
             {
                 0xFFFF, 
@@ -1149,6 +1247,7 @@ DefinitionBlock ("dsdt.aml", "DSDT", 2, "Intel ", "CALPELLA", 0x06040000)
                 Zero, 
                 0x13
             }, 
+
             Package (0x04)
             {
                 0xFFFF, 
@@ -1156,6 +1255,7 @@ DefinitionBlock ("dsdt.aml", "DSDT", 2, "Intel ", "CALPELLA", 0x06040000)
                 Zero, 
                 0x10
             }, 
+
             Package (0x04)
             {
                 0xFFFF, 
@@ -1173,6 +1273,7 @@ DefinitionBlock ("dsdt.aml", "DSDT", 2, "Intel ", "CALPELLA", 0x06040000)
                 LNKD, 
                 Zero
             }, 
+
             Package (0x04)
             {
                 0xFFFF, 
@@ -1180,6 +1281,7 @@ DefinitionBlock ("dsdt.aml", "DSDT", 2, "Intel ", "CALPELLA", 0x06040000)
                 LNKA, 
                 Zero
             }, 
+
             Package (0x04)
             {
                 0xFFFF, 
@@ -1187,6 +1289,7 @@ DefinitionBlock ("dsdt.aml", "DSDT", 2, "Intel ", "CALPELLA", 0x06040000)
                 LNKB, 
                 Zero
             }, 
+
             Package (0x04)
             {
                 0xFFFF, 
@@ -1204,6 +1307,7 @@ DefinitionBlock ("dsdt.aml", "DSDT", 2, "Intel ", "CALPELLA", 0x06040000)
                 Zero, 
                 0x13
             }, 
+
             Package (0x04)
             {
                 0xFFFF, 
@@ -1211,6 +1315,7 @@ DefinitionBlock ("dsdt.aml", "DSDT", 2, "Intel ", "CALPELLA", 0x06040000)
                 Zero, 
                 0x10
             }, 
+
             Package (0x04)
             {
                 0xFFFF, 
@@ -1218,6 +1323,7 @@ DefinitionBlock ("dsdt.aml", "DSDT", 2, "Intel ", "CALPELLA", 0x06040000)
                 Zero, 
                 0x11
             }, 
+
             Package (0x04)
             {
                 0xFFFF, 
@@ -1235,6 +1341,7 @@ DefinitionBlock ("dsdt.aml", "DSDT", 2, "Intel ", "CALPELLA", 0x06040000)
                 LNKA, 
                 Zero
             }, 
+
             Package (0x04)
             {
                 0xFFFF, 
@@ -1242,6 +1349,7 @@ DefinitionBlock ("dsdt.aml", "DSDT", 2, "Intel ", "CALPELLA", 0x06040000)
                 LNKB, 
                 Zero
             }, 
+
             Package (0x04)
             {
                 0xFFFF, 
@@ -1249,6 +1357,7 @@ DefinitionBlock ("dsdt.aml", "DSDT", 2, "Intel ", "CALPELLA", 0x06040000)
                 LNKC, 
                 Zero
             }, 
+
             Package (0x04)
             {
                 0xFFFF, 
@@ -1266,6 +1375,7 @@ DefinitionBlock ("dsdt.aml", "DSDT", 2, "Intel ", "CALPELLA", 0x06040000)
                 Zero, 
                 0x10
             }, 
+
             Package (0x04)
             {
                 0xFFFF, 
@@ -1273,6 +1383,7 @@ DefinitionBlock ("dsdt.aml", "DSDT", 2, "Intel ", "CALPELLA", 0x06040000)
                 Zero, 
                 0x11
             }, 
+
             Package (0x04)
             {
                 0xFFFF, 
@@ -1280,6 +1391,7 @@ DefinitionBlock ("dsdt.aml", "DSDT", 2, "Intel ", "CALPELLA", 0x06040000)
                 Zero, 
                 0x12
             }, 
+
             Package (0x04)
             {
                 0xFFFF, 
@@ -1297,6 +1409,7 @@ DefinitionBlock ("dsdt.aml", "DSDT", 2, "Intel ", "CALPELLA", 0x06040000)
                 LNKC, 
                 Zero
             }, 
+
             Package (0x04)
             {
                 0xFFFF, 
@@ -1304,6 +1417,7 @@ DefinitionBlock ("dsdt.aml", "DSDT", 2, "Intel ", "CALPELLA", 0x06040000)
                 LNKD, 
                 Zero
             }, 
+
             Package (0x04)
             {
                 0xFFFF, 
@@ -1311,6 +1425,7 @@ DefinitionBlock ("dsdt.aml", "DSDT", 2, "Intel ", "CALPELLA", 0x06040000)
                 LNKA, 
                 Zero
             }, 
+
             Package (0x04)
             {
                 0xFFFF, 
@@ -1328,6 +1443,7 @@ DefinitionBlock ("dsdt.aml", "DSDT", 2, "Intel ", "CALPELLA", 0x06040000)
                 Zero, 
                 0x12
             }, 
+
             Package (0x04)
             {
                 0xFFFF, 
@@ -1335,6 +1451,7 @@ DefinitionBlock ("dsdt.aml", "DSDT", 2, "Intel ", "CALPELLA", 0x06040000)
                 Zero, 
                 0x13
             }, 
+
             Package (0x04)
             {
                 0xFFFF, 
@@ -1342,6 +1459,7 @@ DefinitionBlock ("dsdt.aml", "DSDT", 2, "Intel ", "CALPELLA", 0x06040000)
                 Zero, 
                 0x10
             }, 
+
             Package (0x04)
             {
                 0xFFFF, 
@@ -1359,6 +1477,7 @@ DefinitionBlock ("dsdt.aml", "DSDT", 2, "Intel ", "CALPELLA", 0x06040000)
                 LNKD, 
                 Zero
             }, 
+
             Package (0x04)
             {
                 0xFFFF, 
@@ -1366,6 +1485,7 @@ DefinitionBlock ("dsdt.aml", "DSDT", 2, "Intel ", "CALPELLA", 0x06040000)
                 LNKA, 
                 Zero
             }, 
+
             Package (0x04)
             {
                 0xFFFF, 
@@ -1373,6 +1493,7 @@ DefinitionBlock ("dsdt.aml", "DSDT", 2, "Intel ", "CALPELLA", 0x06040000)
                 LNKB, 
                 Zero
             }, 
+
             Package (0x04)
             {
                 0xFFFF, 
@@ -1390,6 +1511,7 @@ DefinitionBlock ("dsdt.aml", "DSDT", 2, "Intel ", "CALPELLA", 0x06040000)
                 Zero, 
                 0x13
             }, 
+
             Package (0x04)
             {
                 0xFFFF, 
@@ -1397,6 +1519,7 @@ DefinitionBlock ("dsdt.aml", "DSDT", 2, "Intel ", "CALPELLA", 0x06040000)
                 Zero, 
                 0x10
             }, 
+
             Package (0x04)
             {
                 0xFFFF, 
@@ -1404,6 +1527,7 @@ DefinitionBlock ("dsdt.aml", "DSDT", 2, "Intel ", "CALPELLA", 0x06040000)
                 Zero, 
                 0x11
             }, 
+
             Package (0x04)
             {
                 0xFFFF, 
@@ -1421,6 +1545,7 @@ DefinitionBlock ("dsdt.aml", "DSDT", 2, "Intel ", "CALPELLA", 0x06040000)
                 LNKD, 
                 Zero
             }, 
+
             Package (0x04)
             {
                 0x0003FFFF, 
@@ -1428,6 +1553,7 @@ DefinitionBlock ("dsdt.aml", "DSDT", 2, "Intel ", "CALPELLA", 0x06040000)
                 LNKC, 
                 Zero
             }, 
+
             Package (0x04)
             {
                 0x0003FFFF, 
@@ -1435,6 +1561,7 @@ DefinitionBlock ("dsdt.aml", "DSDT", 2, "Intel ", "CALPELLA", 0x06040000)
                 LNKF, 
                 Zero
             }, 
+
             Package (0x04)
             {
                 0x0003FFFF, 
@@ -1442,6 +1569,7 @@ DefinitionBlock ("dsdt.aml", "DSDT", 2, "Intel ", "CALPELLA", 0x06040000)
                 LNKG, 
                 Zero
             }, 
+
             Package (0x04)
             {
                 0x0002FFFF, 
@@ -1449,6 +1577,7 @@ DefinitionBlock ("dsdt.aml", "DSDT", 2, "Intel ", "CALPELLA", 0x06040000)
                 LNKC, 
                 Zero
             }, 
+
             Package (0x04)
             {
                 0x0002FFFF, 
@@ -1456,6 +1585,7 @@ DefinitionBlock ("dsdt.aml", "DSDT", 2, "Intel ", "CALPELLA", 0x06040000)
                 LNKD, 
                 Zero
             }, 
+
             Package (0x04)
             {
                 0x0002FFFF, 
@@ -1463,6 +1593,7 @@ DefinitionBlock ("dsdt.aml", "DSDT", 2, "Intel ", "CALPELLA", 0x06040000)
                 LNKB, 
                 Zero
             }, 
+
             Package (0x04)
             {
                 0x0002FFFF, 
@@ -1470,6 +1601,7 @@ DefinitionBlock ("dsdt.aml", "DSDT", 2, "Intel ", "CALPELLA", 0x06040000)
                 LNKA, 
                 Zero
             }, 
+
             Package (0x04)
             {
                 0xFFFF, 
@@ -1477,6 +1609,7 @@ DefinitionBlock ("dsdt.aml", "DSDT", 2, "Intel ", "CALPELLA", 0x06040000)
                 LNKF, 
                 Zero
             }, 
+
             Package (0x04)
             {
                 0xFFFF, 
@@ -1484,6 +1617,7 @@ DefinitionBlock ("dsdt.aml", "DSDT", 2, "Intel ", "CALPELLA", 0x06040000)
                 LNKG, 
                 Zero
             }, 
+
             Package (0x04)
             {
                 0xFFFF, 
@@ -1491,6 +1625,7 @@ DefinitionBlock ("dsdt.aml", "DSDT", 2, "Intel ", "CALPELLA", 0x06040000)
                 LNKH, 
                 Zero
             }, 
+
             Package (0x04)
             {
                 0xFFFF, 
@@ -1498,6 +1633,7 @@ DefinitionBlock ("dsdt.aml", "DSDT", 2, "Intel ", "CALPELLA", 0x06040000)
                 LNKE, 
                 Zero
             }, 
+
             Package (0x04)
             {
                 0x0001FFFF, 
@@ -1505,6 +1641,7 @@ DefinitionBlock ("dsdt.aml", "DSDT", 2, "Intel ", "CALPELLA", 0x06040000)
                 LNKG, 
                 Zero
             }, 
+
             Package (0x04)
             {
                 0x0001FFFF, 
@@ -1512,6 +1649,7 @@ DefinitionBlock ("dsdt.aml", "DSDT", 2, "Intel ", "CALPELLA", 0x06040000)
                 LNKF, 
                 Zero
             }, 
+
             Package (0x04)
             {
                 0x0001FFFF, 
@@ -1519,6 +1657,7 @@ DefinitionBlock ("dsdt.aml", "DSDT", 2, "Intel ", "CALPELLA", 0x06040000)
                 LNKE, 
                 Zero
             }, 
+
             Package (0x04)
             {
                 0x0001FFFF, 
@@ -1526,6 +1665,7 @@ DefinitionBlock ("dsdt.aml", "DSDT", 2, "Intel ", "CALPELLA", 0x06040000)
                 LNKH, 
                 Zero
             }, 
+
             Package (0x04)
             {
                 0x0005FFFF, 
@@ -1533,6 +1673,7 @@ DefinitionBlock ("dsdt.aml", "DSDT", 2, "Intel ", "CALPELLA", 0x06040000)
                 LNKC, 
                 Zero
             }, 
+
             Package (0x04)
             {
                 0x0005FFFF, 
@@ -1540,6 +1681,7 @@ DefinitionBlock ("dsdt.aml", "DSDT", 2, "Intel ", "CALPELLA", 0x06040000)
                 LNKE, 
                 Zero
             }, 
+
             Package (0x04)
             {
                 0x0005FFFF, 
@@ -1547,6 +1689,7 @@ DefinitionBlock ("dsdt.aml", "DSDT", 2, "Intel ", "CALPELLA", 0x06040000)
                 LNKG, 
                 Zero
             }, 
+
             Package (0x04)
             {
                 0x0005FFFF, 
@@ -1564,6 +1707,7 @@ DefinitionBlock ("dsdt.aml", "DSDT", 2, "Intel ", "CALPELLA", 0x06040000)
                 Zero, 
                 0x13
             }, 
+
             Package (0x04)
             {
                 0x0003FFFF, 
@@ -1571,6 +1715,7 @@ DefinitionBlock ("dsdt.aml", "DSDT", 2, "Intel ", "CALPELLA", 0x06040000)
                 Zero, 
                 0x12
             }, 
+
             Package (0x04)
             {
                 0x0003FFFF, 
@@ -1578,6 +1723,7 @@ DefinitionBlock ("dsdt.aml", "DSDT", 2, "Intel ", "CALPELLA", 0x06040000)
                 Zero, 
                 0x15
             }, 
+
             Package (0x04)
             {
                 0x0003FFFF, 
@@ -1585,6 +1731,7 @@ DefinitionBlock ("dsdt.aml", "DSDT", 2, "Intel ", "CALPELLA", 0x06040000)
                 Zero, 
                 0x16
             }, 
+
             Package (0x04)
             {
                 0x0002FFFF, 
@@ -1592,6 +1739,7 @@ DefinitionBlock ("dsdt.aml", "DSDT", 2, "Intel ", "CALPELLA", 0x06040000)
                 Zero, 
                 0x12
             }, 
+
             Package (0x04)
             {
                 0x0002FFFF, 
@@ -1599,6 +1747,7 @@ DefinitionBlock ("dsdt.aml", "DSDT", 2, "Intel ", "CALPELLA", 0x06040000)
                 Zero, 
                 0x13
             }, 
+
             Package (0x04)
             {
                 0x0002FFFF, 
@@ -1606,6 +1755,7 @@ DefinitionBlock ("dsdt.aml", "DSDT", 2, "Intel ", "CALPELLA", 0x06040000)
                 Zero, 
                 0x11
             }, 
+
             Package (0x04)
             {
                 0x0002FFFF, 
@@ -1613,6 +1763,7 @@ DefinitionBlock ("dsdt.aml", "DSDT", 2, "Intel ", "CALPELLA", 0x06040000)
                 Zero, 
                 0x10
             }, 
+
             Package (0x04)
             {
                 0xFFFF, 
@@ -1620,6 +1771,7 @@ DefinitionBlock ("dsdt.aml", "DSDT", 2, "Intel ", "CALPELLA", 0x06040000)
                 Zero, 
                 0x15
             }, 
+
             Package (0x04)
             {
                 0xFFFF, 
@@ -1627,6 +1779,7 @@ DefinitionBlock ("dsdt.aml", "DSDT", 2, "Intel ", "CALPELLA", 0x06040000)
                 Zero, 
                 0x16
             }, 
+
             Package (0x04)
             {
                 0xFFFF, 
@@ -1634,6 +1787,7 @@ DefinitionBlock ("dsdt.aml", "DSDT", 2, "Intel ", "CALPELLA", 0x06040000)
                 Zero, 
                 0x17
             }, 
+
             Package (0x04)
             {
                 0xFFFF, 
@@ -1641,6 +1795,7 @@ DefinitionBlock ("dsdt.aml", "DSDT", 2, "Intel ", "CALPELLA", 0x06040000)
                 Zero, 
                 0x14
             }, 
+
             Package (0x04)
             {
                 0x0001FFFF, 
@@ -1648,6 +1803,7 @@ DefinitionBlock ("dsdt.aml", "DSDT", 2, "Intel ", "CALPELLA", 0x06040000)
                 Zero, 
                 0x16
             }, 
+
             Package (0x04)
             {
                 0x0001FFFF, 
@@ -1655,6 +1811,7 @@ DefinitionBlock ("dsdt.aml", "DSDT", 2, "Intel ", "CALPELLA", 0x06040000)
                 Zero, 
                 0x15
             }, 
+
             Package (0x04)
             {
                 0x0001FFFF, 
@@ -1662,6 +1819,7 @@ DefinitionBlock ("dsdt.aml", "DSDT", 2, "Intel ", "CALPELLA", 0x06040000)
                 Zero, 
                 0x14
             }, 
+
             Package (0x04)
             {
                 0x0001FFFF, 
@@ -1669,6 +1827,7 @@ DefinitionBlock ("dsdt.aml", "DSDT", 2, "Intel ", "CALPELLA", 0x06040000)
                 Zero, 
                 0x17
             }, 
+
             Package (0x04)
             {
                 0x0005FFFF, 
@@ -1676,6 +1835,7 @@ DefinitionBlock ("dsdt.aml", "DSDT", 2, "Intel ", "CALPELLA", 0x06040000)
                 Zero, 
                 0x12
             }, 
+
             Package (0x04)
             {
                 0x0005FFFF, 
@@ -1683,6 +1843,7 @@ DefinitionBlock ("dsdt.aml", "DSDT", 2, "Intel ", "CALPELLA", 0x06040000)
                 Zero, 
                 0x14
             }, 
+
             Package (0x04)
             {
                 0x0005FFFF, 
@@ -1690,6 +1851,7 @@ DefinitionBlock ("dsdt.aml", "DSDT", 2, "Intel ", "CALPELLA", 0x06040000)
                 Zero, 
                 0x16
             }, 
+
             Package (0x04)
             {
                 0x0005FFFF, 
@@ -1707,6 +1869,7 @@ DefinitionBlock ("dsdt.aml", "DSDT", 2, "Intel ", "CALPELLA", 0x06040000)
                 LNKA, 
                 Zero
             }, 
+
             Package (0x04)
             {
                 0xFFFF, 
@@ -1714,6 +1877,7 @@ DefinitionBlock ("dsdt.aml", "DSDT", 2, "Intel ", "CALPELLA", 0x06040000)
                 LNKB, 
                 Zero
             }, 
+
             Package (0x04)
             {
                 0xFFFF, 
@@ -1721,6 +1885,7 @@ DefinitionBlock ("dsdt.aml", "DSDT", 2, "Intel ", "CALPELLA", 0x06040000)
                 LNKC, 
                 Zero
             }, 
+
             Package (0x04)
             {
                 0xFFFF, 
@@ -1738,6 +1903,7 @@ DefinitionBlock ("dsdt.aml", "DSDT", 2, "Intel ", "CALPELLA", 0x06040000)
                 Zero, 
                 0x10
             }, 
+
             Package (0x04)
             {
                 0xFFFF, 
@@ -1745,6 +1911,7 @@ DefinitionBlock ("dsdt.aml", "DSDT", 2, "Intel ", "CALPELLA", 0x06040000)
                 Zero, 
                 0x11
             }, 
+
             Package (0x04)
             {
                 0xFFFF, 
@@ -1752,6 +1919,7 @@ DefinitionBlock ("dsdt.aml", "DSDT", 2, "Intel ", "CALPELLA", 0x06040000)
                 Zero, 
                 0x12
             }, 
+
             Package (0x04)
             {
                 0xFFFF, 
@@ -1769,6 +1937,7 @@ DefinitionBlock ("dsdt.aml", "DSDT", 2, "Intel ", "CALPELLA", 0x06040000)
                 LNKA, 
                 Zero
             }, 
+
             Package (0x04)
             {
                 0xFFFF, 
@@ -1776,6 +1945,7 @@ DefinitionBlock ("dsdt.aml", "DSDT", 2, "Intel ", "CALPELLA", 0x06040000)
                 LNKB, 
                 Zero
             }, 
+
             Package (0x04)
             {
                 0xFFFF, 
@@ -1783,6 +1953,7 @@ DefinitionBlock ("dsdt.aml", "DSDT", 2, "Intel ", "CALPELLA", 0x06040000)
                 LNKC, 
                 Zero
             }, 
+
             Package (0x04)
             {
                 0xFFFF, 
@@ -1800,6 +1971,7 @@ DefinitionBlock ("dsdt.aml", "DSDT", 2, "Intel ", "CALPELLA", 0x06040000)
                 Zero, 
                 0x10
             }, 
+
             Package (0x04)
             {
                 0xFFFF, 
@@ -1807,6 +1979,7 @@ DefinitionBlock ("dsdt.aml", "DSDT", 2, "Intel ", "CALPELLA", 0x06040000)
                 Zero, 
                 0x11
             }, 
+
             Package (0x04)
             {
                 0xFFFF, 
@@ -1814,6 +1987,7 @@ DefinitionBlock ("dsdt.aml", "DSDT", 2, "Intel ", "CALPELLA", 0x06040000)
                 Zero, 
                 0x12
             }, 
+
             Package (0x04)
             {
                 0xFFFF, 
@@ -1831,6 +2005,7 @@ DefinitionBlock ("dsdt.aml", "DSDT", 2, "Intel ", "CALPELLA", 0x06040000)
                 LNKA, 
                 Zero
             }, 
+
             Package (0x04)
             {
                 0x0001FFFF, 
@@ -1838,6 +2013,7 @@ DefinitionBlock ("dsdt.aml", "DSDT", 2, "Intel ", "CALPELLA", 0x06040000)
                 LNKB, 
                 Zero
             }, 
+
             Package (0x04)
             {
                 0x0001FFFF, 
@@ -1845,6 +2021,7 @@ DefinitionBlock ("dsdt.aml", "DSDT", 2, "Intel ", "CALPELLA", 0x06040000)
                 LNKC, 
                 Zero
             }, 
+
             Package (0x04)
             {
                 0x0001FFFF, 
@@ -1852,6 +2029,7 @@ DefinitionBlock ("dsdt.aml", "DSDT", 2, "Intel ", "CALPELLA", 0x06040000)
                 LNKD, 
                 Zero
             }, 
+
             Package (0x04)
             {
                 0x0003FFFF, 
@@ -1859,6 +2037,7 @@ DefinitionBlock ("dsdt.aml", "DSDT", 2, "Intel ", "CALPELLA", 0x06040000)
                 LNKA, 
                 Zero
             }, 
+
             Package (0x04)
             {
                 0x0003FFFF, 
@@ -1866,6 +2045,7 @@ DefinitionBlock ("dsdt.aml", "DSDT", 2, "Intel ", "CALPELLA", 0x06040000)
                 LNKB, 
                 Zero
             }, 
+
             Package (0x04)
             {
                 0x0003FFFF, 
@@ -1873,6 +2053,7 @@ DefinitionBlock ("dsdt.aml", "DSDT", 2, "Intel ", "CALPELLA", 0x06040000)
                 LNKC, 
                 Zero
             }, 
+
             Package (0x04)
             {
                 0x0003FFFF, 
@@ -1880,6 +2061,7 @@ DefinitionBlock ("dsdt.aml", "DSDT", 2, "Intel ", "CALPELLA", 0x06040000)
                 LNKD, 
                 Zero
             }, 
+
             Package (0x04)
             {
                 0x0004FFFF, 
@@ -1887,6 +2069,7 @@ DefinitionBlock ("dsdt.aml", "DSDT", 2, "Intel ", "CALPELLA", 0x06040000)
                 LNKA, 
                 Zero
             }, 
+
             Package (0x04)
             {
                 0x0004FFFF, 
@@ -1894,6 +2077,7 @@ DefinitionBlock ("dsdt.aml", "DSDT", 2, "Intel ", "CALPELLA", 0x06040000)
                 LNKB, 
                 Zero
             }, 
+
             Package (0x04)
             {
                 0x0004FFFF, 
@@ -1901,6 +2085,7 @@ DefinitionBlock ("dsdt.aml", "DSDT", 2, "Intel ", "CALPELLA", 0x06040000)
                 LNKC, 
                 Zero
             }, 
+
             Package (0x04)
             {
                 0x0004FFFF, 
@@ -1908,6 +2093,7 @@ DefinitionBlock ("dsdt.aml", "DSDT", 2, "Intel ", "CALPELLA", 0x06040000)
                 LNKD, 
                 Zero
             }, 
+
             Package (0x04)
             {
                 0x0005FFFF, 
@@ -1915,6 +2101,7 @@ DefinitionBlock ("dsdt.aml", "DSDT", 2, "Intel ", "CALPELLA", 0x06040000)
                 LNKA, 
                 Zero
             }, 
+
             Package (0x04)
             {
                 0x0005FFFF, 
@@ -1922,6 +2109,7 @@ DefinitionBlock ("dsdt.aml", "DSDT", 2, "Intel ", "CALPELLA", 0x06040000)
                 LNKB, 
                 Zero
             }, 
+
             Package (0x04)
             {
                 0x0005FFFF, 
@@ -1929,6 +2117,7 @@ DefinitionBlock ("dsdt.aml", "DSDT", 2, "Intel ", "CALPELLA", 0x06040000)
                 LNKC, 
                 Zero
             }, 
+
             Package (0x04)
             {
                 0x0005FFFF, 
@@ -1936,6 +2125,7 @@ DefinitionBlock ("dsdt.aml", "DSDT", 2, "Intel ", "CALPELLA", 0x06040000)
                 LNKD, 
                 Zero
             }, 
+
             Package (0x04)
             {
                 0x0006FFFF, 
@@ -1943,6 +2133,7 @@ DefinitionBlock ("dsdt.aml", "DSDT", 2, "Intel ", "CALPELLA", 0x06040000)
                 LNKA, 
                 Zero
             }, 
+
             Package (0x04)
             {
                 0x0006FFFF, 
@@ -1950,6 +2141,7 @@ DefinitionBlock ("dsdt.aml", "DSDT", 2, "Intel ", "CALPELLA", 0x06040000)
                 LNKB, 
                 Zero
             }, 
+
             Package (0x04)
             {
                 0x0006FFFF, 
@@ -1957,6 +2149,7 @@ DefinitionBlock ("dsdt.aml", "DSDT", 2, "Intel ", "CALPELLA", 0x06040000)
                 LNKC, 
                 Zero
             }, 
+
             Package (0x04)
             {
                 0x0006FFFF, 
@@ -1964,6 +2157,7 @@ DefinitionBlock ("dsdt.aml", "DSDT", 2, "Intel ", "CALPELLA", 0x06040000)
                 LNKD, 
                 Zero
             }, 
+
             Package (0x04)
             {
                 0x001FFFFF, 
@@ -1971,6 +2165,7 @@ DefinitionBlock ("dsdt.aml", "DSDT", 2, "Intel ", "CALPELLA", 0x06040000)
                 LNKF, 
                 Zero
             }, 
+
             Package (0x04)
             {
                 0x001FFFFF, 
@@ -1978,6 +2173,7 @@ DefinitionBlock ("dsdt.aml", "DSDT", 2, "Intel ", "CALPELLA", 0x06040000)
                 LNKD, 
                 Zero
             }, 
+
             Package (0x04)
             {
                 0x001FFFFF, 
@@ -1985,6 +2181,7 @@ DefinitionBlock ("dsdt.aml", "DSDT", 2, "Intel ", "CALPELLA", 0x06040000)
                 LNKC, 
                 Zero
             }, 
+
             Package (0x04)
             {
                 0x001FFFFF, 
@@ -1992,6 +2189,7 @@ DefinitionBlock ("dsdt.aml", "DSDT", 2, "Intel ", "CALPELLA", 0x06040000)
                 LNKA, 
                 Zero
             }, 
+
             Package (0x04)
             {
                 0x001DFFFF, 
@@ -1999,6 +2197,7 @@ DefinitionBlock ("dsdt.aml", "DSDT", 2, "Intel ", "CALPELLA", 0x06040000)
                 LNKH, 
                 Zero
             }, 
+
             Package (0x04)
             {
                 0x001DFFFF, 
@@ -2006,6 +2205,7 @@ DefinitionBlock ("dsdt.aml", "DSDT", 2, "Intel ", "CALPELLA", 0x06040000)
                 LNKD, 
                 Zero
             }, 
+
             Package (0x04)
             {
                 0x001DFFFF, 
@@ -2013,6 +2213,7 @@ DefinitionBlock ("dsdt.aml", "DSDT", 2, "Intel ", "CALPELLA", 0x06040000)
                 LNKA, 
                 Zero
             }, 
+
             Package (0x04)
             {
                 0x001DFFFF, 
@@ -2020,6 +2221,7 @@ DefinitionBlock ("dsdt.aml", "DSDT", 2, "Intel ", "CALPELLA", 0x06040000)
                 LNKC, 
                 Zero
             }, 
+
             Package (0x04)
             {
                 0x001AFFFF, 
@@ -2027,6 +2229,7 @@ DefinitionBlock ("dsdt.aml", "DSDT", 2, "Intel ", "CALPELLA", 0x06040000)
                 LNKA, 
                 Zero
             }, 
+
             Package (0x04)
             {
                 0x001AFFFF, 
@@ -2034,6 +2237,7 @@ DefinitionBlock ("dsdt.aml", "DSDT", 2, "Intel ", "CALPELLA", 0x06040000)
                 LNKF, 
                 Zero
             }, 
+
             Package (0x04)
             {
                 0x001AFFFF, 
@@ -2041,6 +2245,7 @@ DefinitionBlock ("dsdt.aml", "DSDT", 2, "Intel ", "CALPELLA", 0x06040000)
                 LNKC, 
                 Zero
             }, 
+
             Package (0x04)
             {
                 0x001AFFFF, 
@@ -2048,6 +2253,7 @@ DefinitionBlock ("dsdt.aml", "DSDT", 2, "Intel ", "CALPELLA", 0x06040000)
                 LNKD, 
                 Zero
             }, 
+
             Package (0x04)
             {
                 0x001BFFFF, 
@@ -2055,6 +2261,7 @@ DefinitionBlock ("dsdt.aml", "DSDT", 2, "Intel ", "CALPELLA", 0x06040000)
                 LNKG, 
                 Zero
             }, 
+
             Package (0x04)
             {
                 0x001CFFFF, 
@@ -2062,6 +2269,7 @@ DefinitionBlock ("dsdt.aml", "DSDT", 2, "Intel ", "CALPELLA", 0x06040000)
                 LNKA, 
                 Zero
             }, 
+
             Package (0x04)
             {
                 0x001CFFFF, 
@@ -2069,6 +2277,7 @@ DefinitionBlock ("dsdt.aml", "DSDT", 2, "Intel ", "CALPELLA", 0x06040000)
                 LNKB, 
                 Zero
             }, 
+
             Package (0x04)
             {
                 0x001CFFFF, 
@@ -2076,6 +2285,7 @@ DefinitionBlock ("dsdt.aml", "DSDT", 2, "Intel ", "CALPELLA", 0x06040000)
                 LNKC, 
                 Zero
             }, 
+
             Package (0x04)
             {
                 0x001CFFFF, 
@@ -2083,6 +2293,7 @@ DefinitionBlock ("dsdt.aml", "DSDT", 2, "Intel ", "CALPELLA", 0x06040000)
                 LNKD, 
                 Zero
             }, 
+
             Package (0x04)
             {
                 0x0019FFFF, 
@@ -2090,6 +2301,7 @@ DefinitionBlock ("dsdt.aml", "DSDT", 2, "Intel ", "CALPELLA", 0x06040000)
                 LNKE, 
                 Zero
             }, 
+
             Package (0x04)
             {
                 0x0016FFFF, 
@@ -2097,6 +2309,7 @@ DefinitionBlock ("dsdt.aml", "DSDT", 2, "Intel ", "CALPELLA", 0x06040000)
                 LNKA, 
                 Zero
             }, 
+
             Package (0x04)
             {
                 0x0016FFFF, 
@@ -2104,6 +2317,7 @@ DefinitionBlock ("dsdt.aml", "DSDT", 2, "Intel ", "CALPELLA", 0x06040000)
                 LNKD, 
                 Zero
             }, 
+
             Package (0x04)
             {
                 0x0016FFFF, 
@@ -2111,6 +2325,7 @@ DefinitionBlock ("dsdt.aml", "DSDT", 2, "Intel ", "CALPELLA", 0x06040000)
                 LNKC, 
                 Zero
             }, 
+
             Package (0x04)
             {
                 0x0016FFFF, 
@@ -2128,6 +2343,7 @@ DefinitionBlock ("dsdt.aml", "DSDT", 2, "Intel ", "CALPELLA", 0x06040000)
                 Zero, 
                 0x10
             }, 
+
             Package (0x04)
             {
                 0x0001FFFF, 
@@ -2135,6 +2351,7 @@ DefinitionBlock ("dsdt.aml", "DSDT", 2, "Intel ", "CALPELLA", 0x06040000)
                 Zero, 
                 0x11
             }, 
+
             Package (0x04)
             {
                 0x0001FFFF, 
@@ -2142,6 +2359,7 @@ DefinitionBlock ("dsdt.aml", "DSDT", 2, "Intel ", "CALPELLA", 0x06040000)
                 Zero, 
                 0x12
             }, 
+
             Package (0x04)
             {
                 0x0001FFFF, 
@@ -2149,6 +2367,7 @@ DefinitionBlock ("dsdt.aml", "DSDT", 2, "Intel ", "CALPELLA", 0x06040000)
                 Zero, 
                 0x13
             }, 
+
             Package (0x04)
             {
                 0x0003FFFF, 
@@ -2156,6 +2375,7 @@ DefinitionBlock ("dsdt.aml", "DSDT", 2, "Intel ", "CALPELLA", 0x06040000)
                 Zero, 
                 0x10
             }, 
+
             Package (0x04)
             {
                 0x0003FFFF, 
@@ -2163,6 +2383,7 @@ DefinitionBlock ("dsdt.aml", "DSDT", 2, "Intel ", "CALPELLA", 0x06040000)
                 Zero, 
                 0x11
             }, 
+
             Package (0x04)
             {
                 0x0003FFFF, 
@@ -2170,6 +2391,7 @@ DefinitionBlock ("dsdt.aml", "DSDT", 2, "Intel ", "CALPELLA", 0x06040000)
                 Zero, 
                 0x12
             }, 
+
             Package (0x04)
             {
                 0x0003FFFF, 
@@ -2177,6 +2399,7 @@ DefinitionBlock ("dsdt.aml", "DSDT", 2, "Intel ", "CALPELLA", 0x06040000)
                 Zero, 
                 0x13
             }, 
+
             Package (0x04)
             {
                 0x0004FFFF, 
@@ -2184,6 +2407,7 @@ DefinitionBlock ("dsdt.aml", "DSDT", 2, "Intel ", "CALPELLA", 0x06040000)
                 Zero, 
                 0x10
             }, 
+
             Package (0x04)
             {
                 0x0004FFFF, 
@@ -2191,6 +2415,7 @@ DefinitionBlock ("dsdt.aml", "DSDT", 2, "Intel ", "CALPELLA", 0x06040000)
                 Zero, 
                 0x11
             }, 
+
             Package (0x04)
             {
                 0x0004FFFF, 
@@ -2198,6 +2423,7 @@ DefinitionBlock ("dsdt.aml", "DSDT", 2, "Intel ", "CALPELLA", 0x06040000)
                 Zero, 
                 0x12
             }, 
+
             Package (0x04)
             {
                 0x0004FFFF, 
@@ -2205,6 +2431,7 @@ DefinitionBlock ("dsdt.aml", "DSDT", 2, "Intel ", "CALPELLA", 0x06040000)
                 Zero, 
                 0x13
             }, 
+
             Package (0x04)
             {
                 0x0005FFFF, 
@@ -2212,6 +2439,7 @@ DefinitionBlock ("dsdt.aml", "DSDT", 2, "Intel ", "CALPELLA", 0x06040000)
                 Zero, 
                 0x10
             }, 
+
             Package (0x04)
             {
                 0x0005FFFF, 
@@ -2219,6 +2447,7 @@ DefinitionBlock ("dsdt.aml", "DSDT", 2, "Intel ", "CALPELLA", 0x06040000)
                 Zero, 
                 0x11
             }, 
+
             Package (0x04)
             {
                 0x0005FFFF, 
@@ -2226,6 +2455,7 @@ DefinitionBlock ("dsdt.aml", "DSDT", 2, "Intel ", "CALPELLA", 0x06040000)
                 Zero, 
                 0x12
             }, 
+
             Package (0x04)
             {
                 0x0005FFFF, 
@@ -2233,6 +2463,7 @@ DefinitionBlock ("dsdt.aml", "DSDT", 2, "Intel ", "CALPELLA", 0x06040000)
                 Zero, 
                 0x13
             }, 
+
             Package (0x04)
             {
                 0x0006FFFF, 
@@ -2240,6 +2471,7 @@ DefinitionBlock ("dsdt.aml", "DSDT", 2, "Intel ", "CALPELLA", 0x06040000)
                 Zero, 
                 0x10
             }, 
+
             Package (0x04)
             {
                 0x0006FFFF, 
@@ -2247,6 +2479,7 @@ DefinitionBlock ("dsdt.aml", "DSDT", 2, "Intel ", "CALPELLA", 0x06040000)
                 Zero, 
                 0x11
             }, 
+
             Package (0x04)
             {
                 0x0006FFFF, 
@@ -2254,6 +2487,7 @@ DefinitionBlock ("dsdt.aml", "DSDT", 2, "Intel ", "CALPELLA", 0x06040000)
                 Zero, 
                 0x12
             }, 
+
             Package (0x04)
             {
                 0x0006FFFF, 
@@ -2261,6 +2495,7 @@ DefinitionBlock ("dsdt.aml", "DSDT", 2, "Intel ", "CALPELLA", 0x06040000)
                 Zero, 
                 0x13
             }, 
+
             Package (0x04)
             {
                 0x001FFFFF, 
@@ -2268,6 +2503,7 @@ DefinitionBlock ("dsdt.aml", "DSDT", 2, "Intel ", "CALPELLA", 0x06040000)
                 Zero, 
                 0x15
             }, 
+
             Package (0x04)
             {
                 0x001FFFFF, 
@@ -2275,6 +2511,7 @@ DefinitionBlock ("dsdt.aml", "DSDT", 2, "Intel ", "CALPELLA", 0x06040000)
                 Zero, 
                 0x13
             }, 
+
             Package (0x04)
             {
                 0x001FFFFF, 
@@ -2282,6 +2519,7 @@ DefinitionBlock ("dsdt.aml", "DSDT", 2, "Intel ", "CALPELLA", 0x06040000)
                 Zero, 
                 0x12
             }, 
+
             Package (0x04)
             {
                 0x001FFFFF, 
@@ -2289,6 +2527,7 @@ DefinitionBlock ("dsdt.aml", "DSDT", 2, "Intel ", "CALPELLA", 0x06040000)
                 Zero, 
                 0x10
             }, 
+
             Package (0x04)
             {
                 0x001DFFFF, 
@@ -2296,6 +2535,7 @@ DefinitionBlock ("dsdt.aml", "DSDT", 2, "Intel ", "CALPELLA", 0x06040000)
                 Zero, 
                 0x17
             }, 
+
             Package (0x04)
             {
                 0x001DFFFF, 
@@ -2303,6 +2543,7 @@ DefinitionBlock ("dsdt.aml", "DSDT", 2, "Intel ", "CALPELLA", 0x06040000)
                 Zero, 
                 0x13
             }, 
+
             Package (0x04)
             {
                 0x001DFFFF, 
@@ -2310,6 +2551,7 @@ DefinitionBlock ("dsdt.aml", "DSDT", 2, "Intel ", "CALPELLA", 0x06040000)
                 Zero, 
                 0x10
             }, 
+
             Package (0x04)
             {
                 0x001DFFFF, 
@@ -2317,6 +2559,7 @@ DefinitionBlock ("dsdt.aml", "DSDT", 2, "Intel ", "CALPELLA", 0x06040000)
                 Zero, 
                 0x12
             }, 
+
             Package (0x04)
             {
                 0x001AFFFF, 
@@ -2324,6 +2567,7 @@ DefinitionBlock ("dsdt.aml", "DSDT", 2, "Intel ", "CALPELLA", 0x06040000)
                 Zero, 
                 0x10
             }, 
+
             Package (0x04)
             {
                 0x001AFFFF, 
@@ -2331,6 +2575,7 @@ DefinitionBlock ("dsdt.aml", "DSDT", 2, "Intel ", "CALPELLA", 0x06040000)
                 Zero, 
                 0x15
             }, 
+
             Package (0x04)
             {
                 0x001AFFFF, 
@@ -2338,6 +2583,7 @@ DefinitionBlock ("dsdt.aml", "DSDT", 2, "Intel ", "CALPELLA", 0x06040000)
                 Zero, 
                 0x12
             }, 
+
             Package (0x04)
             {
                 0x001AFFFF, 
@@ -2345,6 +2591,7 @@ DefinitionBlock ("dsdt.aml", "DSDT", 2, "Intel ", "CALPELLA", 0x06040000)
                 Zero, 
                 0x13
             }, 
+
             Package (0x04)
             {
                 0x001BFFFF, 
@@ -2352,6 +2599,7 @@ DefinitionBlock ("dsdt.aml", "DSDT", 2, "Intel ", "CALPELLA", 0x06040000)
                 Zero, 
                 0x16
             }, 
+
             Package (0x04)
             {
                 0x001CFFFF, 
@@ -2359,6 +2607,7 @@ DefinitionBlock ("dsdt.aml", "DSDT", 2, "Intel ", "CALPELLA", 0x06040000)
                 Zero, 
                 0x10
             }, 
+
             Package (0x04)
             {
                 0x001CFFFF, 
@@ -2366,6 +2615,7 @@ DefinitionBlock ("dsdt.aml", "DSDT", 2, "Intel ", "CALPELLA", 0x06040000)
                 Zero, 
                 0x11
             }, 
+
             Package (0x04)
             {
                 0x001CFFFF, 
@@ -2373,6 +2623,7 @@ DefinitionBlock ("dsdt.aml", "DSDT", 2, "Intel ", "CALPELLA", 0x06040000)
                 Zero, 
                 0x12
             }, 
+
             Package (0x04)
             {
                 0x001CFFFF, 
@@ -2380,6 +2631,7 @@ DefinitionBlock ("dsdt.aml", "DSDT", 2, "Intel ", "CALPELLA", 0x06040000)
                 Zero, 
                 0x13
             }, 
+
             Package (0x04)
             {
                 0x0019FFFF, 
@@ -2387,6 +2639,7 @@ DefinitionBlock ("dsdt.aml", "DSDT", 2, "Intel ", "CALPELLA", 0x06040000)
                 Zero, 
                 0x14
             }, 
+
             Package (0x04)
             {
                 0x0016FFFF, 
@@ -2394,6 +2647,7 @@ DefinitionBlock ("dsdt.aml", "DSDT", 2, "Intel ", "CALPELLA", 0x06040000)
                 Zero, 
                 0x10
             }, 
+
             Package (0x04)
             {
                 0x0016FFFF, 
@@ -2401,6 +2655,7 @@ DefinitionBlock ("dsdt.aml", "DSDT", 2, "Intel ", "CALPELLA", 0x06040000)
                 Zero, 
                 0x13
             }, 
+
             Package (0x04)
             {
                 0x0016FFFF, 
@@ -2408,6 +2663,7 @@ DefinitionBlock ("dsdt.aml", "DSDT", 2, "Intel ", "CALPELLA", 0x06040000)
                 Zero, 
                 0x12
             }, 
+
             Package (0x04)
             {
                 0x0016FFFF, 
@@ -2425,6 +2681,7 @@ DefinitionBlock ("dsdt.aml", "DSDT", 2, "Intel ", "CALPELLA", 0x06040000)
                 LNKA, 
                 Zero
             }, 
+
             Package (0x04)
             {
                 0xFFFF, 
@@ -2432,6 +2689,7 @@ DefinitionBlock ("dsdt.aml", "DSDT", 2, "Intel ", "CALPELLA", 0x06040000)
                 LNKB, 
                 Zero
             }, 
+
             Package (0x04)
             {
                 0xFFFF, 
@@ -2439,6 +2697,7 @@ DefinitionBlock ("dsdt.aml", "DSDT", 2, "Intel ", "CALPELLA", 0x06040000)
                 LNKC, 
                 Zero
             }, 
+
             Package (0x04)
             {
                 0xFFFF, 
@@ -2456,6 +2715,7 @@ DefinitionBlock ("dsdt.aml", "DSDT", 2, "Intel ", "CALPELLA", 0x06040000)
                 Zero, 
                 0x10
             }, 
+
             Package (0x04)
             {
                 0xFFFF, 
@@ -2463,6 +2723,7 @@ DefinitionBlock ("dsdt.aml", "DSDT", 2, "Intel ", "CALPELLA", 0x06040000)
                 Zero, 
                 0x11
             }, 
+
             Package (0x04)
             {
                 0xFFFF, 
@@ -2470,6 +2731,7 @@ DefinitionBlock ("dsdt.aml", "DSDT", 2, "Intel ", "CALPELLA", 0x06040000)
                 Zero, 
                 0x12
             }, 
+
             Package (0x04)
             {
                 0xFFFF, 
@@ -2487,6 +2749,7 @@ DefinitionBlock ("dsdt.aml", "DSDT", 2, "Intel ", "CALPELLA", 0x06040000)
                 LNKA, 
                 Zero
             }, 
+
             Package (0x04)
             {
                 0xFFFF, 
@@ -2494,6 +2757,7 @@ DefinitionBlock ("dsdt.aml", "DSDT", 2, "Intel ", "CALPELLA", 0x06040000)
                 LNKB, 
                 Zero
             }, 
+
             Package (0x04)
             {
                 0xFFFF, 
@@ -2501,6 +2765,7 @@ DefinitionBlock ("dsdt.aml", "DSDT", 2, "Intel ", "CALPELLA", 0x06040000)
                 LNKC, 
                 Zero
             }, 
+
             Package (0x04)
             {
                 0xFFFF, 
@@ -2518,6 +2783,7 @@ DefinitionBlock ("dsdt.aml", "DSDT", 2, "Intel ", "CALPELLA", 0x06040000)
                 Zero, 
                 0x10
             }, 
+
             Package (0x04)
             {
                 0xFFFF, 
@@ -2525,6 +2791,7 @@ DefinitionBlock ("dsdt.aml", "DSDT", 2, "Intel ", "CALPELLA", 0x06040000)
                 Zero, 
                 0x11
             }, 
+
             Package (0x04)
             {
                 0xFFFF, 
@@ -2532,6 +2799,7 @@ DefinitionBlock ("dsdt.aml", "DSDT", 2, "Intel ", "CALPELLA", 0x06040000)
                 Zero, 
                 0x12
             }, 
+
             Package (0x04)
             {
                 0xFFFF, 
@@ -2549,6 +2817,7 @@ DefinitionBlock ("dsdt.aml", "DSDT", 2, "Intel ", "CALPELLA", 0x06040000)
                 LNKA, 
                 Zero
             }, 
+
             Package (0x04)
             {
                 0xFFFF, 
@@ -2556,6 +2825,7 @@ DefinitionBlock ("dsdt.aml", "DSDT", 2, "Intel ", "CALPELLA", 0x06040000)
                 LNKB, 
                 Zero
             }, 
+
             Package (0x04)
             {
                 0xFFFF, 
@@ -2563,6 +2833,7 @@ DefinitionBlock ("dsdt.aml", "DSDT", 2, "Intel ", "CALPELLA", 0x06040000)
                 LNKC, 
                 Zero
             }, 
+
             Package (0x04)
             {
                 0xFFFF, 
@@ -2580,6 +2851,7 @@ DefinitionBlock ("dsdt.aml", "DSDT", 2, "Intel ", "CALPELLA", 0x06040000)
                 Zero, 
                 0x10
             }, 
+
             Package (0x04)
             {
                 0xFFFF, 
@@ -2587,6 +2859,7 @@ DefinitionBlock ("dsdt.aml", "DSDT", 2, "Intel ", "CALPELLA", 0x06040000)
                 Zero, 
                 0x11
             }, 
+
             Package (0x04)
             {
                 0xFFFF, 
@@ -2594,6 +2867,7 @@ DefinitionBlock ("dsdt.aml", "DSDT", 2, "Intel ", "CALPELLA", 0x06040000)
                 Zero, 
                 0x12
             }, 
+
             Package (0x04)
             {
                 0xFFFF, 
@@ -2611,6 +2885,7 @@ DefinitionBlock ("dsdt.aml", "DSDT", 2, "Intel ", "CALPELLA", 0x06040000)
                 LNKA, 
                 Zero
             }, 
+
             Package (0x04)
             {
                 0xFFFF, 
@@ -2618,6 +2893,7 @@ DefinitionBlock ("dsdt.aml", "DSDT", 2, "Intel ", "CALPELLA", 0x06040000)
                 LNKB, 
                 Zero
             }, 
+
             Package (0x04)
             {
                 0xFFFF, 
@@ -2625,6 +2901,7 @@ DefinitionBlock ("dsdt.aml", "DSDT", 2, "Intel ", "CALPELLA", 0x06040000)
                 LNKC, 
                 Zero
             }, 
+
             Package (0x04)
             {
                 0xFFFF, 
@@ -2642,6 +2919,7 @@ DefinitionBlock ("dsdt.aml", "DSDT", 2, "Intel ", "CALPELLA", 0x06040000)
                 Zero, 
                 0x10
             }, 
+
             Package (0x04)
             {
                 0xFFFF, 
@@ -2649,6 +2927,7 @@ DefinitionBlock ("dsdt.aml", "DSDT", 2, "Intel ", "CALPELLA", 0x06040000)
                 Zero, 
                 0x11
             }, 
+
             Package (0x04)
             {
                 0xFFFF, 
@@ -2656,6 +2935,7 @@ DefinitionBlock ("dsdt.aml", "DSDT", 2, "Intel ", "CALPELLA", 0x06040000)
                 Zero, 
                 0x12
             }, 
+
             Package (0x04)
             {
                 0xFFFF, 
@@ -2673,6 +2953,7 @@ DefinitionBlock ("dsdt.aml", "DSDT", 2, "Intel ", "CALPELLA", 0x06040000)
                 LNKB, 
                 Zero
             }, 
+
             Package (0x04)
             {
                 0xFFFF, 
@@ -2680,6 +2961,7 @@ DefinitionBlock ("dsdt.aml", "DSDT", 2, "Intel ", "CALPELLA", 0x06040000)
                 LNKC, 
                 Zero
             }, 
+
             Package (0x04)
             {
                 0xFFFF, 
@@ -2687,6 +2969,7 @@ DefinitionBlock ("dsdt.aml", "DSDT", 2, "Intel ", "CALPELLA", 0x06040000)
                 LNKD, 
                 Zero
             }, 
+
             Package (0x04)
             {
                 0xFFFF, 
@@ -2704,6 +2987,7 @@ DefinitionBlock ("dsdt.aml", "DSDT", 2, "Intel ", "CALPELLA", 0x06040000)
                 Zero, 
                 0x11
             }, 
+
             Package (0x04)
             {
                 0xFFFF, 
@@ -2711,6 +2995,7 @@ DefinitionBlock ("dsdt.aml", "DSDT", 2, "Intel ", "CALPELLA", 0x06040000)
                 Zero, 
                 0x12
             }, 
+
             Package (0x04)
             {
                 0xFFFF, 
@@ -2718,6 +3003,7 @@ DefinitionBlock ("dsdt.aml", "DSDT", 2, "Intel ", "CALPELLA", 0x06040000)
                 Zero, 
                 0x13
             }, 
+
             Package (0x04)
             {
                 0xFFFF, 
@@ -2735,6 +3021,7 @@ DefinitionBlock ("dsdt.aml", "DSDT", 2, "Intel ", "CALPELLA", 0x06040000)
                 LNKC, 
                 Zero
             }, 
+
             Package (0x04)
             {
                 0xFFFF, 
@@ -2742,6 +3029,7 @@ DefinitionBlock ("dsdt.aml", "DSDT", 2, "Intel ", "CALPELLA", 0x06040000)
                 LNKD, 
                 Zero
             }, 
+
             Package (0x04)
             {
                 0xFFFF, 
@@ -2749,6 +3037,7 @@ DefinitionBlock ("dsdt.aml", "DSDT", 2, "Intel ", "CALPELLA", 0x06040000)
                 LNKA, 
                 Zero
             }, 
+
             Package (0x04)
             {
                 0xFFFF, 
@@ -2766,6 +3055,7 @@ DefinitionBlock ("dsdt.aml", "DSDT", 2, "Intel ", "CALPELLA", 0x06040000)
                 Zero, 
                 0x12
             }, 
+
             Package (0x04)
             {
                 0xFFFF, 
@@ -2773,6 +3063,7 @@ DefinitionBlock ("dsdt.aml", "DSDT", 2, "Intel ", "CALPELLA", 0x06040000)
                 Zero, 
                 0x13
             }, 
+
             Package (0x04)
             {
                 0xFFFF, 
@@ -2780,6 +3071,7 @@ DefinitionBlock ("dsdt.aml", "DSDT", 2, "Intel ", "CALPELLA", 0x06040000)
                 Zero, 
                 0x10
             }, 
+
             Package (0x04)
             {
                 0xFFFF, 
@@ -2797,6 +3089,7 @@ DefinitionBlock ("dsdt.aml", "DSDT", 2, "Intel ", "CALPELLA", 0x06040000)
                 LNKD, 
                 Zero
             }, 
+
             Package (0x04)
             {
                 0xFFFF, 
@@ -2804,6 +3097,7 @@ DefinitionBlock ("dsdt.aml", "DSDT", 2, "Intel ", "CALPELLA", 0x06040000)
                 LNKA, 
                 Zero
             }, 
+
             Package (0x04)
             {
                 0xFFFF, 
@@ -2811,6 +3105,7 @@ DefinitionBlock ("dsdt.aml", "DSDT", 2, "Intel ", "CALPELLA", 0x06040000)
                 LNKB, 
                 Zero
             }, 
+
             Package (0x04)
             {
                 0xFFFF, 
@@ -2828,6 +3123,7 @@ DefinitionBlock ("dsdt.aml", "DSDT", 2, "Intel ", "CALPELLA", 0x06040000)
                 Zero, 
                 0x13
             }, 
+
             Package (0x04)
             {
                 0xFFFF, 
@@ -2835,6 +3131,7 @@ DefinitionBlock ("dsdt.aml", "DSDT", 2, "Intel ", "CALPELLA", 0x06040000)
                 Zero, 
                 0x10
             }, 
+
             Package (0x04)
             {
                 0xFFFF, 
@@ -2842,6 +3139,7 @@ DefinitionBlock ("dsdt.aml", "DSDT", 2, "Intel ", "CALPELLA", 0x06040000)
                 Zero, 
                 0x11
             }, 
+
             Package (0x04)
             {
                 0xFFFF, 
@@ -2859,6 +3157,7 @@ DefinitionBlock ("dsdt.aml", "DSDT", 2, "Intel ", "CALPELLA", 0x06040000)
                 LNKA, 
                 Zero
             }, 
+
             Package (0x04)
             {
                 0xFFFF, 
@@ -2866,6 +3165,7 @@ DefinitionBlock ("dsdt.aml", "DSDT", 2, "Intel ", "CALPELLA", 0x06040000)
                 LNKB, 
                 Zero
             }, 
+
             Package (0x04)
             {
                 0xFFFF, 
@@ -2873,6 +3173,7 @@ DefinitionBlock ("dsdt.aml", "DSDT", 2, "Intel ", "CALPELLA", 0x06040000)
                 LNKC, 
                 Zero
             }, 
+
             Package (0x04)
             {
                 0xFFFF, 
@@ -2890,6 +3191,7 @@ DefinitionBlock ("dsdt.aml", "DSDT", 2, "Intel ", "CALPELLA", 0x06040000)
                 Zero, 
                 0x10
             }, 
+
             Package (0x04)
             {
                 0xFFFF, 
@@ -2897,6 +3199,7 @@ DefinitionBlock ("dsdt.aml", "DSDT", 2, "Intel ", "CALPELLA", 0x06040000)
                 Zero, 
                 0x11
             }, 
+
             Package (0x04)
             {
                 0xFFFF, 
@@ -2904,6 +3207,7 @@ DefinitionBlock ("dsdt.aml", "DSDT", 2, "Intel ", "CALPELLA", 0x06040000)
                 Zero, 
                 0x12
             }, 
+
             Package (0x04)
             {
                 0xFFFF, 
@@ -2921,6 +3225,7 @@ DefinitionBlock ("dsdt.aml", "DSDT", 2, "Intel ", "CALPELLA", 0x06040000)
                 LNKC, 
                 Zero
             }, 
+
             Package (0x04)
             {
                 0xFFFF, 
@@ -2928,6 +3233,7 @@ DefinitionBlock ("dsdt.aml", "DSDT", 2, "Intel ", "CALPELLA", 0x06040000)
                 LNKD, 
                 Zero
             }, 
+
             Package (0x04)
             {
                 0xFFFF, 
@@ -2935,6 +3241,7 @@ DefinitionBlock ("dsdt.aml", "DSDT", 2, "Intel ", "CALPELLA", 0x06040000)
                 LNKA, 
                 Zero
             }, 
+
             Package (0x04)
             {
                 0xFFFF, 
@@ -2952,6 +3259,7 @@ DefinitionBlock ("dsdt.aml", "DSDT", 2, "Intel ", "CALPELLA", 0x06040000)
                 Zero, 
                 0x12
             }, 
+
             Package (0x04)
             {
                 0xFFFF, 
@@ -2959,6 +3267,7 @@ DefinitionBlock ("dsdt.aml", "DSDT", 2, "Intel ", "CALPELLA", 0x06040000)
                 Zero, 
                 0x13
             }, 
+
             Package (0x04)
             {
                 0xFFFF, 
@@ -2966,6 +3275,7 @@ DefinitionBlock ("dsdt.aml", "DSDT", 2, "Intel ", "CALPELLA", 0x06040000)
                 Zero, 
                 0x10
             }, 
+
             Package (0x04)
             {
                 0xFFFF, 
@@ -2983,6 +3293,7 @@ DefinitionBlock ("dsdt.aml", "DSDT", 2, "Intel ", "CALPELLA", 0x06040000)
                 LNKD, 
                 Zero
             }, 
+
             Package (0x04)
             {
                 0xFFFF, 
@@ -2990,6 +3301,7 @@ DefinitionBlock ("dsdt.aml", "DSDT", 2, "Intel ", "CALPELLA", 0x06040000)
                 LNKA, 
                 Zero
             }, 
+
             Package (0x04)
             {
                 0xFFFF, 
@@ -2997,6 +3309,7 @@ DefinitionBlock ("dsdt.aml", "DSDT", 2, "Intel ", "CALPELLA", 0x06040000)
                 LNKB, 
                 Zero
             }, 
+
             Package (0x04)
             {
                 0xFFFF, 
@@ -3014,6 +3327,7 @@ DefinitionBlock ("dsdt.aml", "DSDT", 2, "Intel ", "CALPELLA", 0x06040000)
                 Zero, 
                 0x13
             }, 
+
             Package (0x04)
             {
                 0xFFFF, 
@@ -3021,6 +3335,7 @@ DefinitionBlock ("dsdt.aml", "DSDT", 2, "Intel ", "CALPELLA", 0x06040000)
                 Zero, 
                 0x10
             }, 
+
             Package (0x04)
             {
                 0xFFFF, 
@@ -3028,6 +3343,7 @@ DefinitionBlock ("dsdt.aml", "DSDT", 2, "Intel ", "CALPELLA", 0x06040000)
                 Zero, 
                 0x11
             }, 
+
             Package (0x04)
             {
                 0xFFFF, 
@@ -3045,6 +3361,7 @@ DefinitionBlock ("dsdt.aml", "DSDT", 2, "Intel ", "CALPELLA", 0x06040000)
                 LNKD, 
                 Zero
             }, 
+
             Package (0x04)
             {
                 0x0003FFFF, 
@@ -3052,6 +3369,7 @@ DefinitionBlock ("dsdt.aml", "DSDT", 2, "Intel ", "CALPELLA", 0x06040000)
                 LNKC, 
                 Zero
             }, 
+
             Package (0x04)
             {
                 0x0003FFFF, 
@@ -3059,6 +3377,7 @@ DefinitionBlock ("dsdt.aml", "DSDT", 2, "Intel ", "CALPELLA", 0x06040000)
                 LNKF, 
                 Zero
             }, 
+
             Package (0x04)
             {
                 0x0003FFFF, 
@@ -3066,6 +3385,7 @@ DefinitionBlock ("dsdt.aml", "DSDT", 2, "Intel ", "CALPELLA", 0x06040000)
                 LNKG, 
                 Zero
             }, 
+
             Package (0x04)
             {
                 0x0002FFFF, 
@@ -3073,6 +3393,7 @@ DefinitionBlock ("dsdt.aml", "DSDT", 2, "Intel ", "CALPELLA", 0x06040000)
                 LNKC, 
                 Zero
             }, 
+
             Package (0x04)
             {
                 0x0002FFFF, 
@@ -3080,6 +3401,7 @@ DefinitionBlock ("dsdt.aml", "DSDT", 2, "Intel ", "CALPELLA", 0x06040000)
                 LNKD, 
                 Zero
             }, 
+
             Package (0x04)
             {
                 0x0002FFFF, 
@@ -3087,6 +3409,7 @@ DefinitionBlock ("dsdt.aml", "DSDT", 2, "Intel ", "CALPELLA", 0x06040000)
                 LNKB, 
                 Zero
             }, 
+
             Package (0x04)
             {
                 0x0002FFFF, 
@@ -3094,6 +3417,7 @@ DefinitionBlock ("dsdt.aml", "DSDT", 2, "Intel ", "CALPELLA", 0x06040000)
                 LNKA, 
                 Zero
             }, 
+
             Package (0x04)
             {
                 0xFFFF, 
@@ -3101,6 +3425,7 @@ DefinitionBlock ("dsdt.aml", "DSDT", 2, "Intel ", "CALPELLA", 0x06040000)
                 LNKF, 
                 Zero
             }, 
+
             Package (0x04)
             {
                 0xFFFF, 
@@ -3108,6 +3433,7 @@ DefinitionBlock ("dsdt.aml", "DSDT", 2, "Intel ", "CALPELLA", 0x06040000)
                 LNKG, 
                 Zero
             }, 
+
             Package (0x04)
             {
                 0xFFFF, 
@@ -3115,6 +3441,7 @@ DefinitionBlock ("dsdt.aml", "DSDT", 2, "Intel ", "CALPELLA", 0x06040000)
                 LNKH, 
                 Zero
             }, 
+
             Package (0x04)
             {
                 0xFFFF, 
@@ -3122,6 +3449,7 @@ DefinitionBlock ("dsdt.aml", "DSDT", 2, "Intel ", "CALPELLA", 0x06040000)
                 LNKE, 
                 Zero
             }, 
+
             Package (0x04)
             {
                 0x0001FFFF, 
@@ -3129,6 +3457,7 @@ DefinitionBlock ("dsdt.aml", "DSDT", 2, "Intel ", "CALPELLA", 0x06040000)
                 LNKG, 
                 Zero
             }, 
+
             Package (0x04)
             {
                 0x0001FFFF, 
@@ -3136,6 +3465,7 @@ DefinitionBlock ("dsdt.aml", "DSDT", 2, "Intel ", "CALPELLA", 0x06040000)
                 LNKF, 
                 Zero
             }, 
+
             Package (0x04)
             {
                 0x0001FFFF, 
@@ -3143,6 +3473,7 @@ DefinitionBlock ("dsdt.aml", "DSDT", 2, "Intel ", "CALPELLA", 0x06040000)
                 LNKE, 
                 Zero
             }, 
+
             Package (0x04)
             {
                 0x0001FFFF, 
@@ -3150,6 +3481,7 @@ DefinitionBlock ("dsdt.aml", "DSDT", 2, "Intel ", "CALPELLA", 0x06040000)
                 LNKH, 
                 Zero
             }, 
+
             Package (0x04)
             {
                 0x0005FFFF, 
@@ -3157,6 +3489,7 @@ DefinitionBlock ("dsdt.aml", "DSDT", 2, "Intel ", "CALPELLA", 0x06040000)
                 LNKC, 
                 Zero
             }, 
+
             Package (0x04)
             {
                 0x0005FFFF, 
@@ -3164,6 +3497,7 @@ DefinitionBlock ("dsdt.aml", "DSDT", 2, "Intel ", "CALPELLA", 0x06040000)
                 LNKE, 
                 Zero
             }, 
+
             Package (0x04)
             {
                 0x0005FFFF, 
@@ -3171,6 +3505,7 @@ DefinitionBlock ("dsdt.aml", "DSDT", 2, "Intel ", "CALPELLA", 0x06040000)
                 LNKG, 
                 Zero
             }, 
+
             Package (0x04)
             {
                 0x0005FFFF, 
@@ -3188,6 +3523,7 @@ DefinitionBlock ("dsdt.aml", "DSDT", 2, "Intel ", "CALPELLA", 0x06040000)
                 Zero, 
                 0x13
             }, 
+
             Package (0x04)
             {
                 0x0003FFFF, 
@@ -3195,6 +3531,7 @@ DefinitionBlock ("dsdt.aml", "DSDT", 2, "Intel ", "CALPELLA", 0x06040000)
                 Zero, 
                 0x12
             }, 
+
             Package (0x04)
             {
                 0x0003FFFF, 
@@ -3202,6 +3539,7 @@ DefinitionBlock ("dsdt.aml", "DSDT", 2, "Intel ", "CALPELLA", 0x06040000)
                 Zero, 
                 0x15
             }, 
+
             Package (0x04)
             {
                 0x0003FFFF, 
@@ -3209,6 +3547,7 @@ DefinitionBlock ("dsdt.aml", "DSDT", 2, "Intel ", "CALPELLA", 0x06040000)
                 Zero, 
                 0x16
             }, 
+
             Package (0x04)
             {
                 0x0002FFFF, 
@@ -3216,6 +3555,7 @@ DefinitionBlock ("dsdt.aml", "DSDT", 2, "Intel ", "CALPELLA", 0x06040000)
                 Zero, 
                 0x12
             }, 
+
             Package (0x04)
             {
                 0x0002FFFF, 
@@ -3223,6 +3563,7 @@ DefinitionBlock ("dsdt.aml", "DSDT", 2, "Intel ", "CALPELLA", 0x06040000)
                 Zero, 
                 0x13
             }, 
+
             Package (0x04)
             {
                 0x0002FFFF, 
@@ -3230,6 +3571,7 @@ DefinitionBlock ("dsdt.aml", "DSDT", 2, "Intel ", "CALPELLA", 0x06040000)
                 Zero, 
                 0x11
             }, 
+
             Package (0x04)
             {
                 0x0002FFFF, 
@@ -3237,6 +3579,7 @@ DefinitionBlock ("dsdt.aml", "DSDT", 2, "Intel ", "CALPELLA", 0x06040000)
                 Zero, 
                 0x10
             }, 
+
             Package (0x04)
             {
                 0xFFFF, 
@@ -3244,6 +3587,7 @@ DefinitionBlock ("dsdt.aml", "DSDT", 2, "Intel ", "CALPELLA", 0x06040000)
                 Zero, 
                 0x15
             }, 
+
             Package (0x04)
             {
                 0xFFFF, 
@@ -3251,6 +3595,7 @@ DefinitionBlock ("dsdt.aml", "DSDT", 2, "Intel ", "CALPELLA", 0x06040000)
                 Zero, 
                 0x16
             }, 
+
             Package (0x04)
             {
                 0xFFFF, 
@@ -3258,6 +3603,7 @@ DefinitionBlock ("dsdt.aml", "DSDT", 2, "Intel ", "CALPELLA", 0x06040000)
                 Zero, 
                 0x17
             }, 
+
             Package (0x04)
             {
                 0xFFFF, 
@@ -3265,6 +3611,7 @@ DefinitionBlock ("dsdt.aml", "DSDT", 2, "Intel ", "CALPELLA", 0x06040000)
                 Zero, 
                 0x14
             }, 
+
             Package (0x04)
             {
                 0x0001FFFF, 
@@ -3272,6 +3619,7 @@ DefinitionBlock ("dsdt.aml", "DSDT", 2, "Intel ", "CALPELLA", 0x06040000)
                 Zero, 
                 0x16
             }, 
+
             Package (0x04)
             {
                 0x0001FFFF, 
@@ -3279,6 +3627,7 @@ DefinitionBlock ("dsdt.aml", "DSDT", 2, "Intel ", "CALPELLA", 0x06040000)
                 Zero, 
                 0x15
             }, 
+
             Package (0x04)
             {
                 0x0001FFFF, 
@@ -3286,6 +3635,7 @@ DefinitionBlock ("dsdt.aml", "DSDT", 2, "Intel ", "CALPELLA", 0x06040000)
                 Zero, 
                 0x14
             }, 
+
             Package (0x04)
             {
                 0x0001FFFF, 
@@ -3293,6 +3643,7 @@ DefinitionBlock ("dsdt.aml", "DSDT", 2, "Intel ", "CALPELLA", 0x06040000)
                 Zero, 
                 0x17
             }, 
+
             Package (0x04)
             {
                 0x0005FFFF, 
@@ -3300,6 +3651,7 @@ DefinitionBlock ("dsdt.aml", "DSDT", 2, "Intel ", "CALPELLA", 0x06040000)
                 Zero, 
                 0x12
             }, 
+
             Package (0x04)
             {
                 0x0005FFFF, 
@@ -3307,6 +3659,7 @@ DefinitionBlock ("dsdt.aml", "DSDT", 2, "Intel ", "CALPELLA", 0x06040000)
                 Zero, 
                 0x14
             }, 
+
             Package (0x04)
             {
                 0x0005FFFF, 
@@ -3314,6 +3667,7 @@ DefinitionBlock ("dsdt.aml", "DSDT", 2, "Intel ", "CALPELLA", 0x06040000)
                 Zero, 
                 0x16
             }, 
+
             Package (0x04)
             {
                 0x0005FFFF, 
@@ -3343,10 +3697,12 @@ DefinitionBlock ("dsdt.aml", "DSDT", 2, "Intel ", "CALPELLA", 0x06040000)
             {
                 Return (Zero)
             }
+
             Method (_BBN, 0, NotSerialized)
             {
                 Return (BN00 ())
             }
+
             Name (_UID, Zero)
             Method (_PRT, 0, NotSerialized)
             {
@@ -3354,54 +3710,58 @@ DefinitionBlock ("dsdt.aml", "DSDT", 2, "Intel ", "CALPELLA", 0x06040000)
                 {
                     Return (AR00 ())
                 }
+
                 Return (PR00 ())
             }
+
             OperationRegion (HBUS, PCI_Config, 0x40, 0xC0)
             Field (HBUS, DWordAcc, NoLock, Preserve)
             {
                 EPEN,   1, 
                     ,   11, 
                 EPBR,   20, 
-                        Offset (0x08), 
+                Offset (0x08), 
                 MHEN,   1, 
                     ,   13, 
                 MHBR,   18, 
-                        Offset (0x10), 
+                Offset (0x10), 
                 IIEN,   1, 
                     ,   11, 
                 DIBI,   20, 
-                        Offset (0x28), 
+                Offset (0x28), 
                 DIEN,   1, 
                     ,   11, 
                 DIBR,   20, 
-                        Offset (0x30), 
+                Offset (0x30), 
                 IPEN,   1, 
                     ,   11, 
                 IPBR,   20, 
-                        Offset (0x62), 
+                Offset (0x62), 
                 TUUD,   16, 
-                        Offset (0x70), 
+                Offset (0x70), 
                     ,   4, 
                 TLUD,   12, 
-                        Offset (0x89), 
+                Offset (0x89), 
                     ,   3, 
                 GTSE,   1, 
-                        Offset (0x8A)
+                Offset (0x8A)
             }
+
             OperationRegion (MCHT, SystemMemory, 0xFED10000, 0x1100)
             Field (MCHT, ByteAcc, NoLock, Preserve)
             {
-                        Offset (0xD40), 
+                Offset (0xD40), 
                 ADVE,   1, 
                     ,   11, 
                 ADVT,   20, 
-                        Offset (0x101E), 
+                Offset (0x101E), 
                 T0IS,   16, 
-                        Offset (0x105E), 
+                Offset (0x105E), 
                 T1IS,   16, 
-                        Offset (0x10EF), 
+                Offset (0x10EF), 
                 ESCS,   8
             }
+
             Name (BUF0, ResourceTemplate ()
             {
                 WordBusNumber (ResourceProducer, MinFixed, MaxFixed, PosDecode,
@@ -3410,7 +3770,7 @@ DefinitionBlock ("dsdt.aml", "DSDT", 2, "Intel ", "CALPELLA", 0x06040000)
                     0x00FE,             // Range Maximum
                     0x0000,             // Translation Offset
                     0x00FF,             // Length
-                    ,, )
+                    ,, _Y00)
                 DWordIO (ResourceProducer, MinFixed, MaxFixed, PosDecode, EntireRange,
                     0x00000000,         // Granularity
                     0x00000000,         // Range Minimum
@@ -3444,245 +3804,271 @@ DefinitionBlock ("dsdt.aml", "DSDT", 2, "Intel ", "CALPELLA", 0x06040000)
                     0x000C3FFF,         // Range Maximum
                     0x00000000,         // Translation Offset
                     0x00004000,         // Length
-                    ,, , AddressRangeMemory, TypeStatic)
+                    ,, _Y01, AddressRangeMemory, TypeStatic)
                 DWordMemory (ResourceProducer, PosDecode, MinFixed, MaxFixed, Cacheable, ReadWrite,
                     0x00000000,         // Granularity
                     0x000C4000,         // Range Minimum
                     0x000C7FFF,         // Range Maximum
                     0x00000000,         // Translation Offset
                     0x00004000,         // Length
-                    ,, , AddressRangeMemory, TypeStatic)
+                    ,, _Y02, AddressRangeMemory, TypeStatic)
                 DWordMemory (ResourceProducer, PosDecode, MinFixed, MaxFixed, Cacheable, ReadWrite,
                     0x00000000,         // Granularity
                     0x000C8000,         // Range Minimum
                     0x000CBFFF,         // Range Maximum
                     0x00000000,         // Translation Offset
                     0x00004000,         // Length
-                    ,, , AddressRangeMemory, TypeStatic)
+                    ,, _Y03, AddressRangeMemory, TypeStatic)
                 DWordMemory (ResourceProducer, PosDecode, MinFixed, MaxFixed, Cacheable, ReadWrite,
                     0x00000000,         // Granularity
                     0x000CC000,         // Range Minimum
                     0x000CFFFF,         // Range Maximum
                     0x00000000,         // Translation Offset
                     0x00004000,         // Length
-                    ,, , AddressRangeMemory, TypeStatic)
+                    ,, _Y04, AddressRangeMemory, TypeStatic)
                 DWordMemory (ResourceProducer, PosDecode, MinFixed, MaxFixed, Cacheable, ReadWrite,
                     0x00000000,         // Granularity
                     0x000D0000,         // Range Minimum
                     0x000D3FFF,         // Range Maximum
                     0x00000000,         // Translation Offset
                     0x00004000,         // Length
-                    ,, , AddressRangeMemory, TypeStatic)
+                    ,, _Y05, AddressRangeMemory, TypeStatic)
                 DWordMemory (ResourceProducer, PosDecode, MinFixed, MaxFixed, Cacheable, ReadWrite,
                     0x00000000,         // Granularity
                     0x000D4000,         // Range Minimum
                     0x000D7FFF,         // Range Maximum
                     0x00000000,         // Translation Offset
                     0x00004000,         // Length
-                    ,, , AddressRangeMemory, TypeStatic)
+                    ,, _Y06, AddressRangeMemory, TypeStatic)
                 DWordMemory (ResourceProducer, PosDecode, MinFixed, MaxFixed, Cacheable, ReadWrite,
                     0x00000000,         // Granularity
                     0x000D8000,         // Range Minimum
                     0x000DBFFF,         // Range Maximum
                     0x00000000,         // Translation Offset
                     0x00004000,         // Length
-                    ,, , AddressRangeMemory, TypeStatic)
+                    ,, _Y07, AddressRangeMemory, TypeStatic)
                 DWordMemory (ResourceProducer, PosDecode, MinFixed, MaxFixed, Cacheable, ReadWrite,
                     0x00000000,         // Granularity
                     0x000DC000,         // Range Minimum
                     0x000DFFFF,         // Range Maximum
                     0x00000000,         // Translation Offset
                     0x00004000,         // Length
-                    ,, , AddressRangeMemory, TypeStatic)
+                    ,, _Y08, AddressRangeMemory, TypeStatic)
                 DWordMemory (ResourceProducer, PosDecode, MinFixed, MaxFixed, Cacheable, ReadWrite,
                     0x00000000,         // Granularity
                     0x000E0000,         // Range Minimum
                     0x000E3FFF,         // Range Maximum
                     0x00000000,         // Translation Offset
                     0x00004000,         // Length
-                    ,, , AddressRangeMemory, TypeStatic)
+                    ,, _Y09, AddressRangeMemory, TypeStatic)
                 DWordMemory (ResourceProducer, PosDecode, MinFixed, MaxFixed, Cacheable, ReadWrite,
                     0x00000000,         // Granularity
                     0x000E4000,         // Range Minimum
                     0x000E7FFF,         // Range Maximum
                     0x00000000,         // Translation Offset
                     0x00004000,         // Length
-                    ,, , AddressRangeMemory, TypeStatic)
+                    ,, _Y0A, AddressRangeMemory, TypeStatic)
                 DWordMemory (ResourceProducer, PosDecode, MinFixed, MaxFixed, Cacheable, ReadWrite,
                     0x00000000,         // Granularity
                     0x000E8000,         // Range Minimum
                     0x000EBFFF,         // Range Maximum
                     0x00000000,         // Translation Offset
                     0x00004000,         // Length
-                    ,, , AddressRangeMemory, TypeStatic)
+                    ,, _Y0B, AddressRangeMemory, TypeStatic)
                 DWordMemory (ResourceProducer, PosDecode, MinFixed, MaxFixed, Cacheable, ReadWrite,
                     0x00000000,         // Granularity
                     0x000EC000,         // Range Minimum
                     0x000EFFFF,         // Range Maximum
                     0x00000000,         // Translation Offset
                     0x00004000,         // Length
-                    ,, , AddressRangeMemory, TypeStatic)
+                    ,, _Y0C, AddressRangeMemory, TypeStatic)
                 DWordMemory (ResourceProducer, PosDecode, MinFixed, MaxFixed, Cacheable, ReadWrite,
                     0x00000000,         // Granularity
                     0x000F0000,         // Range Minimum
                     0x000FFFFF,         // Range Maximum
                     0x00000000,         // Translation Offset
                     0x00010000,         // Length
-                    ,, , AddressRangeMemory, TypeStatic)
+                    ,, _Y0D, AddressRangeMemory, TypeStatic)
                 DWordMemory (ResourceProducer, PosDecode, MinFixed, MaxFixed, Cacheable, ReadWrite,
                     0x00000000,         // Granularity
                     0x00000000,         // Range Minimum
                     0xFEAFFFFF,         // Range Maximum
                     0x00000000,         // Translation Offset
-                    0xfeb00000,         // Length
-                    ,, , AddressRangeMemory, TypeStatic)
+                    0x00000000,         // Length
+                    ,, _Y0E, AddressRangeMemory, TypeStatic)
                 DWordMemory (ResourceProducer, PosDecode, MinFixed, MaxFixed, Cacheable, ReadWrite,
                     0x00000000,         // Granularity
                     0xFED40000,         // Range Minimum
                     0xFED44FFF,         // Range Maximum
                     0x00000000,         // Translation Offset
-                    0x00005000,         // Length
+                    0x00000000,         // Length
                     ,, , AddressRangeMemory, TypeStatic)
             })
             Method (_CRS, 0, Serialized)
             {
-                CreateWordField (BUF0, 0x0A, PBMX)
+                CreateWordField (BUF0, \_SB.PCI0._Y00._MAX, PBMX)
                 Store (Subtract (ShiftRight (PELN, 0x14), 0x02), PBMX)
-                CreateWordField (BUF0, 0x0E, PBLN)
+                CreateWordField (BUF0, \_SB.PCI0._Y00._LEN, PBLN)
                 Store (Subtract (ShiftRight (PELN, 0x14), One), PBLN)
                 If (^^CPBG.IMCH.PM1L)
                 {
-                    CreateDWordField (BUF0, 0x7C, C0LN)
+                    CreateDWordField (BUF0, \_SB.PCI0._Y01._LEN, C0LN)
                     Store (Zero, C0LN)
                 }
+
                 If (LEqual (^^CPBG.IMCH.PM1L, One))
                 {
-                    CreateBitField (BUF0, 0x0358, C0RW)
+                    CreateBitField (BUF0, \_SB.PCI0._Y01._RW, C0RW)
                     Store (Zero, C0RW)
                 }
+
                 If (^^CPBG.IMCH.PM1H)
                 {
-                    CreateDWordField (BUF0, 0x96, C4LN)
+                    CreateDWordField (BUF0, \_SB.PCI0._Y02._LEN, C4LN)
                     Store (Zero, C4LN)
                 }
+
                 If (LEqual (^^CPBG.IMCH.PM1H, One))
                 {
-                    CreateBitField (BUF0, 0x0428, C4RW)
+                    CreateBitField (BUF0, \_SB.PCI0._Y02._RW, C4RW)
                     Store (Zero, C4RW)
                 }
+
                 If (^^CPBG.IMCH.PM2L)
                 {
-                    CreateDWordField (BUF0, 0xB0, C8LN)
+                    CreateDWordField (BUF0, \_SB.PCI0._Y03._LEN, C8LN)
                     Store (Zero, C8LN)
                 }
+
                 If (LEqual (^^CPBG.IMCH.PM2L, One))
                 {
-                    CreateBitField (BUF0, 0x04F8, C8RW)
+                    CreateBitField (BUF0, \_SB.PCI0._Y03._RW, C8RW)
                     Store (Zero, C8RW)
                 }
+
                 If (^^CPBG.IMCH.PM2H)
                 {
-                    CreateDWordField (BUF0, 0xCA, CCLN)
+                    CreateDWordField (BUF0, \_SB.PCI0._Y04._LEN, CCLN)
                     Store (Zero, CCLN)
                 }
+
                 If (LEqual (^^CPBG.IMCH.PM2H, One))
                 {
-                    CreateBitField (BUF0, 0x05C8, CCRW)
+                    CreateBitField (BUF0, \_SB.PCI0._Y04._RW, CCRW)
                     Store (Zero, CCRW)
                 }
+
                 If (^^CPBG.IMCH.PM3L)
                 {
-                    CreateDWordField (BUF0, 0xE4, D0LN)
+                    CreateDWordField (BUF0, \_SB.PCI0._Y05._LEN, D0LN)
                     Store (Zero, D0LN)
                 }
+
                 If (LEqual (^^CPBG.IMCH.PM3L, One))
                 {
-                    CreateBitField (BUF0, 0x0698, D0RW)
+                    CreateBitField (BUF0, \_SB.PCI0._Y05._RW, D0RW)
                     Store (Zero, D0RW)
                 }
+
                 If (^^CPBG.IMCH.PM3H)
                 {
-                    CreateDWordField (BUF0, 0xFE, D4LN)
+                    CreateDWordField (BUF0, \_SB.PCI0._Y06._LEN, D4LN)
                     Store (Zero, D4LN)
                 }
+
                 If (LEqual (^^CPBG.IMCH.PM3H, One))
                 {
-                    CreateBitField (BUF0, 0x0768, D4RW)
+                    CreateBitField (BUF0, \_SB.PCI0._Y06._RW, D4RW)
                     Store (Zero, D4RW)
                 }
+
                 If (^^CPBG.IMCH.PM4L)
                 {
-                    CreateDWordField (BUF0, 0x0118, D8LN)
+                    CreateDWordField (BUF0, \_SB.PCI0._Y07._LEN, D8LN)
                     Store (Zero, D8LN)
                 }
+
                 If (LEqual (^^CPBG.IMCH.PM4L, One))
                 {
-                    CreateBitField (BUF0, 0x0838, D8RW)
+                    CreateBitField (BUF0, \_SB.PCI0._Y07._RW, D8RW)
                     Store (Zero, D8RW)
                 }
+
                 If (^^CPBG.IMCH.PM4H)
                 {
-                    CreateDWordField (BUF0, 0x0132, DCLN)
+                    CreateDWordField (BUF0, \_SB.PCI0._Y08._LEN, DCLN)
                     Store (Zero, DCLN)
                 }
+
                 If (LEqual (^^CPBG.IMCH.PM4H, One))
                 {
-                    CreateBitField (BUF0, 0x0908, DCRW)
+                    CreateBitField (BUF0, \_SB.PCI0._Y08._RW, DCRW)
                     Store (Zero, DCRW)
                 }
+
                 If (^^CPBG.IMCH.PM5L)
                 {
-                    CreateDWordField (BUF0, 0x014C, E0LN)
+                    CreateDWordField (BUF0, \_SB.PCI0._Y09._LEN, E0LN)
                     Store (Zero, E0LN)
                 }
+
                 If (LEqual (^^CPBG.IMCH.PM5L, One))
                 {
-                    CreateBitField (BUF0, 0x09D8, E0RW)
+                    CreateBitField (BUF0, \_SB.PCI0._Y09._RW, E0RW)
                     Store (Zero, E0RW)
                 }
+
                 If (^^CPBG.IMCH.PM5H)
                 {
-                    CreateDWordField (BUF0, 0x0166, E4LN)
+                    CreateDWordField (BUF0, \_SB.PCI0._Y0A._LEN, E4LN)
                     Store (Zero, E4LN)
                 }
+
                 If (LEqual (^^CPBG.IMCH.PM5H, One))
                 {
-                    CreateBitField (BUF0, 0x0AA8, E4RW)
+                    CreateBitField (BUF0, \_SB.PCI0._Y0A._RW, E4RW)
                     Store (Zero, E4RW)
                 }
+
                 If (^^CPBG.IMCH.PM6L)
                 {
-                    CreateDWordField (BUF0, 0x0180, E8LN)
+                    CreateDWordField (BUF0, \_SB.PCI0._Y0B._LEN, E8LN)
                     Store (Zero, E8LN)
                 }
+
                 If (LEqual (^^CPBG.IMCH.PM6L, One))
                 {
-                    CreateBitField (BUF0, 0x0B78, E8RW)
+                    CreateBitField (BUF0, \_SB.PCI0._Y0B._RW, E8RW)
                     Store (Zero, E8RW)
                 }
+
                 If (^^CPBG.IMCH.PM6H)
                 {
-                    CreateDWordField (BUF0, 0x019A, ECLN)
+                    CreateDWordField (BUF0, \_SB.PCI0._Y0C._LEN, ECLN)
                     Store (Zero, ECLN)
                 }
+
                 If (LEqual (^^CPBG.IMCH.PM6H, One))
                 {
-                    CreateBitField (BUF0, 0x0C48, ECRW)
+                    CreateBitField (BUF0, \_SB.PCI0._Y0C._RW, ECRW)
                     Store (Zero, ECRW)
                 }
+
                 If (^^CPBG.IMCH.PM0H)
                 {
-                    CreateDWordField (BUF0, 0x01B4, F0LN)
+                    CreateDWordField (BUF0, \_SB.PCI0._Y0D._LEN, F0LN)
                     Store (Zero, F0LN)
                 }
+
                 If (LEqual (^^CPBG.IMCH.PM0H, One))
                 {
-                    CreateBitField (BUF0, 0x0D18, F0RW)
+                    CreateBitField (BUF0, \_SB.PCI0._Y0D._RW, F0RW)
                     Store (Zero, F0RW)
                 }
-                CreateDWordField (BUF0, 0x01C2, M1MN)
-                CreateDWordField (BUF0, 0x01C6, M1MX)
-                CreateDWordField (BUF0, 0x01CE, M1LN)
+
+                CreateDWordField (BUF0, \_SB.PCI0._Y0E._MIN, M1MN)
+                CreateDWordField (BUF0, \_SB.PCI0._Y0E._MAX, M1MX)
+                CreateDWordField (BUF0, \_SB.PCI0._Y0E._LEN, M1LN)
                 If (Or (LEqual (And (PNHM, 0x000FFFF0), 0x000106E0), LEqual (And (
                     PNHM, 0x000FFFF0), 0x000106A0)))
                 {
@@ -3701,13 +4087,15 @@ DefinitionBlock ("dsdt.aml", "DSDT", 2, "Intel ", "CALPELLA", 0x06040000)
                 {
                     ShiftLeft (TLUD, 0x14, M1MN)
                 }
+
                 Add (Subtract (M1MX, M1MN), One, M1LN)
                 Return (BUF0)
             }
+
             Name (GUID, Buffer (0x10)
             {
-                /* 0000 */    0x5B, 0x4D, 0xDB, 0x33, 0xF7, 0x1F, 0x1C, 0x40, 
-                /* 0008 */    0x96, 0x57, 0x74, 0x41, 0xC0, 0x3D, 0xD7, 0x66
+                /* 0000 */   0x5B, 0x4D, 0xDB, 0x33, 0xF7, 0x1F, 0x1C, 0x40,
+                /* 0008 */   0x96, 0x57, 0x74, 0x41, 0xC0, 0x3D, 0xD7, 0x66
             })
             Name (SUPP, Zero)
             Name (CTRL, Zero)
@@ -3727,19 +4115,23 @@ DefinitionBlock ("dsdt.aml", "DSDT", 2, "Intel ", "CALPELLA", 0x06040000)
                         {
                             NHPG ()
                         }
+
                         If (And (CTRL, 0x04))
                         {
                             NPME ()
                         }
                     }
+
                     If (LNotEqual (Arg1, One))
                     {
                         Or (CDW1, 0x08, CDW1)
                     }
+
                     If (LNotEqual (CDW3, CTRL))
                     {
                         Or (CDW1, 0x10, CDW1)
                     }
+
                     Store (CTRL, CDW3)
                     Store (CTRL, OSCC)
                     Return (Local0)
@@ -3750,6 +4142,7 @@ DefinitionBlock ("dsdt.aml", "DSDT", 2, "Intel ", "CALPELLA", 0x06040000)
                     Return (Local0)
                 }
             }
+
             Scope (\_SB.PCI0)
             {
                 Method (AR00, 0, NotSerialized)
@@ -3764,6 +4157,7 @@ DefinitionBlock ("dsdt.aml", "DSDT", 2, "Intel ", "CALPELLA", 0x06040000)
                         Return (^^AR00)
                     }
                 }
+
                 Method (PR00, 0, NotSerialized)
                 {
                     If (Or (LEqual (And (PNHM, 0x000FFFF0), 0x000106E0), LEqual (And (
@@ -3776,6 +4170,7 @@ DefinitionBlock ("dsdt.aml", "DSDT", 2, "Intel ", "CALPELLA", 0x06040000)
                         Return (^^PR00)
                     }
                 }
+
                 Method (AR01, 0, NotSerialized)
                 {
                     If (Or (LEqual (And (PNHM, 0x000FFFF0), 0x000106E0), LEqual (And (
@@ -3788,6 +4183,7 @@ DefinitionBlock ("dsdt.aml", "DSDT", 2, "Intel ", "CALPELLA", 0x06040000)
                         Return (^^AR01)
                     }
                 }
+
                 Method (PR01, 0, NotSerialized)
                 {
                     If (Or (LEqual (And (PNHM, 0x000FFFF0), 0x000106E0), LEqual (And (
@@ -3800,6 +4196,7 @@ DefinitionBlock ("dsdt.aml", "DSDT", 2, "Intel ", "CALPELLA", 0x06040000)
                         Return (^^PR01)
                     }
                 }
+
                 Method (AR02, 0, NotSerialized)
                 {
                     If (Or (LEqual (And (PNHM, 0x000FFFF0), 0x000106E0), LEqual (And (
@@ -3812,6 +4209,7 @@ DefinitionBlock ("dsdt.aml", "DSDT", 2, "Intel ", "CALPELLA", 0x06040000)
                         Return (^^AR02)
                     }
                 }
+
                 Method (PR02, 0, NotSerialized)
                 {
                     If (Or (LEqual (And (PNHM, 0x000FFFF0), 0x000106E0), LEqual (And (
@@ -3824,6 +4222,7 @@ DefinitionBlock ("dsdt.aml", "DSDT", 2, "Intel ", "CALPELLA", 0x06040000)
                         Return (^^PR02)
                     }
                 }
+
                 Method (AR04, 0, NotSerialized)
                 {
                     If (Or (LEqual (And (PNHM, 0x000FFFF0), 0x000106E0), LEqual (And (
@@ -3836,6 +4235,7 @@ DefinitionBlock ("dsdt.aml", "DSDT", 2, "Intel ", "CALPELLA", 0x06040000)
                         Return (^^AR04)
                     }
                 }
+
                 Method (PR04, 0, NotSerialized)
                 {
                     If (Or (LEqual (And (PNHM, 0x000FFFF0), 0x000106E0), LEqual (And (
@@ -3848,6 +4248,7 @@ DefinitionBlock ("dsdt.aml", "DSDT", 2, "Intel ", "CALPELLA", 0x06040000)
                         Return (^^PR04)
                     }
                 }
+
                 Method (AR05, 0, NotSerialized)
                 {
                     If (Or (LEqual (And (PNHM, 0x000FFFF0), 0x000106E0), LEqual (And (
@@ -3860,6 +4261,7 @@ DefinitionBlock ("dsdt.aml", "DSDT", 2, "Intel ", "CALPELLA", 0x06040000)
                         Return (^^AR05)
                     }
                 }
+
                 Method (PR05, 0, NotSerialized)
                 {
                     If (Or (LEqual (And (PNHM, 0x000FFFF0), 0x000106E0), LEqual (And (
@@ -3872,6 +4274,7 @@ DefinitionBlock ("dsdt.aml", "DSDT", 2, "Intel ", "CALPELLA", 0x06040000)
                         Return (^^PR05)
                     }
                 }
+
                 Method (AR06, 0, NotSerialized)
                 {
                     If (Or (LEqual (And (PNHM, 0x000FFFF0), 0x000106E0), LEqual (And (
@@ -3884,6 +4287,7 @@ DefinitionBlock ("dsdt.aml", "DSDT", 2, "Intel ", "CALPELLA", 0x06040000)
                         Return (^^AR06)
                     }
                 }
+
                 Method (PR06, 0, NotSerialized)
                 {
                     If (Or (LEqual (And (PNHM, 0x000FFFF0), 0x000106E0), LEqual (And (
@@ -3896,6 +4300,7 @@ DefinitionBlock ("dsdt.aml", "DSDT", 2, "Intel ", "CALPELLA", 0x06040000)
                         Return (^^PR06)
                     }
                 }
+
                 Method (AR07, 0, NotSerialized)
                 {
                     If (Or (LEqual (And (PNHM, 0x000FFFF0), 0x000106E0), LEqual (And (
@@ -3908,6 +4313,7 @@ DefinitionBlock ("dsdt.aml", "DSDT", 2, "Intel ", "CALPELLA", 0x06040000)
                         Return (^^AR07)
                     }
                 }
+
                 Method (PR07, 0, NotSerialized)
                 {
                     If (Or (LEqual (And (PNHM, 0x000FFFF0), 0x000106E0), LEqual (And (
@@ -3920,6 +4326,7 @@ DefinitionBlock ("dsdt.aml", "DSDT", 2, "Intel ", "CALPELLA", 0x06040000)
                         Return (^^PR07)
                     }
                 }
+
                 Method (AR08, 0, NotSerialized)
                 {
                     If (Or (LEqual (And (PNHM, 0x000FFFF0), 0x000106E0), LEqual (And (
@@ -3932,6 +4339,7 @@ DefinitionBlock ("dsdt.aml", "DSDT", 2, "Intel ", "CALPELLA", 0x06040000)
                         Return (^^AR08)
                     }
                 }
+
                 Method (PR08, 0, NotSerialized)
                 {
                     If (Or (LEqual (And (PNHM, 0x000FFFF0), 0x000106E0), LEqual (And (
@@ -3944,6 +4352,7 @@ DefinitionBlock ("dsdt.aml", "DSDT", 2, "Intel ", "CALPELLA", 0x06040000)
                         Return (^^PR08)
                     }
                 }
+
                 Method (AR0A, 0, NotSerialized)
                 {
                     If (Or (LEqual (And (PNHM, 0x000FFFF0), 0x000106E0), LEqual (And (
@@ -3956,6 +4365,7 @@ DefinitionBlock ("dsdt.aml", "DSDT", 2, "Intel ", "CALPELLA", 0x06040000)
                         Return (^^AR0A)
                     }
                 }
+
                 Method (PR0A, 0, NotSerialized)
                 {
                     If (Or (LEqual (And (PNHM, 0x000FFFF0), 0x000106E0), LEqual (And (
@@ -3969,6 +4379,7 @@ DefinitionBlock ("dsdt.aml", "DSDT", 2, "Intel ", "CALPELLA", 0x06040000)
                     }
                 }
             }
+
             Device (P0P2)
             {
                 Name (_ADR, 0x00010000)
@@ -3983,274 +4394,25 @@ DefinitionBlock ("dsdt.aml", "DSDT", 2, "Intel ", "CALPELLA", 0x06040000)
                     {
                         Return (AR02 ())
                     }
+
                     Return (PR02 ())
                 }
+
                 Device (NVID)
                 {
                     Name (_ADR, Zero)
-
-                    //Begin Add for Stop 310m
-                    OperationRegion (BPCI, SystemMemory, Add (PEBS, 0x00200000), 0x0800)
-                    Field (BPCI, ByteAcc, NoLock, Preserve)
-                    {
-                        VGAR,   2048, 
-                        Offset (0x48B), 
-                        VGHA,   8
-                    }
-                    Name (VGAB, Buffer (0x0100) {})
-                    Name (DGOS, Zero)
-                    Name (OMPR, 0x02)
-                    OperationRegion (RPCI, SystemMemory, Add (PEBS, 0x8000), 0x1000)
-                    Field (RPCI, DWordAcc, Lock, Preserve)
-                    {
-                        Offset (0xB0), 
-                        ASPM,   2, 
-                            ,   2, 
-                        LNKD,   1, 
-                        Offset (0x1FC), 
-                            ,   9, 
-                        SGL1,   1, 
-                        Offset (0x214), 
-                        Offset (0x216), 
-                        LNKS,   4, 
-                        Offset (0x224), 
-                        Offset (0x225), 
-                        DQDA,   1, 
-                        Offset (0xC28), 
-                        HCLQ,   1, 
-                        Offset (0xC34), 
-                            ,   30, 
-                        PEDQ,   1, 
-                        PIDQ,   1, 
-                        Offset (0xDFC), 
-                        PEPO,   3, 
-                        Offset (0xE08), 
-                            ,   31, 
-                        ROE0,   1, 
-                        Offset (0xE28), 
-                            ,   31, 
-                        ROE1,   1, 
-                        Offset (0xE48), 
-                            ,   31, 
-                        ROE2,   1, 
-                        Offset (0xE68), 
-                            ,   31, 
-                        ROE3,   1, 
-                        Offset (0xE88), 
-                            ,   31, 
-                        ROE4,   1, 
-                        Offset (0xEA8), 
-                            ,   31, 
-                        ROE5,   1, 
-                        Offset (0xEC8), 
-                            ,   31, 
-                        ROE6,   1, 
-                        Offset (0xEE8), 
-                            ,   31, 
-                        ROE7,   1, 
-                        Offset (0xF08), 
-                            ,   31, 
-                        ROE8,   1, 
-                        Offset (0xF28), 
-                            ,   31, 
-                        ROE9,   1, 
-                        Offset (0xF48), 
-                            ,   31, 
-                        ROEA,   1, 
-                        Offset (0xF68), 
-                            ,   31, 
-                        ROEB,   1, 
-                        Offset (0xF88), 
-                            ,   31, 
-                        ROEC,   1, 
-                        Offset (0xFA8), 
-                            ,   31, 
-                        ROED,   1, 
-                        Offset (0xFC8), 
-                            ,   31, 
-                        ROEE,   1, 
-                        Offset (0xFE8), 
-                            ,   31, 
-                        ROEF,   1
-                    }
-                    OperationRegion (DMIB, SystemMemory, 0xFED18000, 0x1000)
-                    Field (DMIB, DWordAcc, Lock, Preserve)
-                    {
-                        Offset (0xC34), 
-                        LLGE,   1, 
-                            ,   28, 
-                        PCGE,   1, 
-                            ,   1, 
-                        LGGE,   1
-                    }
-
-                    OperationRegion (GPIO, SystemIO, 0x1180, 0x60)
-                    Field (GPIO, ByteAcc, Lock, Preserve)
-                    {
-                        Offset (0x0C), 
-                        Offset (0x0E), 
-                        PO16,   1, 
-                        PI17,   1, 
-                        Offset (0x38), 
-                            ,   4, 
-                        PO36,   1, 
-                        PI37,   1, 
-                            ,   14, 
-                        PO52,   1, 
-                        PO53,   1, 
-                        Offset (0x48), 
-                            ,   3, 
-                        PO67,   1
-                    }
-                    Method (_ON, 0, Serialized)
-                    {
-                        If (LEqual (PO36, One))
-                        {
-                            Store (Zero, PO16)
-                            Sleep (0x32)
-                            Store (Zero, PO36)
-                            Sleep (0x32)
-                            Store (One, PO16)
-                            Sleep (0x32)
-                            Store (Zero, LLGE)
-                            Store (Zero, LGGE)
-                            Store (Zero, PEPO)
-                            Store (Zero, ROE0)
-                            Store (Zero, ROE1)
-                            Store (Zero, ROE2)
-                            Store (Zero, ROE3)
-                            Store (Zero, ROE4)
-                            Store (Zero, ROE5)
-                            Store (Zero, ROE6)
-                            Store (Zero, ROE7)
-                            Store (Zero, ROE8)
-                            Store (Zero, ROE9)
-                            Store (Zero, ROEA)
-                            Store (Zero, ROEB)
-                            Store (Zero, ROEC)
-                            Store (Zero, ROED)
-                            Store (Zero, ROEE)
-                            Store (Zero, ROEF)
-                            Store (Zero, HCLQ)
-                            Store (Zero, SGL1)
-                            Store (Zero, PEDQ)
-                            Store (Zero, LNKD)
-                            Store (One, LLGE)
-                            Store (One, LGGE)
-                            While (LLess (LNKS, 0x07))
-                            {
-                                Sleep (One)
-                            }
-
-                            Store (Zero, VGHA)
-                            Store (VGAB, VGAR)
-                            Sleep (0x32)
-                            If (LEqual (\ECON, Zero))
-                            {
-                                \_SB.SECS (0xB0)
-                            }
-                            Else
-                            {
-                                Store (One, \_SB.PCI0.LPCB.H_EC.OPST)
-                            }
-                        }
-                    }
-
-                    Method (_OFF, 0, Serialized)
-                    {
-                        Store (VGAR, VGAB)
-                        Sleep (0x32)
-                        Store (Zero, LLGE)
-                        Store (Zero, LGGE)
-                        Store (One, LNKD)
-                        While (LNotEqual (LNKS, Zero))
-                        {
-                            Sleep (One)
-                        }
-
-                        Store (One, PEDQ)
-                        Store (Zero, LNKD)
-                        While (LNotEqual (PIDQ, One))
-                        {
-                            Sleep (One)
-                        }
-
-                        Store (One, HCLQ)
-                        Store (One, SGL1)
-                        Store (0x07, PEPO)
-                        Store (One, ROE0)
-                        Store (One, ROE1)
-                        Store (One, ROE2)
-                        Store (One, ROE3)
-                        Store (One, ROE4)
-                        Store (One, ROE5)
-                        Store (One, ROE6)
-                        Store (One, ROE7)
-                        Store (One, ROE8)
-                        Store (One, ROE9)
-                        Store (One, ROEA)
-                        Store (One, ROEB)
-                        Store (One, ROEC)
-                        Store (One, ROED)
-                        Store (One, ROEE)
-                        Store (One, ROEF)
-                        Store (One, LLGE)
-                        Store (One, LGGE)
-                        Store (Zero, PO16)
-                        Sleep (0x32)
-                        Store (One, PO36)
-                        Sleep (0x32)
-                        If (LEqual (\ECON, Zero))
-                        {
-                            \_SB.SECS (0xB1)
-                        }
-                        Else
-                        {
-                            Store (Zero, \_SB.PCI0.LPCB.H_EC.OPST)
-                        }
-                        //add
-                        //Store (One, DGOS)
-                    }
-
-                    Method (_PS0, 0, NotSerialized)
-                    {
-                        If (LNotEqual (DGOS, Zero))
-                        {
-                            \_SB.PCI0.P0P2.NVID._ON ()
-                            Store (Zero, DGOS)
-                        }
-                    }
-
-                    Method (_PS3, 0, NotSerialized)
-                    {
-                        If (LEqual (OMPR, 0x03))
-                        {
-                            If (LEqual (DGOS, Zero))
-                            {
-                                \_SB.PCI0.P0P2.NVID._OFF ()
-                                //Store (One, DGOS)
-                                Store (One, DGOS)
-                            }
-
-                            Store (0x02, OMPR)
-                        }
-                    }
-
-
-                    //End Add for Stop 310m
-
-
-
                     Method (_DOS, 1, NotSerialized)
                     {
                         Store (And (Arg0, 0x03), DSEN)
                     }
+
                     Method (_DOD, 0, NotSerialized)
                     {
                         If (NVHA)
                         {
                             Return (^^^GFX0._DOD ())
                         }
+
                         Name (PSIZ, Zero)
                         Name (PPTR, Zero)
                         STRP (0x30, 0x02)
@@ -4262,8 +4424,10 @@ DefinitionBlock ("dsdt.aml", "DSDT", 2, "Intel ", "CALPELLA", 0x06040000)
                             {
                                 Increment (PSIZ)
                             }
+
                             ShiftRight (Local1, One, Local1)
                         }
+
                         If (LOr (LEqual (PSIZ, Zero), LGreater (PSIZ, 0x04)))
                         {
                             Return (Package (0x01)
@@ -4285,23 +4449,28 @@ DefinitionBlock ("dsdt.aml", "DSDT", 2, "Intel ", "CALPELLA", 0x06040000)
                                     Store (0x00010110, Index (VID2, PPTR))
                                     Increment (PPTR)
                                 }
+
                                 If (And (Local0, 0x02))
                                 {
                                     Store (0x00010100, Index (VID2, PPTR))
                                     Increment (PPTR)
                                 }
+
                                 If (And (Local0, 0x04))
                                 {
                                     Store (0x00010200, Index (VID2, PPTR))
                                     Increment (PPTR)
                                 }
+
                                 If (And (Local0, 0x08))
                                 {
                                     Store (0x00010120, Index (VID2, PPTR))
                                     Increment (PPTR)
                                 }
+
                                 Return (VID2)
                             }
+
                             If (LEqual (PSIZ, 0x03))
                             {
                                 Name (VID3, Package (0x03)
@@ -4315,23 +4484,28 @@ DefinitionBlock ("dsdt.aml", "DSDT", 2, "Intel ", "CALPELLA", 0x06040000)
                                     Store (0x00010110, Index (VID3, PPTR))
                                     Increment (PPTR)
                                 }
+
                                 If (And (Local0, 0x02))
                                 {
                                     Store (0x00010100, Index (VID3, PPTR))
                                     Increment (PPTR)
                                 }
+
                                 If (And (Local0, 0x04))
                                 {
                                     Store (0x00010200, Index (VID3, PPTR))
                                     Increment (PPTR)
                                 }
+
                                 If (And (Local0, 0x08))
                                 {
                                     Store (0x00010120, Index (VID3, PPTR))
                                     Increment (PPTR)
                                 }
+
                                 Return (VID3)
                             }
+
                             If (LEqual (PSIZ, 0x04))
                             {
                                 Name (VID4, Package (0x04)
@@ -4346,23 +4520,28 @@ DefinitionBlock ("dsdt.aml", "DSDT", 2, "Intel ", "CALPELLA", 0x06040000)
                                     Store (0x00010110, Index (VID4, PPTR))
                                     Increment (PPTR)
                                 }
+
                                 If (And (Local0, 0x02))
                                 {
                                     Store (0x00010100, Index (VID4, PPTR))
                                     Increment (PPTR)
                                 }
+
                                 If (And (Local0, 0x04))
                                 {
                                     Store (0x00010200, Index (VID4, PPTR))
                                     Increment (PPTR)
                                 }
+
                                 If (And (Local0, 0x08))
                                 {
                                     Store (0x00010120, Index (VID4, PPTR))
                                     Increment (PPTR)
                                 }
+
                                 Return (VID4)
                             }
+
                             Name (VID1, Package (0x01)
                             {
                                 0x00010110
@@ -4371,21 +4550,26 @@ DefinitionBlock ("dsdt.aml", "DSDT", 2, "Intel ", "CALPELLA", 0x06040000)
                             {
                                 Store (0x00010110, Index (VID1, Zero))
                             }
+
                             If (And (Local0, 0x02))
                             {
                                 Store (0x00010100, Index (VID1, Zero))
                             }
+
                             If (And (Local0, 0x04))
                             {
                                 Store (0x00010200, Index (VID1, Zero))
                             }
+
                             If (And (Local0, 0x08))
                             {
                                 Store (0x00010120, Index (VID1, Zero))
                             }
+
                             Return (VID1)
                         }
                     }
+
                     Device (CRT1)
                     {
                         Name (_ADR, 0x0100)
@@ -4396,16 +4580,20 @@ DefinitionBlock ("dsdt.aml", "DSDT", 2, "Intel ", "CALPELLA", 0x06040000)
                             {
                                 Return (0x1F)
                             }
+
                             Return (0x1D)
                         }
+
                         Method (_DGS, 0, NotSerialized)
                         {
                             If (And (NSTE, 0x02))
                             {
                                 Return (One)
                             }
+
                             Return (Zero)
                         }
+
                         Method (_DSS, 1, NotSerialized)
                         {
                             If (LEqual (And (Arg0, 0xC0000000), 0xC0000000))
@@ -4414,6 +4602,7 @@ DefinitionBlock ("dsdt.aml", "DSDT", 2, "Intel ", "CALPELLA", 0x06040000)
                             }
                         }
                     }
+
                     Device (LCD)
                     {
                         Name (_ADR, 0x0110)
@@ -4424,16 +4613,20 @@ DefinitionBlock ("dsdt.aml", "DSDT", 2, "Intel ", "CALPELLA", 0x06040000)
                             {
                                 Return (0x1F)
                             }
+
                             Return (0x1D)
                         }
+
                         Method (_DGS, 0, NotSerialized)
                         {
                             If (And (NSTE, One))
                             {
                                 Return (One)
                             }
+
                             Return (Zero)
                         }
+
                         Method (_DSS, 1, NotSerialized)
                         {
                             If (LEqual (And (Arg0, 0xC0000000), 0xC0000000))
@@ -4441,6 +4634,7 @@ DefinitionBlock ("dsdt.aml", "DSDT", 2, "Intel ", "CALPELLA", 0x06040000)
                                 Store (NSTE, CSTE)
                             }
                         }
+
                         Method (_BCL, 0, NotSerialized)
                         {
                             Or (VDRV, 0x02, VDRV)
@@ -4458,6 +4652,7 @@ DefinitionBlock ("dsdt.aml", "DSDT", 2, "Intel ", "CALPELLA", 0x06040000)
                                 0x64
                             })
                         }
+
                         Method (_BCM, 1, NotSerialized)
                         {
                             If (LGreaterEqual (OSYS, 0x07D6))
@@ -4467,6 +4662,7 @@ DefinitionBlock ("dsdt.aml", "DSDT", 2, "Intel ", "CALPELLA", 0x06040000)
                             }
                         }
                     }
+
                     Device (TV)
                     {
                         Name (_ADR, 0x0200)
@@ -4477,16 +4673,20 @@ DefinitionBlock ("dsdt.aml", "DSDT", 2, "Intel ", "CALPELLA", 0x06040000)
                             {
                                 Return (0x1F)
                             }
+
                             Return (0x1D)
                         }
+
                         Method (_DGS, 0, NotSerialized)
                         {
                             If (And (NSTE, 0x04))
                             {
                                 Return (One)
                             }
+
                             Return (Zero)
                         }
+
                         Method (_DSS, 1, NotSerialized)
                         {
                             If (LEqual (And (Arg0, 0xC0000000), 0xC0000000))
@@ -4495,6 +4695,7 @@ DefinitionBlock ("dsdt.aml", "DSDT", 2, "Intel ", "CALPELLA", 0x06040000)
                             }
                         }
                     }
+
                     Device (DVI)
                     {
                         Name (_ADR, 0x0120)
@@ -4505,16 +4706,20 @@ DefinitionBlock ("dsdt.aml", "DSDT", 2, "Intel ", "CALPELLA", 0x06040000)
                             {
                                 Return (0x1F)
                             }
+
                             Return (0x1D)
                         }
+
                         Method (_DGS, 0, NotSerialized)
                         {
                             If (And (NSTE, 0x08))
                             {
                                 Return (One)
                             }
+
                             Return (Zero)
                         }
+
                         Method (_DSS, 1, NotSerialized)
                         {
                             If (LEqual (And (Arg0, 0xC0000000), 0xC0000000))
@@ -4525,12 +4730,14 @@ DefinitionBlock ("dsdt.aml", "DSDT", 2, "Intel ", "CALPELLA", 0x06040000)
                     }
                 }
             }
+
             Device (GFX0)
             {
                 Name (_ADR, 0x00020000)
                 Method (PCPC, 0, NotSerialized)
                 {
                 }
+
                 Method (PAPR, 0, NotSerialized)
                 {
                     If (ECON)
@@ -4542,6 +4749,7 @@ DefinitionBlock ("dsdt.aml", "DSDT", 2, "Intel ", "CALPELLA", 0x06040000)
                         Return (Zero)
                     }
                 }
+
                 Method (_DOS, 1, NotSerialized)
                 {
                     Store (And (Arg0, 0x07), DSEN)
@@ -4553,6 +4761,7 @@ DefinitionBlock ("dsdt.aml", "DSDT", 2, "Intel ", "CALPELLA", 0x06040000)
                         }
                     }
                 }
+
                 Method (_DOD, 0, NotSerialized)
                 {
                     Store (Zero, NDID)
@@ -4560,34 +4769,42 @@ DefinitionBlock ("dsdt.aml", "DSDT", 2, "Intel ", "CALPELLA", 0x06040000)
                     {
                         Store (SDDL (DIDL), DID1)
                     }
+
                     If (LNotEqual (DDL2, Zero))
                     {
                         Store (SDDL (DDL2), DID2)
                     }
+
                     If (LNotEqual (DDL3, Zero))
                     {
                         Store (SDDL (DDL3), DID3)
                     }
+
                     If (LNotEqual (DDL4, Zero))
                     {
                         Store (SDDL (DDL4), DID4)
                     }
+
                     If (LNotEqual (DDL5, Zero))
                     {
                         Store (SDDL (DDL5), DID5)
                     }
+
                     If (LNotEqual (DDL6, Zero))
                     {
                         Store (SDDL (DDL6), DID6)
                     }
+
                     If (LNotEqual (DDL7, Zero))
                     {
                         Store (SDDL (DDL7), DID7)
                     }
+
                     If (LNotEqual (DDL8, Zero))
                     {
                         Store (SDDL (DDL8), DID8)
                     }
+
                     If (LEqual (NDID, One))
                     {
                         Name (TMP1, Package (0x01)
@@ -4597,6 +4814,7 @@ DefinitionBlock ("dsdt.aml", "DSDT", 2, "Intel ", "CALPELLA", 0x06040000)
                         Store (Or (0x00010000, DID1), Index (TMP1, Zero))
                         Return (TMP1)
                     }
+
                     If (LEqual (NDID, 0x02))
                     {
                         Name (TMP2, Package (0x02)
@@ -4608,6 +4826,7 @@ DefinitionBlock ("dsdt.aml", "DSDT", 2, "Intel ", "CALPELLA", 0x06040000)
                         Store (Or (0x00010000, DID2), Index (TMP2, One))
                         Return (TMP2)
                     }
+
                     If (LEqual (NDID, 0x03))
                     {
                         Name (TMP3, Package (0x03)
@@ -4621,6 +4840,7 @@ DefinitionBlock ("dsdt.aml", "DSDT", 2, "Intel ", "CALPELLA", 0x06040000)
                         Store (Or (0x00010000, DID3), Index (TMP3, 0x02))
                         Return (TMP3)
                     }
+
                     If (LEqual (NDID, 0x04))
                     {
                         Name (TMP4, Package (0x04)
@@ -4636,6 +4856,7 @@ DefinitionBlock ("dsdt.aml", "DSDT", 2, "Intel ", "CALPELLA", 0x06040000)
                         Store (Or (0x00010000, DID4), Index (TMP4, 0x03))
                         Return (TMP4)
                     }
+
                     If (LEqual (NDID, 0x05))
                     {
                         Name (TMP5, Package (0x05)
@@ -4653,6 +4874,7 @@ DefinitionBlock ("dsdt.aml", "DSDT", 2, "Intel ", "CALPELLA", 0x06040000)
                         Store (Or (0x00010000, DID5), Index (TMP5, 0x04))
                         Return (TMP5)
                     }
+
                     If (LEqual (NDID, 0x06))
                     {
                         Name (TMP6, Package (0x06)
@@ -4672,6 +4894,7 @@ DefinitionBlock ("dsdt.aml", "DSDT", 2, "Intel ", "CALPELLA", 0x06040000)
                         Store (Or (0x00010000, DID6), Index (TMP6, 0x05))
                         Return (TMP6)
                     }
+
                     If (LEqual (NDID, 0x07))
                     {
                         Name (TMP7, Package (0x07)
@@ -4693,6 +4916,7 @@ DefinitionBlock ("dsdt.aml", "DSDT", 2, "Intel ", "CALPELLA", 0x06040000)
                         Store (Or (0x00010000, DID7), Index (TMP7, 0x06))
                         Return (TMP7)
                     }
+
                     If (LEqual (NDID, 0x08))
                     {
                         Name (TMP8, Package (0x08)
@@ -4716,11 +4940,13 @@ DefinitionBlock ("dsdt.aml", "DSDT", 2, "Intel ", "CALPELLA", 0x06040000)
                         Store (Or (0x00010000, DID8), Index (TMP8, 0x07))
                         Return (TMP8)
                     }
+
                     Return (Package (0x01)
                     {
                         0x0400
                     })
                 }
+
                 Device (DD01)
                 {
                     Method (_ADR, 0, Serialized)
@@ -4734,18 +4960,22 @@ DefinitionBlock ("dsdt.aml", "DSDT", 2, "Intel ", "CALPELLA", 0x06040000)
                             Return (And (0xFFFF, DID1))
                         }
                     }
+
                     Method (_DCS, 0, NotSerialized)
                     {
                         Return (CDDS (DID1))
                     }
+
                     Method (_DGS, 0, NotSerialized)
                     {
                         If (CondRefOf (SNXD))
                         {
                             Return (NXD1)
                         }
+
                         Return (NDDS (DID1))
                     }
+
                     Method (_DSS, 1, NotSerialized)
                     {
                         If (LEqual (And (Arg0, 0xC0000000), 0xC0000000))
@@ -4754,6 +4984,7 @@ DefinitionBlock ("dsdt.aml", "DSDT", 2, "Intel ", "CALPELLA", 0x06040000)
                         }
                     }
                 }
+
                 Device (DD02)
                 {
                     Method (_ADR, 0, Serialized)
@@ -4767,22 +4998,27 @@ DefinitionBlock ("dsdt.aml", "DSDT", 2, "Intel ", "CALPELLA", 0x06040000)
                             Return (And (0xFFFF, DID2))
                         }
                     }
+
                     Method (_DCS, 0, NotSerialized)
                     {
                         If (LEqual (LIDS, Zero))
                         {
                             Return (Zero)
                         }
+
                         Return (CDDS (DID2))
                     }
+
                     Method (_DGS, 0, NotSerialized)
                     {
                         If (CondRefOf (SNXD))
                         {
                             Return (NXD2)
                         }
+
                         Return (NDDS (DID2))
                     }
+
                     Method (_DSS, 1, NotSerialized)
                     {
                         If (LEqual (And (Arg0, 0xC0000000), 0xC0000000))
@@ -4790,6 +5026,7 @@ DefinitionBlock ("dsdt.aml", "DSDT", 2, "Intel ", "CALPELLA", 0x06040000)
                             Store (NSTE, CSTE)
                         }
                     }
+
                     Method (_BCL, 0, NotSerialized)
                     {
                         Store (One, VDRV)
@@ -4805,6 +5042,7 @@ DefinitionBlock ("dsdt.aml", "DSDT", 2, "Intel ", "CALPELLA", 0x06040000)
                             0x55
                         })
                     }
+
                     Method (_BCM, 1, NotSerialized)
                     {
                         If (LAnd (LGreaterEqual (Arg0, Zero), LLessEqual (Arg0, 0x64)))
@@ -4817,11 +5055,13 @@ DefinitionBlock ("dsdt.aml", "DSDT", 2, "Intel ", "CALPELLA", 0x06040000)
                             }
                         }
                     }
+
                     Method (_BQC, 0, NotSerialized)
                     {
                         Return (BRTL)
                     }
                 }
+
                 Device (DD03)
                 {
                     Method (_ADR, 0, Serialized)
@@ -4835,6 +5075,7 @@ DefinitionBlock ("dsdt.aml", "DSDT", 2, "Intel ", "CALPELLA", 0x06040000)
                             Return (And (0xFFFF, DID3))
                         }
                     }
+
                     Method (_DCS, 0, NotSerialized)
                     {
                         If (LEqual (DID3, Zero))
@@ -4846,14 +5087,17 @@ DefinitionBlock ("dsdt.aml", "DSDT", 2, "Intel ", "CALPELLA", 0x06040000)
                             Return (CDDS (DID3))
                         }
                     }
+
                     Method (_DGS, 0, NotSerialized)
                     {
                         If (CondRefOf (SNXD))
                         {
                             Return (NXD3)
                         }
+
                         Return (NDDS (DID3))
                     }
+
                     Method (_DSS, 1, NotSerialized)
                     {
                         If (LEqual (And (Arg0, 0xC0000000), 0xC0000000))
@@ -4862,6 +5106,7 @@ DefinitionBlock ("dsdt.aml", "DSDT", 2, "Intel ", "CALPELLA", 0x06040000)
                         }
                     }
                 }
+
                 Device (DD04)
                 {
                     Method (_ADR, 0, Serialized)
@@ -4875,6 +5120,7 @@ DefinitionBlock ("dsdt.aml", "DSDT", 2, "Intel ", "CALPELLA", 0x06040000)
                             Return (And (0xFFFF, DID4))
                         }
                     }
+
                     Method (_DCS, 0, NotSerialized)
                     {
                         If (LEqual (DID4, Zero))
@@ -4886,14 +5132,17 @@ DefinitionBlock ("dsdt.aml", "DSDT", 2, "Intel ", "CALPELLA", 0x06040000)
                             Return (CDDS (DID4))
                         }
                     }
+
                     Method (_DGS, 0, NotSerialized)
                     {
                         If (CondRefOf (SNXD))
                         {
                             Return (NXD4)
                         }
+
                         Return (NDDS (DID4))
                     }
+
                     Method (_DSS, 1, NotSerialized)
                     {
                         If (LEqual (And (Arg0, 0xC0000000), 0xC0000000))
@@ -4902,6 +5151,7 @@ DefinitionBlock ("dsdt.aml", "DSDT", 2, "Intel ", "CALPELLA", 0x06040000)
                         }
                     }
                 }
+
                 Device (DD05)
                 {
                     Method (_ADR, 0, Serialized)
@@ -4915,6 +5165,7 @@ DefinitionBlock ("dsdt.aml", "DSDT", 2, "Intel ", "CALPELLA", 0x06040000)
                             Return (And (0xFFFF, DID5))
                         }
                     }
+
                     Method (_DCS, 0, NotSerialized)
                     {
                         If (LEqual (DID5, Zero))
@@ -4926,14 +5177,17 @@ DefinitionBlock ("dsdt.aml", "DSDT", 2, "Intel ", "CALPELLA", 0x06040000)
                             Return (CDDS (DID5))
                         }
                     }
+
                     Method (_DGS, 0, NotSerialized)
                     {
                         If (CondRefOf (SNXD))
                         {
                             Return (NXD5)
                         }
+
                         Return (NDDS (DID5))
                     }
+
                     Method (_DSS, 1, NotSerialized)
                     {
                         If (LEqual (And (Arg0, 0xC0000000), 0xC0000000))
@@ -4942,6 +5196,7 @@ DefinitionBlock ("dsdt.aml", "DSDT", 2, "Intel ", "CALPELLA", 0x06040000)
                         }
                     }
                 }
+
                 Device (DD06)
                 {
                     Method (_ADR, 0, Serialized)
@@ -4955,6 +5210,7 @@ DefinitionBlock ("dsdt.aml", "DSDT", 2, "Intel ", "CALPELLA", 0x06040000)
                             Return (And (0xFFFF, DID6))
                         }
                     }
+
                     Method (_DCS, 0, NotSerialized)
                     {
                         If (LEqual (DID6, Zero))
@@ -4966,14 +5222,17 @@ DefinitionBlock ("dsdt.aml", "DSDT", 2, "Intel ", "CALPELLA", 0x06040000)
                             Return (CDDS (DID6))
                         }
                     }
+
                     Method (_DGS, 0, NotSerialized)
                     {
                         If (CondRefOf (SNXD))
                         {
                             Return (NXD6)
                         }
+
                         Return (NDDS (DID6))
                     }
+
                     Method (_DSS, 1, NotSerialized)
                     {
                         If (LEqual (And (Arg0, 0xC0000000), 0xC0000000))
@@ -4982,6 +5241,7 @@ DefinitionBlock ("dsdt.aml", "DSDT", 2, "Intel ", "CALPELLA", 0x06040000)
                         }
                     }
                 }
+
                 Device (DD07)
                 {
                     Method (_ADR, 0, Serialized)
@@ -4995,6 +5255,7 @@ DefinitionBlock ("dsdt.aml", "DSDT", 2, "Intel ", "CALPELLA", 0x06040000)
                             Return (And (0xFFFF, DID7))
                         }
                     }
+
                     Method (_DCS, 0, NotSerialized)
                     {
                         If (LEqual (DID7, Zero))
@@ -5006,14 +5267,17 @@ DefinitionBlock ("dsdt.aml", "DSDT", 2, "Intel ", "CALPELLA", 0x06040000)
                             Return (CDDS (DID7))
                         }
                     }
+
                     Method (_DGS, 0, NotSerialized)
                     {
                         If (CondRefOf (SNXD))
                         {
                             Return (NXD7)
                         }
+
                         Return (NDDS (DID7))
                     }
+
                     Method (_DSS, 1, NotSerialized)
                     {
                         If (LEqual (And (Arg0, 0xC0000000), 0xC0000000))
@@ -5022,6 +5286,7 @@ DefinitionBlock ("dsdt.aml", "DSDT", 2, "Intel ", "CALPELLA", 0x06040000)
                         }
                     }
                 }
+
                 Device (DD08)
                 {
                     Method (_ADR, 0, Serialized)
@@ -5035,6 +5300,7 @@ DefinitionBlock ("dsdt.aml", "DSDT", 2, "Intel ", "CALPELLA", 0x06040000)
                             Return (And (0xFFFF, DID8))
                         }
                     }
+
                     Method (_DCS, 0, NotSerialized)
                     {
                         If (LEqual (DID8, Zero))
@@ -5046,14 +5312,17 @@ DefinitionBlock ("dsdt.aml", "DSDT", 2, "Intel ", "CALPELLA", 0x06040000)
                             Return (CDDS (DID8))
                         }
                     }
+
                     Method (_DGS, 0, NotSerialized)
                     {
                         If (CondRefOf (SNXD))
                         {
                             Return (NXD8)
                         }
+
                         Return (NDDS (DID8))
                     }
+
                     Method (_DSS, 1, NotSerialized)
                     {
                         If (LEqual (And (Arg0, 0xC0000000), 0xC0000000))
@@ -5062,6 +5331,7 @@ DefinitionBlock ("dsdt.aml", "DSDT", 2, "Intel ", "CALPELLA", 0x06040000)
                         }
                     }
                 }
+
                 Method (SDDL, 1, NotSerialized)
                 {
                     Increment (NDID)
@@ -5071,36 +5341,45 @@ DefinitionBlock ("dsdt.aml", "DSDT", 2, "Intel ", "CALPELLA", 0x06040000)
                     {
                         Return (Local1)
                     }
+
                     If (LEqual (DDL2, Local0))
                     {
                         Return (Local1)
                     }
+
                     If (LEqual (DDL3, Local0))
                     {
                         Return (Local1)
                     }
+
                     If (LEqual (DDL4, Local0))
                     {
                         Return (Local1)
                     }
+
                     If (LEqual (DDL5, Local0))
                     {
                         Return (Local1)
                     }
+
                     If (LEqual (DDL6, Local0))
                     {
                         Return (Local1)
                     }
+
                     If (LEqual (DDL7, Local0))
                     {
                         Return (Local1)
                     }
+
                     If (LEqual (DDL8, Local0))
                     {
                         Return (Local1)
                     }
+
                     Return (Zero)
                 }
+
                 Method (CDDS, 1, NotSerialized)
                 {
                     Store (And (Arg0, 0x0F0F), Local0)
@@ -5108,40 +5387,50 @@ DefinitionBlock ("dsdt.aml", "DSDT", 2, "Intel ", "CALPELLA", 0x06040000)
                     {
                         Return (0x1D)
                     }
+
                     If (LEqual (CADL, Local0))
                     {
                         Return (0x1F)
                     }
+
                     If (LEqual (CAL2, Local0))
                     {
                         Return (0x1F)
                     }
+
                     If (LEqual (CAL3, Local0))
                     {
                         Return (0x1F)
                     }
+
                     If (LEqual (CAL4, Local0))
                     {
                         Return (0x1F)
                     }
+
                     If (LEqual (CAL5, Local0))
                     {
                         Return (0x1F)
                     }
+
                     If (LEqual (CAL6, Local0))
                     {
                         Return (0x1F)
                     }
+
                     If (LEqual (CAL7, Local0))
                     {
                         Return (0x1F)
                     }
+
                     If (LEqual (CAL8, Local0))
                     {
                         Return (0x1F)
                     }
+
                     Return (0x1D)
                 }
+
                 Method (NDDS, 1, NotSerialized)
                 {
                     Store (And (Arg0, 0x0F0F), Local0)
@@ -5149,77 +5438,89 @@ DefinitionBlock ("dsdt.aml", "DSDT", 2, "Intel ", "CALPELLA", 0x06040000)
                     {
                         Return (Zero)
                     }
+
                     If (LEqual (NADL, Local0))
                     {
                         Return (One)
                     }
+
                     If (LEqual (NDL2, Local0))
                     {
                         Return (One)
                     }
+
                     If (LEqual (NDL3, Local0))
                     {
                         Return (One)
                     }
+
                     If (LEqual (NDL4, Local0))
                     {
                         Return (One)
                     }
+
                     If (LEqual (NDL5, Local0))
                     {
                         Return (One)
                     }
+
                     If (LEqual (NDL6, Local0))
                     {
                         Return (One)
                     }
+
                     If (LEqual (NDL7, Local0))
                     {
                         Return (One)
                     }
+
                     If (LEqual (NDL8, Local0))
                     {
                         Return (One)
                     }
+
                     Return (Zero)
                 }
+
                 Scope (^^PCI0)
                 {
                     OperationRegion (MCHP, PCI_Config, 0x40, 0xC0)
                     Field (MCHP, AnyAcc, NoLock, Preserve)
                     {
-                                Offset (0x60), 
+                        Offset (0x60), 
                         TASM,   10, 
-                                Offset (0x62)
+                        Offset (0x62)
                     }
                 }
+
                 OperationRegion (IGDP, PCI_Config, 0x40, 0xC0)
                 Field (IGDP, AnyAcc, NoLock, Preserve)
                 {
-                            Offset (0x12), 
+                    Offset (0x12), 
                         ,   1, 
                     GIVD,   1, 
                         ,   2, 
                     GUMA,   3, 
-                            Offset (0x14), 
+                    Offset (0x14), 
                         ,   4, 
                     GMFN,   1, 
-                            Offset (0x18), 
-                            Offset (0xA4), 
+                    Offset (0x18), 
+                    Offset (0xA4), 
                     ASLE,   8, 
-                            Offset (0xA8), 
+                    Offset (0xA8), 
                     GSSE,   1, 
                     GSSB,   14, 
                     GSES,   1, 
-                            Offset (0xB0), 
+                    Offset (0xB0), 
                         ,   12, 
                     CDVL,   1, 
-                            Offset (0xB2), 
-                            Offset (0xB5), 
+                    Offset (0xB2), 
+                    Offset (0xB5), 
                     LBPC,   8, 
-                            Offset (0xBC), 
+                    Offset (0xBC), 
                     ASLS,   32
                 }
+
                 OperationRegion (IGDM, SystemMemory, ASLB, 0x2000)
                 Field (IGDM, AnyAcc, NoLock, Preserve)
                 {
@@ -5231,11 +5532,11 @@ DefinitionBlock ("dsdt.aml", "DSDT", 2, "Intel ", "CALPELLA", 0x06040000)
                     GVER,   128, 
                     MBOX,   32, 
                     DMOD,   32, 
-                            Offset (0x100), 
+                    Offset (0x100), 
                     DRDY,   32, 
                     CSTS,   32, 
                     CEVT,   32, 
-                            Offset (0x120), 
+                    Offset (0x120), 
                     DIDL,   32, 
                     DDL2,   32, 
                     DDL3,   32, 
@@ -5277,15 +5578,15 @@ DefinitionBlock ("dsdt.aml", "DSDT", 2, "Intel ", "CALPELLA", 0x06040000)
                     EVTS,   32, 
                     CNOT,   32, 
                     NRDY,   32, 
-                            Offset (0x200), 
+                    Offset (0x200), 
                     SCIE,   1, 
                     GEFC,   4, 
                     GXFC,   3, 
                     GESF,   8, 
-                            Offset (0x204), 
+                    Offset (0x204), 
                     PARM,   32, 
                     DSLP,   32, 
-                            Offset (0x300), 
+                    Offset (0x300), 
                     ARDY,   32, 
                     ASLC,   32, 
                     TCHE,   32, 
@@ -5300,11 +5601,12 @@ DefinitionBlock ("dsdt.aml", "DSDT", 2, "Intel ", "CALPELLA", 0x06040000)
                     PFMB,   32, 
                     CCDV,   32, 
                     PCFT,   32, 
-                            Offset (0x400), 
+                    Offset (0x400), 
                     GVD1,   49152, 
                     PHED,   32, 
                     BDDC,   2048
                 }
+
                 Name (DBTB, Package (0x15)
                 {
                     Zero, 
@@ -5336,21 +5638,25 @@ DefinitionBlock ("dsdt.aml", "DSDT", 2, "Intel ", "CALPELLA", 0x06040000)
                         0xE4, 
                         0x0140
                     }, 
+
                     Package (0x02)
                     {
                         0xDE, 
                         0x014D
                     }, 
+
                     Package (0x02)
                     {
                         0xDE, 
                         0x014D
                     }, 
+
                     Package (0x02)
                     {
                         Zero, 
                         Zero
                     }, 
+
                     Package (0x02)
                     {
                         0xDE, 
@@ -5371,12 +5677,14 @@ DefinitionBlock ("dsdt.aml", "DSDT", 2, "Intel ", "CALPELLA", 0x06040000)
                             Store (Zero, GESF)
                             Return (SUCC)
                         }
+
                         If (LEqual (GESF, One))
                         {
                             Store (0x0240, PARM)
                             Store (Zero, GESF)
                             Return (SUCC)
                         }
+
                         If (LEqual (GESF, 0x04))
                         {
                             And (PARM, 0xEFFF0000, PARM)
@@ -5386,6 +5694,7 @@ DefinitionBlock ("dsdt.aml", "DSDT", 2, "Intel ", "CALPELLA", 0x06040000)
                             Store (Zero, GESF)
                             Return (SUCC)
                         }
+
                         If (LEqual (GESF, 0x05))
                         {
                             Store (IPSC, PARM)
@@ -5397,6 +5706,7 @@ DefinitionBlock ("dsdt.aml", "DSDT", 2, "Intel ", "CALPELLA", 0x06040000)
                             Store (Zero, GESF)
                             Return (SUCC)
                         }
+
                         If (LEqual (GESF, 0x06))
                         {
                             Store (ITVF, PARM)
@@ -5404,6 +5714,7 @@ DefinitionBlock ("dsdt.aml", "DSDT", 2, "Intel ", "CALPELLA", 0x06040000)
                             Store (Zero, GESF)
                             Return (SUCC)
                         }
+
                         If (LEqual (GESF, 0x07))
                         {
                             Store (GIVD, PARM)
@@ -5416,6 +5727,7 @@ DefinitionBlock ("dsdt.aml", "DSDT", 2, "Intel ", "CALPELLA", 0x06040000)
                             Store (One, GESF)
                             Return (SUCC)
                         }
+
                         If (LEqual (GESF, 0x0A))
                         {
                             Store (Zero, PARM)
@@ -5423,18 +5735,22 @@ DefinitionBlock ("dsdt.aml", "DSDT", 2, "Intel ", "CALPELLA", 0x06040000)
                             {
                                 Or (PARM, 0x03, PARM)
                             }
+
                             Store (Zero, GESF)
                             Return (SUCC)
                         }
+
                         If (LEqual (GESF, 0x0B))
                         {
                             Store (KSV0, PARM)
                             Store (KSV1, GESF)
                             Return (SUCC)
                         }
+
                         Store (Zero, GESF)
                         Return (CRIT)
                     }
+
                     Method (SBCB, 0, Serialized)
                     {
                         If (LEqual (GESF, Zero))
@@ -5444,30 +5760,35 @@ DefinitionBlock ("dsdt.aml", "DSDT", 2, "Intel ", "CALPELLA", 0x06040000)
                             Store (Zero, GESF)
                             Return (SUCC)
                         }
+
                         If (LEqual (GESF, One))
                         {
                             Store (Zero, GESF)
                             Store (Zero, PARM)
                             Return (SUCC)
                         }
+
                         If (LEqual (GESF, 0x03))
                         {
                             Store (Zero, GESF)
                             Store (Zero, PARM)
                             Return (SUCC)
                         }
+
                         If (LEqual (GESF, 0x04))
                         {
                             Store (Zero, GESF)
                             Store (Zero, PARM)
                             Return (SUCC)
                         }
+
                         If (LEqual (GESF, 0x05))
                         {
                             Store (Zero, GESF)
                             Store (Zero, PARM)
                             Return (SUCC)
                         }
+
                         If (LEqual (GESF, 0x06))
                         {
                             Store (And (PARM, 0x0F), ITVF)
@@ -5476,6 +5797,7 @@ DefinitionBlock ("dsdt.aml", "DSDT", 2, "Intel ", "CALPELLA", 0x06040000)
                             Store (Zero, PARM)
                             Return (SUCC)
                         }
+
                         If (LEqual (GESF, 0x07))
                         {
                             If (LEqual (PARM, Zero))
@@ -5487,16 +5809,19 @@ DefinitionBlock ("dsdt.aml", "DSDT", 2, "Intel ", "CALPELLA", 0x06040000)
                                     GLID (CLID)
                                 }
                             }
+
                             Store (Zero, GESF)
                             Store (Zero, PARM)
                             Return (SUCC)
                         }
+
                         If (LEqual (GESF, 0x08))
                         {
                             Store (Zero, GESF)
                             Store (Zero, PARM)
                             Return (SUCC)
                         }
+
                         If (LEqual (GESF, 0x09))
                         {
                             And (PARM, 0xFF, IBTT)
@@ -5504,6 +5829,7 @@ DefinitionBlock ("dsdt.aml", "DSDT", 2, "Intel ", "CALPELLA", 0x06040000)
                             Store (Zero, PARM)
                             Return (SUCC)
                         }
+
                         If (LEqual (GESF, 0x0A))
                         {
                             And (PARM, 0xFF, IPSC)
@@ -5512,11 +5838,13 @@ DefinitionBlock ("dsdt.aml", "DSDT", 2, "Intel ", "CALPELLA", 0x06040000)
                                 And (ShiftRight (PARM, 0x08), 0xFF, IPAT)
                                 Decrement (IPAT)
                             }
+
                             And (ShiftRight (PARM, 0x14), 0x07, IBIA)
                             Store (Zero, GESF)
                             Store (Zero, PARM)
                             Return (SUCC)
                         }
+
                         If (LEqual (GESF, 0x0B))
                         {
                             And (ShiftRight (PARM, One), One, IF1E)
@@ -5528,16 +5856,19 @@ DefinitionBlock ("dsdt.aml", "DSDT", 2, "Intel ", "CALPELLA", 0x06040000)
                             {
                                 And (ShiftRight (PARM, 0x11), 0x0F, IDMS)
                             }
+
                             Store (Zero, GESF)
                             Store (Zero, PARM)
                             Return (SUCC)
                         }
+
                         If (LEqual (GESF, 0x10))
                         {
                             Store (Zero, GESF)
                             Store (Zero, PARM)
                             Return (SUCC)
                         }
+
                         If (LEqual (GESF, 0x11))
                         {
                             Store (ShiftLeft (LIDS, 0x08), PARM)
@@ -5545,6 +5876,7 @@ DefinitionBlock ("dsdt.aml", "DSDT", 2, "Intel ", "CALPELLA", 0x06040000)
                             Store (Zero, GESF)
                             Return (SUCC)
                         }
+
                         If (LEqual (GESF, 0x12))
                         {
                             If (And (PARM, One))
@@ -5563,16 +5895,19 @@ DefinitionBlock ("dsdt.aml", "DSDT", 2, "Intel ", "CALPELLA", 0x06040000)
                             {
                                 Store (Zero, ISSC)
                             }
+
                             Store (Zero, GESF)
                             Store (Zero, PARM)
                             Return (SUCC)
                         }
+
                         If (LEqual (GESF, 0x13))
                         {
                             Store (Zero, GESF)
                             Store (Zero, PARM)
                             Return (SUCC)
                         }
+
                         If (LEqual (GESF, 0x14))
                         {
                             And (PARM, 0x0F, PAVP)
@@ -5580,45 +5915,55 @@ DefinitionBlock ("dsdt.aml", "DSDT", 2, "Intel ", "CALPELLA", 0x06040000)
                             Store (Zero, PARM)
                             Return (SUCC)
                         }
+
                         Store (Zero, GESF)
                         Return (SUCC)
                     }
+
                     If (LEqual (GEFC, 0x04))
                     {
                         Store (GBDA (), GXFC)
                     }
+
                     If (LEqual (GEFC, 0x06))
                     {
                         Store (SBCB (), GXFC)
                     }
+
                     Store (Zero, GEFC)
                     Store (One, SCIS)
                     Store (Zero, GSSE)
                     Store (Zero, SCIE)
                     Return (Zero)
                 }
+
                 Method (PDRD, 0, NotSerialized)
                 {
                     If (LNot (DRDY))
                     {
                         Sleep (ASLP)
                     }
+
                     Return (LNot (DRDY))
                 }
+
                 Method (PSTS, 0, NotSerialized)
                 {
                     If (LGreater (CSTS, 0x02))
                     {
                         Sleep (ASLP)
                     }
+
                     Return (LEqual (CSTS, 0x03))
                 }
+
                 Method (GNOT, 2, NotSerialized)
                 {
                     If (PDRD ())
                     {
                         Return (One)
                     }
+
                     Store (Arg0, CEVT)
                     Store (0x03, CSTS)
                     If (LAnd (LEqual (CHPD, Zero), LEqual (Arg1, Zero)))
@@ -5632,6 +5977,7 @@ DefinitionBlock ("dsdt.aml", "DSDT", 2, "Intel ", "CALPELLA", 0x06040000)
                             Notify (GFX0, Arg1)
                         }
                     }
+
                     If (CondRefOf (HNOT))
                     {
                         HNOT (Arg0)
@@ -5640,41 +5986,50 @@ DefinitionBlock ("dsdt.aml", "DSDT", 2, "Intel ", "CALPELLA", 0x06040000)
                     {
                         Notify (GFX0, 0x80)
                     }
+
                     Return (Zero)
                 }
+
                 Method (GHDS, 1, NotSerialized)
                 {
                     Store (Arg0, TIDX)
                     Return (GNOT (One, Zero))
                 }
+
                 Method (GLID, 1, NotSerialized)
                 {
                     Store (Arg0, CLID)
                     Return (GNOT (0x02, Zero))
                 }
+
                 Method (GDCK, 1, NotSerialized)
                 {
                     Store (Arg0, CDCK)
                     Return (GNOT (0x04, Zero))
                 }
+
                 Method (PARD, 0, NotSerialized)
                 {
                     If (LNot (ARDY))
                     {
                         Sleep (ASLP)
                     }
+
                     Return (LNot (ARDY))
                 }
+
                 Method (AINT, 2, NotSerialized)
                 {
                     If (LNot (And (TCHE, ShiftLeft (One, Arg0))))
                     {
                         Return (One)
                     }
+
                     If (PARD ())
                     {
                         Return (One)
                     }
+
                     If (LEqual (Arg0, 0x02))
                     {
                         If (CPFM)
@@ -5699,6 +6054,7 @@ DefinitionBlock ("dsdt.aml", "DSDT", 2, "Intel ", "CALPELLA", 0x06040000)
                                     }
                                 }
                             }
+
                             If (LEqual (Local0, 0x06))
                             {
                                 If (And (Local1, 0x08))
@@ -5717,6 +6073,7 @@ DefinitionBlock ("dsdt.aml", "DSDT", 2, "Intel ", "CALPELLA", 0x06040000)
                                     }
                                 }
                             }
+
                             If (LEqual (Local0, 0x08))
                             {
                                 If (And (Local1, One))
@@ -5740,6 +6097,7 @@ DefinitionBlock ("dsdt.aml", "DSDT", 2, "Intel ", "CALPELLA", 0x06040000)
                         {
                             XOr (PFIT, 0x07, PFIT)
                         }
+
                         Or (PFIT, 0x80000000, PFIT)
                         Store (0x04, ASLC)
                     }
@@ -5764,18 +6122,22 @@ DefinitionBlock ("dsdt.aml", "DSDT", 2, "Intel ", "CALPELLA", 0x06040000)
                             }
                         }
                     }
+
                     Store (One, ASLE)
                     Return (Zero)
                 }
+
                 Method (SCIP, 0, NotSerialized)
                 {
                     If (LNotEqual (OVER, Zero))
                     {
                         Return (LNot (GSMI))
                     }
+
                     Return (Zero)
                 }
             }
+
             Device (P0P1)
             {
                 Name (_ADR, 0x001E0000)
@@ -5790,9 +6152,11 @@ DefinitionBlock ("dsdt.aml", "DSDT", 2, "Intel ", "CALPELLA", 0x06040000)
                     {
                         Return (AR01 ())
                     }
+
                     Return (PR01 ())
                 }
             }
+
             Device (LPCB)
             {
                 Name (_ADR, 0x001F0000)
@@ -5807,32 +6171,40 @@ DefinitionBlock ("dsdt.aml", "DSDT", 2, "Intel ", "CALPELLA", 0x06040000)
                             {
                                 Return (0x0201D824)
                             }
+
                             If (LEqual (TPMV, 0x02))
                             {
                                 Return (0x0435CF4D)
                             }
+
                             If (LEqual (TPMV, 0x03))
                             {
                                 Return (0x02016D08)
                             }
+
                             If (LEqual (TPMV, 0x04))
                             {
                                 Return (0x01016D08)
                             }
+
                             If (LOr (LEqual (TPMV, 0x05), LEqual (TPMV, 0x06)))
                             {
                                 Return (0x0010A35C)
                             }
+
                             If (LEqual (TPMV, 0x08))
                             {
                                 Return (0x00128D06)
                             }
+
                             If (LEqual (TPMV, 0x09))
                             {
                                 Return ("INTC0102")
                             }
+
                             Return (0x310CD041)
                         }
+
                         Name (_CID, EisaId ("PNP0C31"))
                         Name (_UID, One)
                         Method (_STA, 0, Serialized)
@@ -5842,8 +6214,10 @@ DefinitionBlock ("dsdt.aml", "DSDT", 2, "Intel ", "CALPELLA", 0x06040000)
                             {
                                 Return (0x0F)
                             }
+
                             Return (Zero)
                         }
+
                         Name (BUF1, ResourceTemplate ()
                         {
                             Memory32Fixed (ReadOnly,
@@ -5855,16 +6229,19 @@ DefinitionBlock ("dsdt.aml", "DSDT", 2, "Intel ", "CALPELLA", 0x06040000)
                         {
                             Return (BUF1)
                         }
+
                         Method (UCMP, 2, NotSerialized)
                         {
                             If (LNotEqual (0x10, SizeOf (Arg0)))
                             {
                                 Return (Zero)
                             }
+
                             If (LNotEqual (0x10, SizeOf (Arg1)))
                             {
                                 Return (Zero)
                             }
+
                             Store (Zero, Local0)
                             While (LLess (Local0, 0x10))
                             {
@@ -5873,30 +6250,34 @@ DefinitionBlock ("dsdt.aml", "DSDT", 2, "Intel ", "CALPELLA", 0x06040000)
                                 {
                                     Return (Zero)
                                 }
+
                                 Increment (Local0)
                             }
+
                             Return (One)
                         }
+
                         Method (_DSM, 4, Serialized)
                         {
                             Name (TTMP, Buffer (One)
                             {
-                                0x00
+                                 0x00
                             })
                             CreateByteField (TTMP, Zero, TMPV)
                             If (LEqual (UCMP (Arg0, Buffer (0x10)
                                         {
-                                            /* 0000 */    0xA6, 0xFA, 0xDD, 0x3D, 0x1B, 0x36, 0xB4, 0x4E, 
-                                            /* 0008 */    0xA4, 0x24, 0x8D, 0x10, 0x08, 0x9D, 0x16, 0x53
+                                            /* 0000 */   0xA6, 0xFA, 0xDD, 0x3D, 0x1B, 0x36, 0xB4, 0x4E,
+                                            /* 0008 */   0xA4, 0x24, 0x8D, 0x10, 0x08, 0x9D, 0x16, 0x53
                                         }), One))
                             {
                                 If (LEqual (Arg2, Zero))
                                 {
                                     Return (Buffer (One)
                                     {
-                                        0x7F
+                                         0x7F
                                     })
                                 }
+
                                 If (LEqual (Arg2, One))
                                 {
                                     Return (Buffer (0x04)
@@ -5904,6 +6285,7 @@ DefinitionBlock ("dsdt.aml", "DSDT", 2, "Intel ", "CALPELLA", 0x06040000)
                                         "1.0"
                                     })
                                 }
+
                                 If (LEqual (Arg2, 0x02))
                                 {
                                     If (TPRS)
@@ -5913,80 +6295,97 @@ DefinitionBlock ("dsdt.aml", "DSDT", 2, "Intel ", "CALPELLA", 0x06040000)
                                             Store (Zero, TPP1)
                                             Return (Zero)
                                         }
+
                                         If (LEqual (DerefOf (Index (Arg3, Zero)), One))
                                         {
                                             Store (One, TPP1)
                                             Return (Zero)
                                         }
+
                                         If (LEqual (DerefOf (Index (Arg3, Zero)), 0x02))
                                         {
                                             Store (0x02, TPP1)
                                             Return (Zero)
                                         }
+
                                         If (LEqual (DerefOf (Index (Arg3, Zero)), 0x03))
                                         {
                                             Store (0x03, TPP1)
                                             Return (Zero)
                                         }
+
                                         If (LEqual (DerefOf (Index (Arg3, Zero)), 0x04))
                                         {
                                             Store (0x04, TPP1)
                                             Return (Zero)
                                         }
+
                                         If (LEqual (DerefOf (Index (Arg3, Zero)), 0x05))
                                         {
                                             Store (0x05, TPP1)
                                             Return (Zero)
                                         }
+
                                         If (LEqual (DerefOf (Index (Arg3, Zero)), 0x06))
                                         {
                                             Store (0x06, TPP1)
                                             Return (Zero)
                                         }
+
                                         If (LEqual (DerefOf (Index (Arg3, Zero)), 0x07))
                                         {
                                             Store (0x07, TPP1)
                                             Return (Zero)
                                         }
+
                                         If (LEqual (DerefOf (Index (Arg3, Zero)), 0x08))
                                         {
                                             Store (0x08, TPP1)
                                             Return (Zero)
                                         }
+
                                         If (LEqual (DerefOf (Index (Arg3, Zero)), 0x09))
                                         {
                                             Store (0x09, TPP1)
                                             Return (Zero)
                                         }
+
                                         If (LEqual (DerefOf (Index (Arg3, Zero)), 0x0A))
                                         {
                                             Store (0x0A, TPP1)
                                             Return (Zero)
                                         }
+
                                         If (LEqual (DerefOf (Index (Arg3, Zero)), 0x0B))
                                         {
                                             Store (0x0B, TPP1)
                                             Return (Zero)
                                         }
+
                                         If (LEqual (DerefOf (Index (Arg3, Zero)), 0x0C))
                                         {
                                             Store (0x0C, TPP1)
                                             Return (Zero)
                                         }
+
                                         If (LEqual (DerefOf (Index (Arg3, Zero)), 0x0D))
                                         {
                                             Store (0x0D, TPP1)
                                             Return (Zero)
                                         }
+
                                         If (LEqual (DerefOf (Index (Arg3, Zero)), 0x0E))
                                         {
                                             Store (0x0E, TPP1)
                                             Return (Zero)
                                         }
+
                                         Return (One)
                                     }
+
                                     Return (One)
                                 }
+
                                 If (LEqual (Arg2, 0x03))
                                 {
                                     Name (TMP1, Package (0x02)
@@ -5998,10 +6397,12 @@ DefinitionBlock ("dsdt.aml", "DSDT", 2, "Intel ", "CALPELLA", 0x06040000)
                                     Store (And (TMPV, PPRQ, TMPV), Index (TMP1, One))
                                     Return (TMP1)
                                 }
+
                                 If (LEqual (Arg2, 0x04))
                                 {
                                     Return (One)
                                 }
+
                                 If (LEqual (Arg2, 0x05))
                                 {
                                     Name (TMP2, Package (0x03)
@@ -6016,6 +6417,7 @@ DefinitionBlock ("dsdt.aml", "DSDT", 2, "Intel ", "CALPELLA", 0x06040000)
                                         Store (0xFFFFFFF1, Index (TMP2, 0x02))
                                         Return (TMP2)
                                     }
+
                                     Store (TPP1, TMPV)
                                     And (TMPV, PPRQ, TMPV)
                                     If (LEqual (TMPV, PPRQ))
@@ -6023,15 +6425,18 @@ DefinitionBlock ("dsdt.aml", "DSDT", 2, "Intel ", "CALPELLA", 0x06040000)
                                         Store (0xFFFFFFF1, Index (TMP2, 0x02))
                                         Return (TMP2)
                                     }
+
                                     Store (TPP3, TMPV)
                                     If (And (TMPV, PPOR))
                                     {
                                         Store (0xFFFFFFF0, Index (TMP2, 0x02))
                                         Return (TMP2)
                                     }
+
                                     Store (Zero, Index (TMP2, 0x02))
                                     Return (TMP2)
                                 }
+
                                 If (LEqual (Arg2, 0x06))
                                 {
                                     CreateByteField (Arg3, 0x04, LAN0)
@@ -6044,8 +6449,10 @@ DefinitionBlock ("dsdt.aml", "DSDT", 2, "Intel ", "CALPELLA", 0x06040000)
                                             Return (Zero)
                                         }
                                     }
+
                                     Return (One)
                                 }
+
                                 If (LEqual (Arg2, 0x07))
                                 {
                                     If (TPRS)
@@ -6055,95 +6462,114 @@ DefinitionBlock ("dsdt.aml", "DSDT", 2, "Intel ", "CALPELLA", 0x06040000)
                                             Store (Zero, TPP1)
                                             Return (Zero)
                                         }
+
                                         If (LEqual (Arg3, One))
                                         {
                                             Store (One, TPP1)
                                             Return (Zero)
                                         }
+
                                         If (LEqual (Arg3, 0x02))
                                         {
                                             Store (0x02, TPP1)
                                             Return (Zero)
                                         }
+
                                         If (LEqual (Arg3, 0x03))
                                         {
                                             Store (0x03, TPP1)
                                             Return (Zero)
                                         }
+
                                         If (LEqual (Arg3, 0x04))
                                         {
                                             Store (0x04, TPP1)
                                             Return (Zero)
                                         }
+
                                         If (LEqual (Arg3, 0x05))
                                         {
                                             Store (0x05, TPP1)
                                             Return (Zero)
                                         }
+
                                         If (LEqual (Arg3, 0x06))
                                         {
                                             Store (0x06, TPP1)
                                             Return (Zero)
                                         }
+
                                         If (LEqual (Arg3, 0x07))
                                         {
                                             Store (0x07, TPP1)
                                             Return (Zero)
                                         }
+
                                         If (LEqual (Arg3, 0x08))
                                         {
                                             Store (0x08, TPP1)
                                             Return (Zero)
                                         }
+
                                         If (LEqual (Arg3, 0x09))
                                         {
                                             Store (0x09, TPP1)
                                             Return (Zero)
                                         }
+
                                         If (LEqual (Arg3, 0x0A))
                                         {
                                             Store (0x0A, TPP1)
                                             Return (Zero)
                                         }
+
                                         If (LEqual (Arg3, 0x0B))
                                         {
                                             Store (0x0B, TPP1)
                                             Return (Zero)
                                         }
+
                                         If (LEqual (Arg3, 0x0C))
                                         {
                                             Store (0x0C, TPP1)
                                             Return (Zero)
                                         }
+
                                         If (LEqual (Arg3, 0x0D))
                                         {
                                             Store (0x0D, TPP1)
                                             Return (Zero)
                                         }
+
                                         If (LEqual (Arg3, 0x0E))
                                         {
                                             Store (0x0E, TPP1)
                                             Return (Zero)
                                         }
+
                                         Return (One)
                                     }
+
                                     Return (One)
                                 }
+
                                 Return (One)
                             }
+
                             If (LEqual (UCMP (Arg0, Buffer (0x10)
                                         {
-                                            /* 0000 */    0xED, 0x54, 0x60, 0x37, 0x13, 0xCC, 0x75, 0x46, 
-                                            /* 0008 */    0x90, 0x1C, 0x47, 0x56, 0xD7, 0xF2, 0xD4, 0x5D
+                                            /* 0000 */   0xED, 0x54, 0x60, 0x37, 0x13, 0xCC, 0x75, 0x46,
+                                            /* 0008 */   0x90, 0x1C, 0x47, 0x56, 0xD7, 0xF2, 0xD4, 0x5D
                                         }), One))
                             {
                                 If (LEqual (Arg2, Zero))
                                 {
                                     Return (Buffer (One)
                                     {
-                                        0x01
+                                         0x01
                                     })
                                 }
+
                                 If (LEqual (Arg2, One))
                                 {
                                     If (LEqual (And (DerefOf (Index (Arg3, Zero)), 0x10), 
@@ -6154,6 +6580,7 @@ DefinitionBlock ("dsdt.aml", "DSDT", 2, "Intel ", "CALPELLA", 0x06040000)
                                         Store (TMPV, TPP3)
                                         Return (Zero)
                                     }
+
                                     If (LEqual (And (DerefOf (Index (Arg3, Zero)), 0x10), 
                                         One))
                                     {
@@ -6161,6 +6588,7 @@ DefinitionBlock ("dsdt.aml", "DSDT", 2, "Intel ", "CALPELLA", 0x06040000)
                                         Or (TMRD, TMPV)
                                         Store (TMPV, TPP3)
                                     }
+
                                     If (LEqual (DerefOf (Index (Arg3, Zero)), Zero))
                                     {
                                         Not (TMOR, TMPV)
@@ -6168,6 +6596,7 @@ DefinitionBlock ("dsdt.aml", "DSDT", 2, "Intel ", "CALPELLA", 0x06040000)
                                         Store (TMPV, TPP3)
                                         Return (Zero)
                                     }
+
                                     If (LEqual (DerefOf (Index (Arg3, Zero)), One))
                                     {
                                         Store (TPP3, TMPV)
@@ -6176,17 +6605,20 @@ DefinitionBlock ("dsdt.aml", "DSDT", 2, "Intel ", "CALPELLA", 0x06040000)
                                         Return (Zero)
                                     }
                                 }
+
                                 Return (One)
                             }
+
                             Return (Buffer (One)
                             {
-                                0x00
+                                 0x00
                             })
                         }
                     }
+
                     Scope (\_SB)
                     {
-                        OperationRegion (TCG1, SystemMemory, 0xAB79BA9E, 0x00000007)
+                        OperationRegion (TCG1, SystemMemory, 0xDB79BA9E, 0x00000007)
                         Field (TCG1, AnyAcc, NoLock, Preserve)
                         {
                             SSS1,   8, 
@@ -6197,9 +6629,10 @@ DefinitionBlock ("dsdt.aml", "DSDT", 2, "Intel ", "CALPELLA", 0x06040000)
                             TPMV,   8, 
                             MOR,    8
                         }
+
                         Name (TCGP, Buffer (0x08)
                         {
-                            /* 0000 */    0x1F, 0xE0, 0x1F, 0x01, 0x02, 0x04, 0x08, 0x10
+                             0x1F, 0xE0, 0x1F, 0x01, 0x02, 0x04, 0x08, 0x10
                         })
                         CreateByteField (TCGP, Zero, PPRQ)
                         CreateByteField (TCGP, One, PPL1)
@@ -6214,13 +6647,15 @@ DefinitionBlock ("dsdt.aml", "DSDT", 2, "Intel ", "CALPELLA", 0x06040000)
                             TIDX,   8, 
                             TPDA,   8
                         }
+
                         IndexField (TIDX, TPDA, ByteAcc, Lock, Preserve)
                         {
-                                    Offset (0x70), 
+                            Offset (0x70), 
                             TPP1,   8, 
                             PPLO,   8, 
                             TPP3,   8
                         }
+
                         Method (PHSR, 1, Serialized)
                         {
                             Store (Arg0, BCMD)
@@ -6231,39 +6666,44 @@ DefinitionBlock ("dsdt.aml", "DSDT", 2, "Intel ", "CALPELLA", 0x06040000)
                             Store (Zero, DID)
                             Return (Zero)
                         }
+
                         OperationRegion (SMI0, SystemIO, 0x0000FE00, 0x00000002)
                         Field (SMI0, AnyAcc, NoLock, Preserve)
                         {
                             SMIC,   8
                         }
-                        OperationRegion (SMI1, SystemMemory, 0xAB79BEBD, 0x00000090)
+
+                        OperationRegion (SMI1, SystemMemory, 0xDB79BEBD, 0x00000090)
                         Field (SMI1, AnyAcc, NoLock, Preserve)
                         {
                             BCMD,   8, 
                             DID,    32, 
                             INFO,   1024
                         }
+
                         Field (SMI1, AnyAcc, NoLock, Preserve)
                         {
-                                    AccessAs (ByteAcc, 0x00), 
-                                    Offset (0x05), 
+                            AccessAs (ByteAcc, 0x00), 
+                            Offset (0x05), 
                             INF,    8
                         }
                     }
+
                     OperationRegion (PCI0.LPCB.LPC1, PCI_Config, 0x40, 0xC0)
                     Field (PCI0.LPCB.LPC1, AnyAcc, NoLock, Preserve)
                     {
-                                Offset (0x20), 
+                        Offset (0x20), 
                         PARC,   8, 
                         PBRC,   8, 
                         PCRC,   8, 
                         PDRC,   8, 
-                                Offset (0x28), 
+                        Offset (0x28), 
                         PERC,   8, 
                         PFRC,   8, 
                         PGRC,   8, 
                         PHRC,   8
                     }
+
                     Device (LNKA)
                     {
                         Name (_HID, EisaId ("PNP0C0F"))
@@ -6272,6 +6712,7 @@ DefinitionBlock ("dsdt.aml", "DSDT", 2, "Intel ", "CALPELLA", 0x06040000)
                         {
                             Or (PARC, 0x80, PARC)
                         }
+
                         Name (_PRS, ResourceTemplate ()
                         {
                             IRQ (Level, ActiveLow, Shared, )
@@ -6289,6 +6730,7 @@ DefinitionBlock ("dsdt.aml", "DSDT", 2, "Intel ", "CALPELLA", 0x06040000)
                             ShiftLeft (One, And (PARC, 0x0F), IRQ0)
                             Return (RTLA)
                         }
+
                         Method (_SRS, 1, Serialized)
                         {
                             CreateWordField (Arg0, One, IRQ0)
@@ -6296,6 +6738,7 @@ DefinitionBlock ("dsdt.aml", "DSDT", 2, "Intel ", "CALPELLA", 0x06040000)
                             Decrement (Local0)
                             Store (Local0, PARC)
                         }
+
                         Method (_STA, 0, Serialized)
                         {
                             If (And (PARC, 0x80))
@@ -6308,6 +6751,7 @@ DefinitionBlock ("dsdt.aml", "DSDT", 2, "Intel ", "CALPELLA", 0x06040000)
                             }
                         }
                     }
+
                     Device (LNKB)
                     {
                         Name (_HID, EisaId ("PNP0C0F"))
@@ -6316,6 +6760,7 @@ DefinitionBlock ("dsdt.aml", "DSDT", 2, "Intel ", "CALPELLA", 0x06040000)
                         {
                             Or (PBRC, 0x80, PBRC)
                         }
+
                         Name (_PRS, ResourceTemplate ()
                         {
                             IRQ (Level, ActiveLow, Shared, )
@@ -6333,6 +6778,7 @@ DefinitionBlock ("dsdt.aml", "DSDT", 2, "Intel ", "CALPELLA", 0x06040000)
                             ShiftLeft (One, And (PBRC, 0x0F), IRQ0)
                             Return (RTLB)
                         }
+
                         Method (_SRS, 1, Serialized)
                         {
                             CreateWordField (Arg0, One, IRQ0)
@@ -6340,6 +6786,7 @@ DefinitionBlock ("dsdt.aml", "DSDT", 2, "Intel ", "CALPELLA", 0x06040000)
                             Decrement (Local0)
                             Store (Local0, PBRC)
                         }
+
                         Method (_STA, 0, Serialized)
                         {
                             If (And (PBRC, 0x80))
@@ -6352,6 +6799,7 @@ DefinitionBlock ("dsdt.aml", "DSDT", 2, "Intel ", "CALPELLA", 0x06040000)
                             }
                         }
                     }
+
                     Device (LNKC)
                     {
                         Name (_HID, EisaId ("PNP0C0F"))
@@ -6360,6 +6808,7 @@ DefinitionBlock ("dsdt.aml", "DSDT", 2, "Intel ", "CALPELLA", 0x06040000)
                         {
                             Or (PCRC, 0x80, PCRC)
                         }
+
                         Name (_PRS, ResourceTemplate ()
                         {
                             IRQ (Level, ActiveLow, Shared, )
@@ -6377,6 +6826,7 @@ DefinitionBlock ("dsdt.aml", "DSDT", 2, "Intel ", "CALPELLA", 0x06040000)
                             ShiftLeft (One, And (PCRC, 0x0F), IRQ0)
                             Return (RTLC)
                         }
+
                         Method (_SRS, 1, Serialized)
                         {
                             CreateWordField (Arg0, One, IRQ0)
@@ -6384,6 +6834,7 @@ DefinitionBlock ("dsdt.aml", "DSDT", 2, "Intel ", "CALPELLA", 0x06040000)
                             Decrement (Local0)
                             Store (Local0, PCRC)
                         }
+
                         Method (_STA, 0, Serialized)
                         {
                             If (And (PCRC, 0x80))
@@ -6396,6 +6847,7 @@ DefinitionBlock ("dsdt.aml", "DSDT", 2, "Intel ", "CALPELLA", 0x06040000)
                             }
                         }
                     }
+
                     Device (LNKD)
                     {
                         Name (_HID, EisaId ("PNP0C0F"))
@@ -6404,6 +6856,7 @@ DefinitionBlock ("dsdt.aml", "DSDT", 2, "Intel ", "CALPELLA", 0x06040000)
                         {
                             Or (PDRC, 0x80, PDRC)
                         }
+
                         Name (_PRS, ResourceTemplate ()
                         {
                             IRQ (Level, ActiveLow, Shared, )
@@ -6421,6 +6874,7 @@ DefinitionBlock ("dsdt.aml", "DSDT", 2, "Intel ", "CALPELLA", 0x06040000)
                             ShiftLeft (One, And (PDRC, 0x0F), IRQ0)
                             Return (RTLD)
                         }
+
                         Method (_SRS, 1, Serialized)
                         {
                             CreateWordField (Arg0, One, IRQ0)
@@ -6428,6 +6882,7 @@ DefinitionBlock ("dsdt.aml", "DSDT", 2, "Intel ", "CALPELLA", 0x06040000)
                             Decrement (Local0)
                             Store (Local0, PDRC)
                         }
+
                         Method (_STA, 0, Serialized)
                         {
                             If (And (PDRC, 0x80))
@@ -6440,6 +6895,7 @@ DefinitionBlock ("dsdt.aml", "DSDT", 2, "Intel ", "CALPELLA", 0x06040000)
                             }
                         }
                     }
+
                     Device (LNKE)
                     {
                         Name (_HID, EisaId ("PNP0C0F"))
@@ -6448,6 +6904,7 @@ DefinitionBlock ("dsdt.aml", "DSDT", 2, "Intel ", "CALPELLA", 0x06040000)
                         {
                             Or (PERC, 0x80, PERC)
                         }
+
                         Name (_PRS, ResourceTemplate ()
                         {
                             IRQ (Level, ActiveLow, Shared, )
@@ -6465,6 +6922,7 @@ DefinitionBlock ("dsdt.aml", "DSDT", 2, "Intel ", "CALPELLA", 0x06040000)
                             ShiftLeft (One, And (PERC, 0x0F), IRQ0)
                             Return (RTLE)
                         }
+
                         Method (_SRS, 1, Serialized)
                         {
                             CreateWordField (Arg0, One, IRQ0)
@@ -6472,6 +6930,7 @@ DefinitionBlock ("dsdt.aml", "DSDT", 2, "Intel ", "CALPELLA", 0x06040000)
                             Decrement (Local0)
                             Store (Local0, PERC)
                         }
+
                         Method (_STA, 0, Serialized)
                         {
                             If (And (PERC, 0x80))
@@ -6484,6 +6943,7 @@ DefinitionBlock ("dsdt.aml", "DSDT", 2, "Intel ", "CALPELLA", 0x06040000)
                             }
                         }
                     }
+
                     Device (LNKF)
                     {
                         Name (_HID, EisaId ("PNP0C0F"))
@@ -6492,6 +6952,7 @@ DefinitionBlock ("dsdt.aml", "DSDT", 2, "Intel ", "CALPELLA", 0x06040000)
                         {
                             Or (PFRC, 0x80, PFRC)
                         }
+
                         Name (_PRS, ResourceTemplate ()
                         {
                             IRQ (Level, ActiveLow, Shared, )
@@ -6509,6 +6970,7 @@ DefinitionBlock ("dsdt.aml", "DSDT", 2, "Intel ", "CALPELLA", 0x06040000)
                             ShiftLeft (One, And (PFRC, 0x0F), IRQ0)
                             Return (RTLF)
                         }
+
                         Method (_SRS, 1, Serialized)
                         {
                             CreateWordField (Arg0, One, IRQ0)
@@ -6516,6 +6978,7 @@ DefinitionBlock ("dsdt.aml", "DSDT", 2, "Intel ", "CALPELLA", 0x06040000)
                             Decrement (Local0)
                             Store (Local0, PFRC)
                         }
+
                         Method (_STA, 0, Serialized)
                         {
                             If (And (PFRC, 0x80))
@@ -6528,6 +6991,7 @@ DefinitionBlock ("dsdt.aml", "DSDT", 2, "Intel ", "CALPELLA", 0x06040000)
                             }
                         }
                     }
+
                     Device (LNKG)
                     {
                         Name (_HID, EisaId ("PNP0C0F"))
@@ -6536,6 +7000,7 @@ DefinitionBlock ("dsdt.aml", "DSDT", 2, "Intel ", "CALPELLA", 0x06040000)
                         {
                             Or (PGRC, 0x80, PGRC)
                         }
+
                         Name (_PRS, ResourceTemplate ()
                         {
                             IRQ (Level, ActiveLow, Shared, )
@@ -6553,6 +7018,7 @@ DefinitionBlock ("dsdt.aml", "DSDT", 2, "Intel ", "CALPELLA", 0x06040000)
                             ShiftLeft (One, And (PGRC, 0x0F), IRQ0)
                             Return (RTLG)
                         }
+
                         Method (_SRS, 1, Serialized)
                         {
                             CreateWordField (Arg0, One, IRQ0)
@@ -6560,6 +7026,7 @@ DefinitionBlock ("dsdt.aml", "DSDT", 2, "Intel ", "CALPELLA", 0x06040000)
                             Decrement (Local0)
                             Store (Local0, PGRC)
                         }
+
                         Method (_STA, 0, Serialized)
                         {
                             If (And (PGRC, 0x80))
@@ -6572,6 +7039,7 @@ DefinitionBlock ("dsdt.aml", "DSDT", 2, "Intel ", "CALPELLA", 0x06040000)
                             }
                         }
                     }
+
                     Device (LNKH)
                     {
                         Name (_HID, EisaId ("PNP0C0F"))
@@ -6580,6 +7048,7 @@ DefinitionBlock ("dsdt.aml", "DSDT", 2, "Intel ", "CALPELLA", 0x06040000)
                         {
                             Or (PHRC, 0x80, PHRC)
                         }
+
                         Name (_PRS, ResourceTemplate ()
                         {
                             IRQ (Level, ActiveLow, Shared, )
@@ -6597,6 +7066,7 @@ DefinitionBlock ("dsdt.aml", "DSDT", 2, "Intel ", "CALPELLA", 0x06040000)
                             ShiftLeft (One, And (PHRC, 0x0F), IRQ0)
                             Return (RTLH)
                         }
+
                         Method (_SRS, 1, Serialized)
                         {
                             CreateWordField (Arg0, One, IRQ0)
@@ -6604,6 +7074,7 @@ DefinitionBlock ("dsdt.aml", "DSDT", 2, "Intel ", "CALPELLA", 0x06040000)
                             Decrement (Local0)
                             Store (Local0, PHRC)
                         }
+
                         Method (_STA, 0, Serialized)
                         {
                             If (And (PHRC, 0x80))
@@ -6617,17 +7088,19 @@ DefinitionBlock ("dsdt.aml", "DSDT", 2, "Intel ", "CALPELLA", 0x06040000)
                         }
                     }
                 }
+
                 OperationRegion (LPC0, PCI_Config, 0x40, 0xC0)
                 Field (LPC0, AnyAcc, NoLock, Preserve)
                 {
-                            Offset (0x40), 
+                    Offset (0x40), 
                     IOD0,   8, 
                     IOD1,   8, 
-                            Offset (0xB0), 
+                    Offset (0xB0), 
                     RAEN,   1, 
                         ,   13, 
                     RCBA,   18
                 }
+
                 Device (H_EC)
                 {
                     Name (_HID, EisaId ("PNP0C09"))
@@ -6651,60 +7124,64 @@ DefinitionBlock ("dsdt.aml", "DSDT", 2, "Intel ", "CALPELLA", 0x06040000)
                         })
                         Return (BFFR)
                     }
+
                     Method (_STA, 0, NotSerialized)
                     {
                         If (LEqual (PFLV, FMBL))
                         {
                             Return (0x0F)
                         }
+
                         Return (Zero)
                     }
+
                     OperationRegion (ECR, EmbeddedControl, Zero, 0xFF)
                     Field (ECR, ByteAcc, Lock, Preserve)
                     {
-                                Offset (0x18), 
+                        Offset (0x18), 
                         SPTR,   8, 
                         SSTS,   8, 
                         SADR,   8, 
                         SCMD,   8, 
                         SBFR,   256, 
                         SCNT,   8, 
-                                Offset (0x80), 
+                        Offset (0x80), 
                         B1EX,   1, 
                             ,   1, 
                         ACEX,   1, 
-                                Offset (0x81), 
+                        Offset (0x81), 
                         SWBE,   1, 
                         DCBE,   1, 
-                                Offset (0x82), 
+                        Offset (0x82), 
                         WLST,   1, 
                         OPST,   1, 
-                                Offset (0x83), 
+                        Offset (0x83), 
                         LIDS,   1, 
-                                Offset (0x84), 
+                        Offset (0x84), 
                         B1ST,   8, 
-                                Offset (0x86), 
+                        Offset (0x86), 
                         BRIT,   8, 
-                                Offset (0xA0), 
+                        Offset (0xA0), 
                         B1RP,   16, 
                         B1RA,   16, 
                         B1PR,   16, 
                         B1VO,   16, 
-                                Offset (0xB0), 
+                        Offset (0xB0), 
                         B1DA,   16, 
                         B1DF,   16, 
                         B1DV,   16, 
                         B1DL,   16, 
-                                Offset (0xC0), 
+                        Offset (0xC0), 
                         CTMP,   8, 
-                                Offset (0xC7), 
+                        Offset (0xC7), 
                         TIST,   8, 
-                                Offset (0xD0), 
+                        Offset (0xD0), 
                         B1TI,   16, 
                         B1SE,   16, 
                         B1CR,   16, 
                         B1TM,   16
                     }
+
                     Device (BAT1)
                     {
                         Name (_HID, EisaId ("PNP0C0A"))
@@ -6738,6 +7215,7 @@ DefinitionBlock ("dsdt.aml", "DSDT", 2, "Intel ", "CALPELLA", 0x06040000)
                                 {
                                     Store (Local0, Index (BATI, One))
                                 }
+
                                 Store (SECW (0x82, 0xB2, Zero), Local0)
                                 If (LEqual (Local0, 0xFFFF))
                                 {
@@ -6747,6 +7225,7 @@ DefinitionBlock ("dsdt.aml", "DSDT", 2, "Intel ", "CALPELLA", 0x06040000)
                                 {
                                     Store (Local0, Index (BATI, 0x02))
                                 }
+
                                 Store (SECW (0x82, 0xB4, Zero), Local0)
                                 If (LEqual (Local0, 0xFFFF))
                                 {
@@ -6756,6 +7235,7 @@ DefinitionBlock ("dsdt.aml", "DSDT", 2, "Intel ", "CALPELLA", 0x06040000)
                                 {
                                     Store (Local0, Index (BATI, 0x04))
                                 }
+
                                 Store (Zero, Index (BATI, 0x05))
                                 Store (SECW (0x82, 0xB6, Zero), Local0)
                                 If (LEqual (Local0, 0xFFFF))
@@ -6782,6 +7262,7 @@ DefinitionBlock ("dsdt.aml", "DSDT", 2, "Intel ", "CALPELLA", 0x06040000)
                                 {
                                     Store (Local0, Index (BATI, One))
                                 }
+
                                 Store (B1DF, Local0)
                                 ShiftLeft (Local0, 0x08, Local1)
                                 And (Local1, 0xFF00, Local1)
@@ -6795,6 +7276,7 @@ DefinitionBlock ("dsdt.aml", "DSDT", 2, "Intel ", "CALPELLA", 0x06040000)
                                 {
                                     Store (Local0, Index (BATI, 0x02))
                                 }
+
                                 Store (B1DV, Local0)
                                 ShiftLeft (Local0, 0x08, Local1)
                                 And (Local1, 0xFF00, Local1)
@@ -6808,6 +7290,7 @@ DefinitionBlock ("dsdt.aml", "DSDT", 2, "Intel ", "CALPELLA", 0x06040000)
                                 {
                                     Store (Local0, Index (BATI, 0x04))
                                 }
+
                                 Store (Zero, Index (BATI, 0x05))
                                 Store (B1DL, Local0)
                                 ShiftLeft (Local0, 0x08, Local1)
@@ -6823,12 +7306,14 @@ DefinitionBlock ("dsdt.aml", "DSDT", 2, "Intel ", "CALPELLA", 0x06040000)
                                     Store (Local0, Index (BATI, 0x06))
                                 }
                             }
+
                             Store ("", Index (BATI, 0x09))
                             Store ("", Index (BATI, 0x0A))
                             Store ("LION", Index (BATI, 0x0B))
                             Store ("SAMSUNG Electronics", Index (BATI, 0x0C))
                             Return (BATI)
                         }
+
                         Name (STAT, Package (0x04)
                         {
                             Zero, 
@@ -6852,6 +7337,7 @@ DefinitionBlock ("dsdt.aml", "DSDT", 2, "Intel ", "CALPELLA", 0x06040000)
                                         Store (One, Local0)
                                     }
                                 }
+
                                 Store (Local0, Index (STAT, Zero))
                                 Store (SECW (0x82, 0xA4, Zero), Local0)
                                 If (LEqual (Local0, 0xFFFF))
@@ -6865,8 +7351,10 @@ DefinitionBlock ("dsdt.aml", "DSDT", 2, "Intel ", "CALPELLA", 0x06040000)
                                         XOr (Local0, 0xFFFF, Local0)
                                         Increment (Local0)
                                     }
+
                                     Store (Local0, Index (STAT, One))
                                 }
+
                                 Store (SECW (0x82, 0xA2, Zero), Local0)
                                 If (LEqual (Local0, 0xFFFF))
                                 {
@@ -6876,6 +7364,7 @@ DefinitionBlock ("dsdt.aml", "DSDT", 2, "Intel ", "CALPELLA", 0x06040000)
                                 {
                                     Store (Local0, Index (STAT, 0x02))
                                 }
+
                                 Store (SECW (0x82, 0xA6, Zero), Local0)
                                 If (LEqual (Local0, 0xFFFF))
                                 {
@@ -6900,6 +7389,7 @@ DefinitionBlock ("dsdt.aml", "DSDT", 2, "Intel ", "CALPELLA", 0x06040000)
                                         Store (One, Local0)
                                     }
                                 }
+
                                 Store (Local0, Index (STAT, Zero))
                                 Store (B1PR, Local0)
                                 ShiftLeft (Local0, 0x08, Local1)
@@ -6917,8 +7407,10 @@ DefinitionBlock ("dsdt.aml", "DSDT", 2, "Intel ", "CALPELLA", 0x06040000)
                                         XOr (Local0, 0xFFFF, Local0)
                                         Increment (Local0)
                                     }
+
                                     Store (Local0, Index (STAT, One))
                                 }
+
                                 Store (B1RA, Local0)
                                 ShiftLeft (Local0, 0x08, Local1)
                                 And (Local1, 0xFF00, Local1)
@@ -6932,6 +7424,7 @@ DefinitionBlock ("dsdt.aml", "DSDT", 2, "Intel ", "CALPELLA", 0x06040000)
                                 {
                                     Store (Local0, Index (STAT, 0x02))
                                 }
+
                                 Store (B1VO, Local0)
                                 ShiftLeft (Local0, 0x08, Local1)
                                 And (Local1, 0xFF00, Local1)
@@ -6946,8 +7439,10 @@ DefinitionBlock ("dsdt.aml", "DSDT", 2, "Intel ", "CALPELLA", 0x06040000)
                                     Store (Local0, Index (STAT, 0x03))
                                 }
                             }
+
                             Return (STAT)
                         }
+
                         Method (_STA, 0, NotSerialized)
                         {
                             If (LEqual (ECON, Zero))
@@ -6972,13 +7467,16 @@ DefinitionBlock ("dsdt.aml", "DSDT", 2, "Intel ", "CALPELLA", 0x06040000)
                                     Store (0x0F, Local0)
                                 }
                             }
+
                             Return (Local0)
                         }
+
                         Method (_PCL, 0, NotSerialized)
                         {
                             Return (_SB)
                         }
                     }
+
                     Method (_REG, 2, NotSerialized)
                     {
                         If (LAnd (LEqual (Arg0, 0x03), LEqual (Arg1, One)))
@@ -6990,6 +7488,7 @@ DefinitionBlock ("dsdt.aml", "DSDT", 2, "Intel ", "CALPELLA", 0x06040000)
                                 {
                                     ^^^GFX0.GLID (One)
                                 }
+
                                 If (LNotEqual (LIDS, \LIDS))
                                 {
                                     Store (One, \LIDS)
@@ -6997,10 +7496,12 @@ DefinitionBlock ("dsdt.aml", "DSDT", 2, "Intel ", "CALPELLA", 0x06040000)
                                     Notify (LID0, 0x80)
                                 }
                             }
+
                             Store (ACEX, PWRS)
                             Store (LIDS, \LIDS)
                         }
                     }
+
                     Name (_GPE, 0x17)
                     Method (_Q51, 0, NotSerialized)
                     {
@@ -7011,6 +7512,7 @@ DefinitionBlock ("dsdt.aml", "DSDT", 2, "Intel ", "CALPELLA", 0x06040000)
                         {
                             SECS (0xA7)
                         }
+
                         If (C3SU)
                         {
                             TRAP (TRTP, PSSS)
@@ -7019,6 +7521,7 @@ DefinitionBlock ("dsdt.aml", "DSDT", 2, "Intel ", "CALPELLA", 0x06040000)
                             PNOT ()
                         }
                     }
+
                     Method (_Q52, 0, NotSerialized)
                     {
                         P8XH (Zero, 0x31)
@@ -7028,6 +7531,7 @@ DefinitionBlock ("dsdt.aml", "DSDT", 2, "Intel ", "CALPELLA", 0x06040000)
                         {
                             SECS (0xA7)
                         }
+
                         If (C3SU)
                         {
                             TRAP (TRTP, PSSS)
@@ -7035,6 +7539,7 @@ DefinitionBlock ("dsdt.aml", "DSDT", 2, "Intel ", "CALPELLA", 0x06040000)
                             PNOT ()
                         }
                     }
+
                     Method (_Q53, 0, NotSerialized)
                     {
                         P8XH (Zero, 0x33)
@@ -7042,6 +7547,7 @@ DefinitionBlock ("dsdt.aml", "DSDT", 2, "Intel ", "CALPELLA", 0x06040000)
                         Notify (BAT1, 0x81)
                         PNOT ()
                     }
+
                     Method (_Q54, 0, NotSerialized)
                     {
                         P8XH (Zero, 0x33)
@@ -7049,6 +7555,7 @@ DefinitionBlock ("dsdt.aml", "DSDT", 2, "Intel ", "CALPELLA", 0x06040000)
                         Notify (BAT1, 0x81)
                         PNOT ()
                     }
+
                     Method (_Q55, 0, NotSerialized)
                     {
                         If (LGreaterEqual (OSYS, 0x07D6))
@@ -7061,6 +7568,7 @@ DefinitionBlock ("dsdt.aml", "DSDT", 2, "Intel ", "CALPELLA", 0x06040000)
                                     BRTN (0x87)
                                 }
                             }
+
                             If (And (VDRV, 0x02))
                             {
                                 Notify (^^^P0P2.NVID.LCD, 0x87)
@@ -7070,9 +7578,11 @@ DefinitionBlock ("dsdt.aml", "DSDT", 2, "Intel ", "CALPELLA", 0x06040000)
                         {
                             SECS (0x88)
                         }
+
                         Store (SALS, Local0)
                         SECB (0xA9, Local0)
                     }
+
                     Method (_Q56, 0, NotSerialized)
                     {
                         If (LGreaterEqual (OSYS, 0x07D6))
@@ -7085,6 +7595,7 @@ DefinitionBlock ("dsdt.aml", "DSDT", 2, "Intel ", "CALPELLA", 0x06040000)
                                     BRTN (0x86)
                                 }
                             }
+
                             If (And (VDRV, 0x02))
                             {
                                 Notify (^^^P0P2.NVID.LCD, 0x86)
@@ -7094,38 +7605,47 @@ DefinitionBlock ("dsdt.aml", "DSDT", 2, "Intel ", "CALPELLA", 0x06040000)
                         {
                             SECS (0x89)
                         }
+
                         Store (SALS, Local0)
                         SECB (0xA9, Local0)
                     }
+
                     Method (_Q57, 0, NotSerialized)
                     {
                     }
+
                     Method (_Q58, 0, NotSerialized)
                     {
                         P8XH (Zero, 0x58)
                     }
+
                     Method (_Q5B, 0, NotSerialized)
                     {
                         Notify (SLPB, 0x80)
                     }
+
                     Method (_Q5D, 0, NotSerialized)
                     {
                         If (\IGDS)
                         {
                             Store (0x02, TLST)
                         }
+
                         HKDS (0x0A)
                     }
+
                     Method (_Q5E, 0, NotSerialized)
                     {
                         Store (LIDS, \LIDS)
                         Notify (LID0, 0x80)
                     }
+
                     Method (_Q5F, 0, NotSerialized)
                     {
                         Store (LIDS, \LIDS)
                         Notify (LID0, 0x80)
                     }
+
                     Method (_Q60, 0, NotSerialized)
                     {
                         If (LEqual (B1EX, One))
@@ -7133,6 +7653,7 @@ DefinitionBlock ("dsdt.aml", "DSDT", 2, "Intel ", "CALPELLA", 0x06040000)
                             Notify (BAT1, 0x80)
                         }
                     }
+
                     Method (_Q61, 0, NotSerialized)
                     {
                         If (LEqual (B1EX, One))
@@ -7140,6 +7661,7 @@ DefinitionBlock ("dsdt.aml", "DSDT", 2, "Intel ", "CALPELLA", 0x06040000)
                             Notify (BAT1, 0x80)
                         }
                     }
+
                     Method (_Q63, 0, NotSerialized)
                     {
                         If (LGreaterEqual (OSYS, 0x07D6))
@@ -7152,6 +7674,7 @@ DefinitionBlock ("dsdt.aml", "DSDT", 2, "Intel ", "CALPELLA", 0x06040000)
                                     BRTN (0x87)
                                 }
                             }
+
                             If (And (VDRV, 0x02))
                             {
                                 Notify (^^^P0P2.NVID.LCD, 0x87)
@@ -7162,6 +7685,7 @@ DefinitionBlock ("dsdt.aml", "DSDT", 2, "Intel ", "CALPELLA", 0x06040000)
                             SECS (0x88)
                         }
                     }
+
                     Method (_Q64, 0, NotSerialized)
                     {
                         If (LGreaterEqual (OSYS, 0x07D6))
@@ -7174,6 +7698,7 @@ DefinitionBlock ("dsdt.aml", "DSDT", 2, "Intel ", "CALPELLA", 0x06040000)
                                     BRTN (0x86)
                                 }
                             }
+
                             If (And (VDRV, 0x02))
                             {
                                 Notify (^^^P0P2.NVID.LCD, 0x86)
@@ -7184,10 +7709,12 @@ DefinitionBlock ("dsdt.aml", "DSDT", 2, "Intel ", "CALPELLA", 0x06040000)
                             SECS (0x89)
                         }
                     }
+
                     Method (_Q65, 0, NotSerialized)
                     {
                         Notify (\_TZ.TZ00, 0x80)
                     }
+
                     Method (_Q66, 0, NotSerialized)
                     {
                         If (LEqual (B1EX, One))
@@ -7195,24 +7722,29 @@ DefinitionBlock ("dsdt.aml", "DSDT", 2, "Intel ", "CALPELLA", 0x06040000)
                             Notify (BAT1, 0x80)
                         }
                     }
+
                     Method (_Q68, 0, NotSerialized)
                     {
                         SECS (0x8A)
                     }
+
                     Method (_Q69, 0, NotSerialized)
                     {
                         SECS (0x8B)
                     }
+
                     Method (_Q71, 0, NotSerialized)
                     {
                         Store (One, CAMN)
                         PNOT ()
                     }
+
                     Method (_Q72, 0, NotSerialized)
                     {
                         Store (Zero, CAMN)
                         PNOT ()
                     }
+
                     Method (_Q73, 0, NotSerialized)
                     {
                         Store (One, GSSR)
@@ -7236,38 +7768,47 @@ DefinitionBlock ("dsdt.aml", "DSDT", 2, "Intel ", "CALPELLA", 0x06040000)
                             CPRN ()
                         }
                     }
+
                     Method (_Q76, 0, NotSerialized)
                     {
                         SECS (0x94)
                     }
+
                     Method (_Q77, 0, NotSerialized)
                     {
                         SECS (0x95)
                     }
+
                     Method (_Q79, 0, NotSerialized)
                     {
                         SECS (0x8E)
                     }
+
                     Method (_Q7A, 0, NotSerialized)
                     {
                         SECS (0x8F)
                     }
+
                     Method (_Q7C, 0, NotSerialized)
                     {
                     }
+
                     Method (_Q7D, 0, NotSerialized)
                     {
                         SECS (0x92)
                     }
+
                     Method (_Q7E, 0, NotSerialized)
                     {
                         SECS (0x93)
                     }
+
                     Method (_Q80, 0, NotSerialized)
                     {
                         BreakPoint
                     }
                 }
+
                 Scope (\_SB)
                 {
                     Device (ADP1)
@@ -7283,12 +7824,15 @@ DefinitionBlock ("dsdt.aml", "DSDT", 2, "Intel ", "CALPELLA", 0x06040000)
                             {
                                 Store (^^PCI0.LPCB.H_EC.ACEX, Local0)
                             }
+
                             Return (Local0)
                         }
+
                         Method (_PCL, 0, NotSerialized)
                         {
                             Return (_SB)
                         }
+
                         Method (_STA, 0, NotSerialized)
                         {
                             If (LEqual (ECON, Zero))
@@ -7306,9 +7850,11 @@ DefinitionBlock ("dsdt.aml", "DSDT", 2, "Intel ", "CALPELLA", 0x06040000)
                                     Store (0x0F, Local0)
                                 }
                             }
+
                             Return (Local0)
                         }
                     }
+
                     Device (LID0)
                     {
                         Name (_HID, EisaId ("PNP0C0D"))
@@ -7317,6 +7863,7 @@ DefinitionBlock ("dsdt.aml", "DSDT", 2, "Intel ", "CALPELLA", 0x06040000)
                             Return (LIDS)
                         }
                     }
+
                     Device (PWRB)
                     {
                         Name (_HID, EisaId ("PNP0C0C"))
@@ -7326,11 +7873,13 @@ DefinitionBlock ("dsdt.aml", "DSDT", 2, "Intel ", "CALPELLA", 0x06040000)
                             0x04
                         })
                     }
+
                     Device (SLPB)
                     {
                         Name (_HID, EisaId ("PNP0C0E"))
                     }
                 }
+
                 Device (DMAC)
                 {
                     Name (_HID, EisaId ("PNP0200"))
@@ -7364,6 +7913,7 @@ DefinitionBlock ("dsdt.aml", "DSDT", 2, "Intel ", "CALPELLA", 0x06040000)
                             {4}
                     })
                 }
+
                 Device (FWHD)
                 {
                     Name (_HID, EisaId ("INT0800"))
@@ -7375,6 +7925,7 @@ DefinitionBlock ("dsdt.aml", "DSDT", 2, "Intel ", "CALPELLA", 0x06040000)
                             )
                     })
                 }
+
                 Device (HPET)
                 {
                     Name (_HID, EisaId ("PNP0103"))
@@ -7387,7 +7938,7 @@ DefinitionBlock ("dsdt.aml", "DSDT", 2, "Intel ", "CALPELLA", 0x06040000)
                         Memory32Fixed (ReadOnly,
                             0xFED00000,         // Address Base
                             0x00000400,         // Address Length
-                            )
+                            _Y0F)
                     })
                     Name (BUF1, ResourceTemplate ()
                     {
@@ -7408,25 +7959,30 @@ DefinitionBlock ("dsdt.aml", "DSDT", 2, "Intel ", "CALPELLA", 0x06040000)
                                 Return (0x0B)
                             }
                         }
+
                         Return (Zero)
                     }
+
                     Method (_CRS, 0, Serialized)
                     {
                         If (HPAE)
                         {
-                            CreateDWordField (BUF0, 0x0A, HPT0)
+                            CreateDWordField (BUF0, \_SB.PCI0.LPCB.HPET._Y0F._BAS, HPT0)
                             If (LEqual (HPAS, One))
                             {
                                 Store (0xFED01000, HPT0)
                             }
+
                             If (LEqual (HPAS, 0x02))
                             {
                                 Store (0xFED02000, HPT0)
                             }
+
                             If (LEqual (HPAS, 0x03))
                             {
                                 Store (0xFED03000, HPT0)
                             }
+
                             Return (BUF0)
                         }
                         Else
@@ -7435,6 +7991,7 @@ DefinitionBlock ("dsdt.aml", "DSDT", 2, "Intel ", "CALPELLA", 0x06040000)
                         }
                     }
                 }
+
                 Device (IPIC)
                 {
                     Name (_HID, EisaId ("PNP0000"))
@@ -7546,6 +8103,7 @@ DefinitionBlock ("dsdt.aml", "DSDT", 2, "Intel ", "CALPELLA", 0x06040000)
                             {2}
                     })
                 }
+
                 Device (MATH)
                 {
                     Name (_HID, EisaId ("PNP0C04"))
@@ -7561,6 +8119,7 @@ DefinitionBlock ("dsdt.aml", "DSDT", 2, "Intel ", "CALPELLA", 0x06040000)
                             {13}
                     })
                 }
+
                 Device (LDRC)
                 {
                     Name (_HID, EisaId ("PNP0C02"))
@@ -7677,6 +8236,7 @@ DefinitionBlock ("dsdt.aml", "DSDT", 2, "Intel ", "CALPELLA", 0x06040000)
                             )
                     })
                 }
+
                 Device (CDRC)
                 {
                     Name (_HID, EisaId ("PNP0C02"))
@@ -7737,6 +8297,7 @@ DefinitionBlock ("dsdt.aml", "DSDT", 2, "Intel ", "CALPELLA", 0x06040000)
                             {
                                 Return (BUF0)
                             }
+
                             Return (BUF1)
                         }
                         Else
@@ -7745,10 +8306,12 @@ DefinitionBlock ("dsdt.aml", "DSDT", 2, "Intel ", "CALPELLA", 0x06040000)
                             {
                                 Return (BUF2)
                             }
+
                             Return (BUF3)
                         }
                     }
                 }
+
                 Device (RTC)
                 {
                     Name (_HID, EisaId ("PNP0B00"))
@@ -7758,7 +8321,7 @@ DefinitionBlock ("dsdt.aml", "DSDT", 2, "Intel ", "CALPELLA", 0x06040000)
                             0x0070,             // Range Minimum
                             0x0070,             // Range Maximum
                             0x01,               // Alignment
-                            0x02,               // Length
+                            0x08,               // Length
                             )
                         IRQNoFlags ()
                             {8}
@@ -7769,7 +8332,7 @@ DefinitionBlock ("dsdt.aml", "DSDT", 2, "Intel ", "CALPELLA", 0x06040000)
                             0x0070,             // Range Minimum
                             0x0070,             // Range Maximum
                             0x01,               // Alignment
-                            0x02,               // Length
+                            0x08,               // Length
                             )
                     })
                     Method (_CRS, 0, NotSerialized)
@@ -7791,6 +8354,7 @@ DefinitionBlock ("dsdt.aml", "DSDT", 2, "Intel ", "CALPELLA", 0x06040000)
                         }
                     }
                 }
+
                 Device (TIMR)
                 {
                     Name (_HID, EisaId ("PNP0100"))
@@ -7845,6 +8409,7 @@ DefinitionBlock ("dsdt.aml", "DSDT", 2, "Intel ", "CALPELLA", 0x06040000)
                         }
                     }
                 }
+
                 Device (PS2K)
                 {
                     Name (_HID, EisaId ("PNP0303"))
@@ -7883,6 +8448,7 @@ DefinitionBlock ("dsdt.aml", "DSDT", 2, "Intel ", "CALPELLA", 0x06040000)
                         EndDependentFn ()
                     })
                 }
+
                 Device (PS2M)
                 {
                     Name (_HID, EisaId ("PNP0F13"))
@@ -7902,6 +8468,7 @@ DefinitionBlock ("dsdt.aml", "DSDT", 2, "Intel ", "CALPELLA", 0x06040000)
                     })
                 }
             }
+
             Device (EHC1)
             {
                 Name (_ADR, 0x001D0000)
@@ -7910,6 +8477,7 @@ DefinitionBlock ("dsdt.aml", "DSDT", 2, "Intel ", "CALPELLA", 0x06040000)
                 {
                     U1EN,   2
                 }
+
                 Method (_PSW, 1, NotSerialized)
                 {
                     If (Arg0)
@@ -7921,14 +8489,17 @@ DefinitionBlock ("dsdt.aml", "DSDT", 2, "Intel ", "CALPELLA", 0x06040000)
                         Store (Zero, U1EN)
                     }
                 }
+
                 Method (_S3D, 0, NotSerialized)
                 {
                     Return (0x02)
                 }
+
                 Method (_S4D, 0, NotSerialized)
                 {
                     Return (0x03)
                 }
+
                 Device (RHUB)
                 {
                     Name (_ADR, Zero)
@@ -7942,10 +8513,10 @@ DefinitionBlock ("dsdt.aml", "DSDT", 2, "Intel ", "CALPELLA", 0x06040000)
                             Zero, 
                             Zero
                         })
-                        Name (_PLD, Package (0x10)
+                        Name (_PLD, Buffer (0x10)
                         {
-                            /* 0000 */    0x81, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 
-                            /* 0008 */    0x30, 0x1C, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00
+                            /* 0000 */   0x81, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,
+                            /* 0008 */   0x30, 0x1C, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00
                         })
                         Method (_DSM, 4, Serialized)
                         {
@@ -7953,8 +8524,8 @@ DefinitionBlock ("dsdt.aml", "DSDT", 2, "Intel ", "CALPELLA", 0x06040000)
                             Name (_T_0, Zero)
                             If (LEqual (Arg0, Buffer (0x10)
                                     {
-                                        /* 0000 */    0x8F, 0x70, 0xFC, 0xA5, 0x75, 0x87, 0xA6, 0x4B, 
-                                        /* 0008 */    0xBD, 0x0C, 0xBA, 0x90, 0xA1, 0xEC, 0x72, 0xF8
+                                        /* 0000 */   0x8F, 0x70, 0xFC, 0xA5, 0x75, 0x87, 0xA6, 0x4B,
+                                        /* 0008 */   0xBD, 0x0C, 0xBA, 0x90, 0xA1, 0xEC, 0x72, 0xF8
                                     }))
                             {
                                 Store (ToInteger (Arg2), _T_0)
@@ -7965,14 +8536,14 @@ DefinitionBlock ("dsdt.aml", "DSDT", 2, "Intel ", "CALPELLA", 0x06040000)
                                     {
                                         Return (Buffer (One)
                                         {
-                                            0x07
+                                             0x07
                                         })
                                     }
                                     Else
                                     {
                                         Return (Buffer (One)
                                         {
-                                            0x00
+                                             0x00
                                         })
                                     }
                                 }
@@ -7986,6 +8557,7 @@ DefinitionBlock ("dsdt.aml", "DSDT", 2, "Intel ", "CALPELLA", 0x06040000)
                                 Return (Zero)
                             }
                         }
+
                         Device (SPR1)
                         {
                             Name (_ADR, One)
@@ -7996,12 +8568,13 @@ DefinitionBlock ("dsdt.aml", "DSDT", 2, "Intel ", "CALPELLA", 0x06040000)
                                 Zero, 
                                 Zero
                             })
-                            Name (_PLD, Package (0x10)
+                            Name (_PLD, Buffer (0x10)
                             {
-                                /* 0000 */    0x81, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 
-                                /* 0008 */    0x31, 0x1C, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00
+                                /* 0000 */   0x81, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,
+                                /* 0008 */   0x31, 0x1C, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00
                             })
                         }
+
                         Device (SPR2)
                         {
                             Name (_ADR, 0x02)
@@ -8012,12 +8585,13 @@ DefinitionBlock ("dsdt.aml", "DSDT", 2, "Intel ", "CALPELLA", 0x06040000)
                                 Zero, 
                                 Zero
                             })
-                            Name (_PLD, Package (0x10)
+                            Name (_PLD, Buffer (0x10)
                             {
-                                /* 0000 */    0x81, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 
-                                /* 0008 */    0x31, 0x1C, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00
+                                /* 0000 */   0x81, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,
+                                /* 0008 */   0x31, 0x1C, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00
                             })
                         }
+
                         Device (SPR3)
                         {
                             Name (_ADR, 0x03)
@@ -8028,12 +8602,13 @@ DefinitionBlock ("dsdt.aml", "DSDT", 2, "Intel ", "CALPELLA", 0x06040000)
                                 Zero, 
                                 Zero
                             })
-                            Name (_PLD, Package (0x10)
+                            Name (_PLD, Buffer (0x10)
                             {
-                                /* 0000 */    0x81, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 
-                                /* 0008 */    0x30, 0x1C, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00
+                                /* 0000 */   0x81, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,
+                                /* 0008 */   0x30, 0x1C, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00
                             })
                         }
+
                         Device (SPR4)
                         {
                             Name (_ADR, 0x04)
@@ -8044,12 +8619,13 @@ DefinitionBlock ("dsdt.aml", "DSDT", 2, "Intel ", "CALPELLA", 0x06040000)
                                 Zero, 
                                 Zero
                             })
-                            Name (_PLD, Package (0x10)
+                            Name (_PLD, Buffer (0x10)
                             {
-                                /* 0000 */    0x81, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 
-                                /* 0008 */    0x31, 0x1C, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00
+                                /* 0000 */   0x81, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,
+                                /* 0008 */   0x31, 0x1C, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00
                             })
                         }
+
                         Device (SPR5)
                         {
                             Name (_ADR, 0x05)
@@ -8060,12 +8636,13 @@ DefinitionBlock ("dsdt.aml", "DSDT", 2, "Intel ", "CALPELLA", 0x06040000)
                                 Zero, 
                                 Zero
                             })
-                            Name (_PLD, Package (0x10)
+                            Name (_PLD, Buffer (0x10)
                             {
-                                /* 0000 */    0x81, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 
-                                /* 0008 */    0x31, 0x1C, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00
+                                /* 0000 */   0x81, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,
+                                /* 0008 */   0x31, 0x1C, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00
                             })
                         }
+
                         Device (SPR6)
                         {
                             Name (_ADR, 0x06)
@@ -8076,12 +8653,13 @@ DefinitionBlock ("dsdt.aml", "DSDT", 2, "Intel ", "CALPELLA", 0x06040000)
                                 Zero, 
                                 Zero
                             })
-                            Name (_PLD, Package (0x10)
+                            Name (_PLD, Buffer (0x10)
                             {
-                                /* 0000 */    0x81, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 
-                                /* 0008 */    0x31, 0x1C, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00
+                                /* 0000 */   0x81, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,
+                                /* 0008 */   0x31, 0x1C, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00
                             })
                         }
+
                         Device (SPR7)
                         {
                             Name (_ADR, 0x07)
@@ -8092,12 +8670,13 @@ DefinitionBlock ("dsdt.aml", "DSDT", 2, "Intel ", "CALPELLA", 0x06040000)
                                 Zero, 
                                 Zero
                             })
-                            Name (_PLD, Package (0x10)
+                            Name (_PLD, Buffer (0x10)
                             {
-                                /* 0000 */    0x81, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 
-                                /* 0008 */    0x30, 0x1C, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00
+                                /* 0000 */   0x81, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,
+                                /* 0008 */   0x30, 0x1C, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00
                             })
                         }
+
                         Device (SPR8)
                         {
                             Name (_ADR, 0x08)
@@ -8108,13 +8687,14 @@ DefinitionBlock ("dsdt.aml", "DSDT", 2, "Intel ", "CALPELLA", 0x06040000)
                                 Zero, 
                                 Zero
                             })
-                            Name (_PLD, Package (0x10)
+                            Name (_PLD, Buffer (0x10)
                             {
-                                /* 0000 */    0x81, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 
-                                /* 0008 */    0x30, 0x1C, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00
+                                /* 0000 */   0x81, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,
+                                /* 0008 */   0x30, 0x1C, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00
                             })
                         }
                     }
+
                     Device (PRT2)
                     {
                         Name (_ADR, 0x02)
@@ -8124,8 +8704,8 @@ DefinitionBlock ("dsdt.aml", "DSDT", 2, "Intel ", "CALPELLA", 0x06040000)
                             Name (_T_0, Zero)
                             If (LEqual (Arg0, Buffer (0x10)
                                     {
-                                        /* 0000 */    0x8F, 0x70, 0xFC, 0xA5, 0x75, 0x87, 0xA6, 0x4B, 
-                                        /* 0008 */    0xBD, 0x0C, 0xBA, 0x90, 0xA1, 0xEC, 0x72, 0xF8
+                                        /* 0000 */   0x8F, 0x70, 0xFC, 0xA5, 0x75, 0x87, 0xA6, 0x4B,
+                                        /* 0008 */   0xBD, 0x0C, 0xBA, 0x90, 0xA1, 0xEC, 0x72, 0xF8
                                     }))
                             {
                                 Store (ToInteger (Arg2), _T_0)
@@ -8136,14 +8716,14 @@ DefinitionBlock ("dsdt.aml", "DSDT", 2, "Intel ", "CALPELLA", 0x06040000)
                                     {
                                         Return (Buffer (One)
                                         {
-                                            0x07
+                                             0x07
                                         })
                                     }
                                     Else
                                     {
                                         Return (Buffer (One)
                                         {
-                                            0x00
+                                             0x00
                                         })
                                     }
                                 }
@@ -8159,12 +8739,14 @@ DefinitionBlock ("dsdt.aml", "DSDT", 2, "Intel ", "CALPELLA", 0x06040000)
                         }
                     }
                 }
+
                 Name (UPRW, Package (0x02)
                 {
                     0x0D, 
                     0x03
                 })
             }
+
             Device (USB1)
             {
                 Name (_ADR, 0x001D0001)
@@ -8173,6 +8755,7 @@ DefinitionBlock ("dsdt.aml", "DSDT", 2, "Intel ", "CALPELLA", 0x06040000)
                 {
                     U1EN,   2
                 }
+
                 Method (_PSW, 1, NotSerialized)
                 {
                     If (Arg0)
@@ -8184,14 +8767,17 @@ DefinitionBlock ("dsdt.aml", "DSDT", 2, "Intel ", "CALPELLA", 0x06040000)
                         Store (Zero, U1EN)
                     }
                 }
+
                 Method (_S3D, 0, NotSerialized)
                 {
                     Return (0x02)
                 }
+
                 Method (_S4D, 0, NotSerialized)
                 {
                     Return (0x02)
                 }
+
                 Device (HUBN)
                 {
                     Name (_ADR, Zero)
@@ -8204,8 +8790,8 @@ DefinitionBlock ("dsdt.aml", "DSDT", 2, "Intel ", "CALPELLA", 0x06040000)
                             Name (_T_0, Zero)
                             If (LEqual (Arg0, Buffer (0x10)
                                     {
-                                        /* 0000 */    0x8F, 0x70, 0xFC, 0xA5, 0x75, 0x87, 0xA6, 0x4B, 
-                                        /* 0008 */    0xBD, 0x0C, 0xBA, 0x90, 0xA1, 0xEC, 0x72, 0xF8
+                                        /* 0000 */   0x8F, 0x70, 0xFC, 0xA5, 0x75, 0x87, 0xA6, 0x4B,
+                                        /* 0008 */   0xBD, 0x0C, 0xBA, 0x90, 0xA1, 0xEC, 0x72, 0xF8
                                     }))
                             {
                                 Store (ToInteger (Arg2), _T_0)
@@ -8216,14 +8802,14 @@ DefinitionBlock ("dsdt.aml", "DSDT", 2, "Intel ", "CALPELLA", 0x06040000)
                                     {
                                         Return (Buffer (One)
                                         {
-                                            0x07
+                                             0x07
                                         })
                                     }
                                     Else
                                     {
                                         Return (Buffer (One)
                                         {
-                                            0x00
+                                             0x00
                                         })
                                     }
                                 }
@@ -8252,6 +8838,7 @@ DefinitionBlock ("dsdt.aml", "DSDT", 2, "Intel ", "CALPELLA", 0x06040000)
                             }
                         }
                     }
+
                     Device (PRT2)
                     {
                         Name (_ADR, 0x02)
@@ -8261,8 +8848,8 @@ DefinitionBlock ("dsdt.aml", "DSDT", 2, "Intel ", "CALPELLA", 0x06040000)
                             Name (_T_0, Zero)
                             If (LEqual (Arg0, Buffer (0x10)
                                     {
-                                        /* 0000 */    0x8F, 0x70, 0xFC, 0xA5, 0x75, 0x87, 0xA6, 0x4B, 
-                                        /* 0008 */    0xBD, 0x0C, 0xBA, 0x90, 0xA1, 0xEC, 0x72, 0xF8
+                                        /* 0000 */   0x8F, 0x70, 0xFC, 0xA5, 0x75, 0x87, 0xA6, 0x4B,
+                                        /* 0008 */   0xBD, 0x0C, 0xBA, 0x90, 0xA1, 0xEC, 0x72, 0xF8
                                     }))
                             {
                                 Store (ToInteger (Arg2), _T_0)
@@ -8273,14 +8860,14 @@ DefinitionBlock ("dsdt.aml", "DSDT", 2, "Intel ", "CALPELLA", 0x06040000)
                                     {
                                         Return (Buffer (One)
                                         {
-                                            0x07
+                                             0x07
                                         })
                                     }
                                     Else
                                     {
                                         Return (Buffer (One)
                                         {
-                                            0x00
+                                             0x00
                                         })
                                     }
                                 }
@@ -8310,12 +8897,14 @@ DefinitionBlock ("dsdt.aml", "DSDT", 2, "Intel ", "CALPELLA", 0x06040000)
                         }
                     }
                 }
+
                 Name (_PRW, Package (0x02)
                 {
                     0x03, 
                     0x03
                 })
             }
+
             Device (USB2)
             {
                 Name (_ADR, 0x001D0002)
@@ -8324,6 +8913,7 @@ DefinitionBlock ("dsdt.aml", "DSDT", 2, "Intel ", "CALPELLA", 0x06040000)
                 {
                     U1EN,   2
                 }
+
                 Method (_PSW, 1, NotSerialized)
                 {
                     If (Arg0)
@@ -8335,14 +8925,17 @@ DefinitionBlock ("dsdt.aml", "DSDT", 2, "Intel ", "CALPELLA", 0x06040000)
                         Store (Zero, U1EN)
                     }
                 }
+
                 Method (_S3D, 0, NotSerialized)
                 {
                     Return (0x02)
                 }
+
                 Method (_S4D, 0, NotSerialized)
                 {
                     Return (0x02)
                 }
+
                 Device (HUBN)
                 {
                     Name (_ADR, Zero)
@@ -8355,8 +8948,8 @@ DefinitionBlock ("dsdt.aml", "DSDT", 2, "Intel ", "CALPELLA", 0x06040000)
                             Name (_T_0, Zero)
                             If (LEqual (Arg0, Buffer (0x10)
                                     {
-                                        /* 0000 */    0x8F, 0x70, 0xFC, 0xA5, 0x75, 0x87, 0xA6, 0x4B, 
-                                        /* 0008 */    0xBD, 0x0C, 0xBA, 0x90, 0xA1, 0xEC, 0x72, 0xF8
+                                        /* 0000 */   0x8F, 0x70, 0xFC, 0xA5, 0x75, 0x87, 0xA6, 0x4B,
+                                        /* 0008 */   0xBD, 0x0C, 0xBA, 0x90, 0xA1, 0xEC, 0x72, 0xF8
                                     }))
                             {
                                 Store (ToInteger (Arg2), _T_0)
@@ -8367,14 +8960,14 @@ DefinitionBlock ("dsdt.aml", "DSDT", 2, "Intel ", "CALPELLA", 0x06040000)
                                     {
                                         Return (Buffer (One)
                                         {
-                                            0x07
+                                             0x07
                                         })
                                     }
                                     Else
                                     {
                                         Return (Buffer (One)
                                         {
-                                            0x00
+                                             0x00
                                         })
                                     }
                                 }
@@ -8403,6 +8996,7 @@ DefinitionBlock ("dsdt.aml", "DSDT", 2, "Intel ", "CALPELLA", 0x06040000)
                             }
                         }
                     }
+
                     Device (PRT2)
                     {
                         Name (_ADR, 0x02)
@@ -8412,8 +9006,8 @@ DefinitionBlock ("dsdt.aml", "DSDT", 2, "Intel ", "CALPELLA", 0x06040000)
                             Name (_T_0, Zero)
                             If (LEqual (Arg0, Buffer (0x10)
                                     {
-                                        /* 0000 */    0x8F, 0x70, 0xFC, 0xA5, 0x75, 0x87, 0xA6, 0x4B, 
-                                        /* 0008 */    0xBD, 0x0C, 0xBA, 0x90, 0xA1, 0xEC, 0x72, 0xF8
+                                        /* 0000 */   0x8F, 0x70, 0xFC, 0xA5, 0x75, 0x87, 0xA6, 0x4B,
+                                        /* 0008 */   0xBD, 0x0C, 0xBA, 0x90, 0xA1, 0xEC, 0x72, 0xF8
                                     }))
                             {
                                 Store (ToInteger (Arg2), _T_0)
@@ -8424,14 +9018,14 @@ DefinitionBlock ("dsdt.aml", "DSDT", 2, "Intel ", "CALPELLA", 0x06040000)
                                     {
                                         Return (Buffer (One)
                                         {
-                                            0x07
+                                             0x07
                                         })
                                     }
                                     Else
                                     {
                                         Return (Buffer (One)
                                         {
-                                            0x00
+                                             0x00
                                         })
                                     }
                                 }
@@ -8461,12 +9055,14 @@ DefinitionBlock ("dsdt.aml", "DSDT", 2, "Intel ", "CALPELLA", 0x06040000)
                         }
                     }
                 }
+
                 Name (_PRW, Package (0x02)
                 {
                     0x04, 
                     0x03
                 })
             }
+
             Device (USB3)
             {
                 Name (_ADR, 0x001D0003)
@@ -8475,6 +9071,7 @@ DefinitionBlock ("dsdt.aml", "DSDT", 2, "Intel ", "CALPELLA", 0x06040000)
                 {
                     U1EN,   2
                 }
+
                 Method (_PSW, 1, NotSerialized)
                 {
                     If (Arg0)
@@ -8486,14 +9083,17 @@ DefinitionBlock ("dsdt.aml", "DSDT", 2, "Intel ", "CALPELLA", 0x06040000)
                         Store (Zero, U1EN)
                     }
                 }
+
                 Method (_S3D, 0, NotSerialized)
                 {
                     Return (0x02)
                 }
+
                 Method (_S4D, 0, NotSerialized)
                 {
                     Return (0x02)
                 }
+
                 Device (HUBN)
                 {
                     Name (_ADR, Zero)
@@ -8506,8 +9106,8 @@ DefinitionBlock ("dsdt.aml", "DSDT", 2, "Intel ", "CALPELLA", 0x06040000)
                             Name (_T_0, Zero)
                             If (LEqual (Arg0, Buffer (0x10)
                                     {
-                                        /* 0000 */    0x8F, 0x70, 0xFC, 0xA5, 0x75, 0x87, 0xA6, 0x4B, 
-                                        /* 0008 */    0xBD, 0x0C, 0xBA, 0x90, 0xA1, 0xEC, 0x72, 0xF8
+                                        /* 0000 */   0x8F, 0x70, 0xFC, 0xA5, 0x75, 0x87, 0xA6, 0x4B,
+                                        /* 0008 */   0xBD, 0x0C, 0xBA, 0x90, 0xA1, 0xEC, 0x72, 0xF8
                                     }))
                             {
                                 Store (ToInteger (Arg2), _T_0)
@@ -8518,14 +9118,14 @@ DefinitionBlock ("dsdt.aml", "DSDT", 2, "Intel ", "CALPELLA", 0x06040000)
                                     {
                                         Return (Buffer (One)
                                         {
-                                            0x07
+                                             0x07
                                         })
                                     }
                                     Else
                                     {
                                         Return (Buffer (One)
                                         {
-                                            0x00
+                                             0x00
                                         })
                                     }
                                 }
@@ -8554,6 +9154,7 @@ DefinitionBlock ("dsdt.aml", "DSDT", 2, "Intel ", "CALPELLA", 0x06040000)
                             }
                         }
                     }
+
                     Device (PRT2)
                     {
                         Name (_ADR, 0x02)
@@ -8563,8 +9164,8 @@ DefinitionBlock ("dsdt.aml", "DSDT", 2, "Intel ", "CALPELLA", 0x06040000)
                             Name (_T_0, Zero)
                             If (LEqual (Arg0, Buffer (0x10)
                                     {
-                                        /* 0000 */    0x8F, 0x70, 0xFC, 0xA5, 0x75, 0x87, 0xA6, 0x4B, 
-                                        /* 0008 */    0xBD, 0x0C, 0xBA, 0x90, 0xA1, 0xEC, 0x72, 0xF8
+                                        /* 0000 */   0x8F, 0x70, 0xFC, 0xA5, 0x75, 0x87, 0xA6, 0x4B,
+                                        /* 0008 */   0xBD, 0x0C, 0xBA, 0x90, 0xA1, 0xEC, 0x72, 0xF8
                                     }))
                             {
                                 Store (ToInteger (Arg2), _T_0)
@@ -8575,14 +9176,14 @@ DefinitionBlock ("dsdt.aml", "DSDT", 2, "Intel ", "CALPELLA", 0x06040000)
                                     {
                                         Return (Buffer (One)
                                         {
-                                            0x07
+                                             0x07
                                         })
                                     }
                                     Else
                                     {
                                         Return (Buffer (One)
                                         {
-                                            0x00
+                                             0x00
                                         })
                                     }
                                 }
@@ -8612,12 +9213,14 @@ DefinitionBlock ("dsdt.aml", "DSDT", 2, "Intel ", "CALPELLA", 0x06040000)
                         }
                     }
                 }
+
                 Name (_PRW, Package (0x02)
                 {
                     0x0C, 
                     0x03
                 })
             }
+
             Device (USB4)
             {
                 Name (_ADR, 0x001D0004)
@@ -8626,6 +9229,7 @@ DefinitionBlock ("dsdt.aml", "DSDT", 2, "Intel ", "CALPELLA", 0x06040000)
                 {
                     U1EN,   2
                 }
+
                 Method (_PSW, 1, NotSerialized)
                 {
                     If (Arg0)
@@ -8637,14 +9241,17 @@ DefinitionBlock ("dsdt.aml", "DSDT", 2, "Intel ", "CALPELLA", 0x06040000)
                         Store (Zero, U1EN)
                     }
                 }
+
                 Method (_S3D, 0, NotSerialized)
                 {
                     Return (0x02)
                 }
+
                 Method (_S4D, 0, NotSerialized)
                 {
                     Return (0x02)
                 }
+
                 Device (HUBN)
                 {
                     Name (_ADR, Zero)
@@ -8657,8 +9264,8 @@ DefinitionBlock ("dsdt.aml", "DSDT", 2, "Intel ", "CALPELLA", 0x06040000)
                             Name (_T_0, Zero)
                             If (LEqual (Arg0, Buffer (0x10)
                                     {
-                                        /* 0000 */    0x8F, 0x70, 0xFC, 0xA5, 0x75, 0x87, 0xA6, 0x4B, 
-                                        /* 0008 */    0xBD, 0x0C, 0xBA, 0x90, 0xA1, 0xEC, 0x72, 0xF8
+                                        /* 0000 */   0x8F, 0x70, 0xFC, 0xA5, 0x75, 0x87, 0xA6, 0x4B,
+                                        /* 0008 */   0xBD, 0x0C, 0xBA, 0x90, 0xA1, 0xEC, 0x72, 0xF8
                                     }))
                             {
                                 Store (ToInteger (Arg2), _T_0)
@@ -8669,14 +9276,14 @@ DefinitionBlock ("dsdt.aml", "DSDT", 2, "Intel ", "CALPELLA", 0x06040000)
                                     {
                                         Return (Buffer (One)
                                         {
-                                            0x07
+                                             0x07
                                         })
                                     }
                                     Else
                                     {
                                         Return (Buffer (One)
                                         {
-                                            0x00
+                                             0x00
                                         })
                                     }
                                 }
@@ -8705,6 +9312,7 @@ DefinitionBlock ("dsdt.aml", "DSDT", 2, "Intel ", "CALPELLA", 0x06040000)
                             }
                         }
                     }
+
                     Device (PRT2)
                     {
                         Name (_ADR, 0x02)
@@ -8714,8 +9322,8 @@ DefinitionBlock ("dsdt.aml", "DSDT", 2, "Intel ", "CALPELLA", 0x06040000)
                             Name (_T_0, Zero)
                             If (LEqual (Arg0, Buffer (0x10)
                                     {
-                                        /* 0000 */    0x8F, 0x70, 0xFC, 0xA5, 0x75, 0x87, 0xA6, 0x4B, 
-                                        /* 0008 */    0xBD, 0x0C, 0xBA, 0x90, 0xA1, 0xEC, 0x72, 0xF8
+                                        /* 0000 */   0x8F, 0x70, 0xFC, 0xA5, 0x75, 0x87, 0xA6, 0x4B,
+                                        /* 0008 */   0xBD, 0x0C, 0xBA, 0x90, 0xA1, 0xEC, 0x72, 0xF8
                                     }))
                             {
                                 Store (ToInteger (Arg2), _T_0)
@@ -8726,14 +9334,14 @@ DefinitionBlock ("dsdt.aml", "DSDT", 2, "Intel ", "CALPELLA", 0x06040000)
                                     {
                                         Return (Buffer (One)
                                         {
-                                            0x07
+                                             0x07
                                         })
                                     }
                                     Else
                                     {
                                         Return (Buffer (One)
                                         {
-                                            0x00
+                                             0x00
                                         })
                                     }
                                 }
@@ -8763,12 +9371,14 @@ DefinitionBlock ("dsdt.aml", "DSDT", 2, "Intel ", "CALPELLA", 0x06040000)
                         }
                     }
                 }
+
                 Name (_PRW, Package (0x02)
                 {
                     0x0E, 
                     0x03
                 })
             }
+
             Device (EHC2)
             {
                 Name (_ADR, 0x001A0000)
@@ -8777,6 +9387,7 @@ DefinitionBlock ("dsdt.aml", "DSDT", 2, "Intel ", "CALPELLA", 0x06040000)
                 {
                     U1EN,   2
                 }
+
                 Method (_PSW, 1, NotSerialized)
                 {
                     If (Arg0)
@@ -8788,14 +9399,17 @@ DefinitionBlock ("dsdt.aml", "DSDT", 2, "Intel ", "CALPELLA", 0x06040000)
                         Store (Zero, U1EN)
                     }
                 }
+
                 Method (_S3D, 0, NotSerialized)
                 {
                     Return (0x02)
                 }
+
                 Method (_S4D, 0, NotSerialized)
                 {
                     Return (0x03)
                 }
+
                 Device (RHUB)
                 {
                     Name (_ADR, Zero)
@@ -8809,10 +9423,10 @@ DefinitionBlock ("dsdt.aml", "DSDT", 2, "Intel ", "CALPELLA", 0x06040000)
                             Zero, 
                             Zero
                         })
-                        Name (_PLD, Package (0x10)
+                        Name (_PLD, Buffer (0x10)
                         {
-                            /* 0000 */    0x81, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 
-                            /* 0008 */    0x30, 0x1C, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00
+                            /* 0000 */   0x81, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,
+                            /* 0008 */   0x30, 0x1C, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00
                         })
                         Method (_DSM, 4, Serialized)
                         {
@@ -8820,8 +9434,8 @@ DefinitionBlock ("dsdt.aml", "DSDT", 2, "Intel ", "CALPELLA", 0x06040000)
                             Name (_T_0, Zero)
                             If (LEqual (Arg0, Buffer (0x10)
                                     {
-                                        /* 0000 */    0x8F, 0x70, 0xFC, 0xA5, 0x75, 0x87, 0xA6, 0x4B, 
-                                        /* 0008 */    0xBD, 0x0C, 0xBA, 0x90, 0xA1, 0xEC, 0x72, 0xF8
+                                        /* 0000 */   0x8F, 0x70, 0xFC, 0xA5, 0x75, 0x87, 0xA6, 0x4B,
+                                        /* 0008 */   0xBD, 0x0C, 0xBA, 0x90, 0xA1, 0xEC, 0x72, 0xF8
                                     }))
                             {
                                 Store (ToInteger (Arg2), _T_0)
@@ -8832,14 +9446,14 @@ DefinitionBlock ("dsdt.aml", "DSDT", 2, "Intel ", "CALPELLA", 0x06040000)
                                     {
                                         Return (Buffer (One)
                                         {
-                                            0x07
+                                             0x07
                                         })
                                     }
                                     Else
                                     {
                                         Return (Buffer (One)
                                         {
-                                            0x00
+                                             0x00
                                         })
                                     }
                                 }
@@ -8853,6 +9467,7 @@ DefinitionBlock ("dsdt.aml", "DSDT", 2, "Intel ", "CALPELLA", 0x06040000)
                                 Return (Zero)
                             }
                         }
+
                         Device (SPR1)
                         {
                             Name (_ADR, One)
@@ -8863,12 +9478,13 @@ DefinitionBlock ("dsdt.aml", "DSDT", 2, "Intel ", "CALPELLA", 0x06040000)
                                 Zero, 
                                 Zero
                             })
-                            Name (_PLD, Package (0x10)
+                            Name (_PLD, Buffer (0x10)
                             {
-                                /* 0000 */    0x81, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 
-                                /* 0008 */    0x30, 0x1C, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00
+                                /* 0000 */   0x81, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,
+                                /* 0008 */   0x30, 0x1C, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00
                             })
                         }
+
                         Device (SPR2)
                         {
                             Name (_ADR, 0x02)
@@ -8879,12 +9495,13 @@ DefinitionBlock ("dsdt.aml", "DSDT", 2, "Intel ", "CALPELLA", 0x06040000)
                                 Zero, 
                                 Zero
                             })
-                            Name (_PLD, Package (0x10)
+                            Name (_PLD, Buffer (0x10)
                             {
-                                /* 0000 */    0x81, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 
-                                /* 0008 */    0x31, 0x1C, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00
+                                /* 0000 */   0x81, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,
+                                /* 0008 */   0x31, 0x1C, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00
                             })
                         }
+
                         Device (SPR3)
                         {
                             Name (_ADR, 0x03)
@@ -8895,12 +9512,13 @@ DefinitionBlock ("dsdt.aml", "DSDT", 2, "Intel ", "CALPELLA", 0x06040000)
                                 Zero, 
                                 Zero
                             })
-                            Name (_PLD, Package (0x10)
+                            Name (_PLD, Buffer (0x10)
                             {
-                                /* 0000 */    0x81, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 
-                                /* 0008 */    0x30, 0x1C, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00
+                                /* 0000 */   0x81, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,
+                                /* 0008 */   0x30, 0x1C, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00
                             })
                         }
+
                         Device (SPR4)
                         {
                             Name (_ADR, 0x04)
@@ -8911,12 +9529,13 @@ DefinitionBlock ("dsdt.aml", "DSDT", 2, "Intel ", "CALPELLA", 0x06040000)
                                 Zero, 
                                 Zero
                             })
-                            Name (_PLD, Package (0x10)
+                            Name (_PLD, Buffer (0x10)
                             {
-                                /* 0000 */    0x81, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 
-                                /* 0008 */    0x30, 0x01, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00
+                                /* 0000 */   0x81, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,
+                                /* 0008 */   0x30, 0x01, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00
                             })
                         }
+
                         Device (SPR5)
                         {
                             Name (_ADR, 0x05)
@@ -8927,12 +9546,13 @@ DefinitionBlock ("dsdt.aml", "DSDT", 2, "Intel ", "CALPELLA", 0x06040000)
                                 Zero, 
                                 Zero
                             })
-                            Name (_PLD, Package (0x10)
+                            Name (_PLD, Buffer (0x10)
                             {
-                                /* 0000 */    0x81, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 
-                                /* 0008 */    0x30, 0x1C, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00
+                                /* 0000 */   0x81, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,
+                                /* 0008 */   0x30, 0x1C, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00
                             })
                         }
+
                         Device (SPR6)
                         {
                             Name (_ADR, 0x06)
@@ -8943,12 +9563,13 @@ DefinitionBlock ("dsdt.aml", "DSDT", 2, "Intel ", "CALPELLA", 0x06040000)
                                 Zero, 
                                 Zero
                             })
-                            Name (_PLD, Package (0x10)
+                            Name (_PLD, Buffer (0x10)
                             {
-                                /* 0000 */    0x81, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 
-                                /* 0008 */    0x30, 0x1C, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00
+                                /* 0000 */   0x81, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,
+                                /* 0008 */   0x30, 0x1C, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00
                             })
                         }
+
                         Device (SPR7)
                         {
                             Name (_ADR, 0x07)
@@ -8959,12 +9580,13 @@ DefinitionBlock ("dsdt.aml", "DSDT", 2, "Intel ", "CALPELLA", 0x06040000)
                                 Zero, 
                                 Zero
                             })
-                            Name (_PLD, Package (0x10)
+                            Name (_PLD, Buffer (0x10)
                             {
-                                /* 0000 */    0x81, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 
-                                /* 0008 */    0x30, 0x1C, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00
+                                /* 0000 */   0x81, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,
+                                /* 0008 */   0x30, 0x1C, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00
                             })
                         }
+
                         Device (SPR8)
                         {
                             Name (_ADR, 0x08)
@@ -8975,13 +9597,14 @@ DefinitionBlock ("dsdt.aml", "DSDT", 2, "Intel ", "CALPELLA", 0x06040000)
                                 Zero, 
                                 Zero
                             })
-                            Name (_PLD, Package (0x10)
+                            Name (_PLD, Buffer (0x10)
                             {
-                                /* 0000 */    0x81, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 
-                                /* 0008 */    0x30, 0x1C, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00
+                                /* 0000 */   0x81, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,
+                                /* 0008 */   0x30, 0x1C, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00
                             })
                         }
                     }
+
                     Device (PRT2)
                     {
                         Name (_ADR, 0x02)
@@ -8991,8 +9614,8 @@ DefinitionBlock ("dsdt.aml", "DSDT", 2, "Intel ", "CALPELLA", 0x06040000)
                             Name (_T_0, Zero)
                             If (LEqual (Arg0, Buffer (0x10)
                                     {
-                                        /* 0000 */    0x8F, 0x70, 0xFC, 0xA5, 0x75, 0x87, 0xA6, 0x4B, 
-                                        /* 0008 */    0xBD, 0x0C, 0xBA, 0x90, 0xA1, 0xEC, 0x72, 0xF8
+                                        /* 0000 */   0x8F, 0x70, 0xFC, 0xA5, 0x75, 0x87, 0xA6, 0x4B,
+                                        /* 0008 */   0xBD, 0x0C, 0xBA, 0x90, 0xA1, 0xEC, 0x72, 0xF8
                                     }))
                             {
                                 Store (ToInteger (Arg2), _T_0)
@@ -9003,14 +9626,14 @@ DefinitionBlock ("dsdt.aml", "DSDT", 2, "Intel ", "CALPELLA", 0x06040000)
                                     {
                                         Return (Buffer (One)
                                         {
-                                            0x07
+                                             0x07
                                         })
                                     }
                                     Else
                                     {
                                         Return (Buffer (One)
                                         {
-                                            0x00
+                                             0x00
                                         })
                                     }
                                 }
@@ -9026,12 +9649,14 @@ DefinitionBlock ("dsdt.aml", "DSDT", 2, "Intel ", "CALPELLA", 0x06040000)
                         }
                     }
                 }
+
                 Name (UPRW, Package (0x02)
                 {
                     0x0D, 
                     0x03
                 })
             }
+
             Device (USB5)
             {
                 Name (_ADR, 0x001A0001)
@@ -9040,6 +9665,7 @@ DefinitionBlock ("dsdt.aml", "DSDT", 2, "Intel ", "CALPELLA", 0x06040000)
                 {
                     U1EN,   2
                 }
+
                 Method (_PSW, 1, NotSerialized)
                 {
                     If (Arg0)
@@ -9051,14 +9677,17 @@ DefinitionBlock ("dsdt.aml", "DSDT", 2, "Intel ", "CALPELLA", 0x06040000)
                         Store (Zero, U1EN)
                     }
                 }
+
                 Method (_S3D, 0, NotSerialized)
                 {
                     Return (0x02)
                 }
+
                 Method (_S4D, 0, NotSerialized)
                 {
                     Return (0x02)
                 }
+
                 Device (HUBN)
                 {
                     Name (_ADR, Zero)
@@ -9071,8 +9700,8 @@ DefinitionBlock ("dsdt.aml", "DSDT", 2, "Intel ", "CALPELLA", 0x06040000)
                             Name (_T_0, Zero)
                             If (LEqual (Arg0, Buffer (0x10)
                                     {
-                                        /* 0000 */    0x8F, 0x70, 0xFC, 0xA5, 0x75, 0x87, 0xA6, 0x4B, 
-                                        /* 0008 */    0xBD, 0x0C, 0xBA, 0x90, 0xA1, 0xEC, 0x72, 0xF8
+                                        /* 0000 */   0x8F, 0x70, 0xFC, 0xA5, 0x75, 0x87, 0xA6, 0x4B,
+                                        /* 0008 */   0xBD, 0x0C, 0xBA, 0x90, 0xA1, 0xEC, 0x72, 0xF8
                                     }))
                             {
                                 Store (ToInteger (Arg2), _T_0)
@@ -9083,14 +9712,14 @@ DefinitionBlock ("dsdt.aml", "DSDT", 2, "Intel ", "CALPELLA", 0x06040000)
                                     {
                                         Return (Buffer (One)
                                         {
-                                            0x07
+                                             0x07
                                         })
                                     }
                                     Else
                                     {
                                         Return (Buffer (One)
                                         {
-                                            0x00
+                                             0x00
                                         })
                                     }
                                 }
@@ -9119,6 +9748,7 @@ DefinitionBlock ("dsdt.aml", "DSDT", 2, "Intel ", "CALPELLA", 0x06040000)
                             }
                         }
                     }
+
                     Device (PRT2)
                     {
                         Name (_ADR, 0x02)
@@ -9128,8 +9758,8 @@ DefinitionBlock ("dsdt.aml", "DSDT", 2, "Intel ", "CALPELLA", 0x06040000)
                             Name (_T_0, Zero)
                             If (LEqual (Arg0, Buffer (0x10)
                                     {
-                                        /* 0000 */    0x8F, 0x70, 0xFC, 0xA5, 0x75, 0x87, 0xA6, 0x4B, 
-                                        /* 0008 */    0xBD, 0x0C, 0xBA, 0x90, 0xA1, 0xEC, 0x72, 0xF8
+                                        /* 0000 */   0x8F, 0x70, 0xFC, 0xA5, 0x75, 0x87, 0xA6, 0x4B,
+                                        /* 0008 */   0xBD, 0x0C, 0xBA, 0x90, 0xA1, 0xEC, 0x72, 0xF8
                                     }))
                             {
                                 Store (ToInteger (Arg2), _T_0)
@@ -9140,14 +9770,14 @@ DefinitionBlock ("dsdt.aml", "DSDT", 2, "Intel ", "CALPELLA", 0x06040000)
                                     {
                                         Return (Buffer (One)
                                         {
-                                            0x07
+                                             0x07
                                         })
                                     }
                                     Else
                                     {
                                         Return (Buffer (One)
                                         {
-                                            0x00
+                                             0x00
                                         })
                                     }
                                 }
@@ -9177,12 +9807,14 @@ DefinitionBlock ("dsdt.aml", "DSDT", 2, "Intel ", "CALPELLA", 0x06040000)
                         }
                     }
                 }
+
                 Name (_PRW, Package (0x02)
                 {
                     0x05, 
                     0x03
                 })
             }
+
             Device (USB6)
             {
                 Name (_ADR, 0x001A0002)
@@ -9191,6 +9823,7 @@ DefinitionBlock ("dsdt.aml", "DSDT", 2, "Intel ", "CALPELLA", 0x06040000)
                 {
                     U1EN,   2
                 }
+
                 Method (_PSW, 1, NotSerialized)
                 {
                     If (Arg0)
@@ -9202,14 +9835,17 @@ DefinitionBlock ("dsdt.aml", "DSDT", 2, "Intel ", "CALPELLA", 0x06040000)
                         Store (Zero, U1EN)
                     }
                 }
+
                 Method (_S3D, 0, NotSerialized)
                 {
                     Return (0x02)
                 }
+
                 Method (_S4D, 0, NotSerialized)
                 {
                     Return (0x02)
                 }
+
                 Device (HUBN)
                 {
                     Name (_ADR, Zero)
@@ -9222,8 +9858,8 @@ DefinitionBlock ("dsdt.aml", "DSDT", 2, "Intel ", "CALPELLA", 0x06040000)
                             Name (_T_0, Zero)
                             If (LEqual (Arg0, Buffer (0x10)
                                     {
-                                        /* 0000 */    0x8F, 0x70, 0xFC, 0xA5, 0x75, 0x87, 0xA6, 0x4B, 
-                                        /* 0008 */    0xBD, 0x0C, 0xBA, 0x90, 0xA1, 0xEC, 0x72, 0xF8
+                                        /* 0000 */   0x8F, 0x70, 0xFC, 0xA5, 0x75, 0x87, 0xA6, 0x4B,
+                                        /* 0008 */   0xBD, 0x0C, 0xBA, 0x90, 0xA1, 0xEC, 0x72, 0xF8
                                     }))
                             {
                                 Store (ToInteger (Arg2), _T_0)
@@ -9234,14 +9870,14 @@ DefinitionBlock ("dsdt.aml", "DSDT", 2, "Intel ", "CALPELLA", 0x06040000)
                                     {
                                         Return (Buffer (One)
                                         {
-                                            0x07
+                                             0x07
                                         })
                                     }
                                     Else
                                     {
                                         Return (Buffer (One)
                                         {
-                                            0x00
+                                             0x00
                                         })
                                     }
                                 }
@@ -9270,6 +9906,7 @@ DefinitionBlock ("dsdt.aml", "DSDT", 2, "Intel ", "CALPELLA", 0x06040000)
                             }
                         }
                     }
+
                     Device (PRT2)
                     {
                         Name (_ADR, 0x02)
@@ -9279,8 +9916,8 @@ DefinitionBlock ("dsdt.aml", "DSDT", 2, "Intel ", "CALPELLA", 0x06040000)
                             Name (_T_0, Zero)
                             If (LEqual (Arg0, Buffer (0x10)
                                     {
-                                        /* 0000 */    0x8F, 0x70, 0xFC, 0xA5, 0x75, 0x87, 0xA6, 0x4B, 
-                                        /* 0008 */    0xBD, 0x0C, 0xBA, 0x90, 0xA1, 0xEC, 0x72, 0xF8
+                                        /* 0000 */   0x8F, 0x70, 0xFC, 0xA5, 0x75, 0x87, 0xA6, 0x4B,
+                                        /* 0008 */   0xBD, 0x0C, 0xBA, 0x90, 0xA1, 0xEC, 0x72, 0xF8
                                     }))
                             {
                                 Store (ToInteger (Arg2), _T_0)
@@ -9291,14 +9928,14 @@ DefinitionBlock ("dsdt.aml", "DSDT", 2, "Intel ", "CALPELLA", 0x06040000)
                                     {
                                         Return (Buffer (One)
                                         {
-                                            0x07
+                                             0x07
                                         })
                                     }
                                     Else
                                     {
                                         Return (Buffer (One)
                                         {
-                                            0x00
+                                             0x00
                                         })
                                     }
                                 }
@@ -9328,12 +9965,14 @@ DefinitionBlock ("dsdt.aml", "DSDT", 2, "Intel ", "CALPELLA", 0x06040000)
                         }
                     }
                 }
+
                 Name (_PRW, Package (0x02)
                 {
                     0x20, 
                     0x03
                 })
             }
+
             Device (USB7)
             {
                 Name (_ADR, 0x001A0003)
@@ -9342,6 +9981,7 @@ DefinitionBlock ("dsdt.aml", "DSDT", 2, "Intel ", "CALPELLA", 0x06040000)
                 {
                     U1EN,   2
                 }
+
                 Method (_PSW, 1, NotSerialized)
                 {
                     If (Arg0)
@@ -9353,14 +9993,17 @@ DefinitionBlock ("dsdt.aml", "DSDT", 2, "Intel ", "CALPELLA", 0x06040000)
                         Store (Zero, U1EN)
                     }
                 }
+
                 Method (_S3D, 0, NotSerialized)
                 {
                     Return (0x02)
                 }
+
                 Method (_S4D, 0, NotSerialized)
                 {
                     Return (0x02)
                 }
+
                 Device (HUBN)
                 {
                     Name (_ADR, Zero)
@@ -9373,8 +10016,8 @@ DefinitionBlock ("dsdt.aml", "DSDT", 2, "Intel ", "CALPELLA", 0x06040000)
                             Name (_T_0, Zero)
                             If (LEqual (Arg0, Buffer (0x10)
                                     {
-                                        /* 0000 */    0x8F, 0x70, 0xFC, 0xA5, 0x75, 0x87, 0xA6, 0x4B, 
-                                        /* 0008 */    0xBD, 0x0C, 0xBA, 0x90, 0xA1, 0xEC, 0x72, 0xF8
+                                        /* 0000 */   0x8F, 0x70, 0xFC, 0xA5, 0x75, 0x87, 0xA6, 0x4B,
+                                        /* 0008 */   0xBD, 0x0C, 0xBA, 0x90, 0xA1, 0xEC, 0x72, 0xF8
                                     }))
                             {
                                 Store (ToInteger (Arg2), _T_0)
@@ -9385,14 +10028,14 @@ DefinitionBlock ("dsdt.aml", "DSDT", 2, "Intel ", "CALPELLA", 0x06040000)
                                     {
                                         Return (Buffer (One)
                                         {
-                                            0x07
+                                             0x07
                                         })
                                     }
                                     Else
                                     {
                                         Return (Buffer (One)
                                         {
-                                            0x00
+                                             0x00
                                         })
                                     }
                                 }
@@ -9421,6 +10064,7 @@ DefinitionBlock ("dsdt.aml", "DSDT", 2, "Intel ", "CALPELLA", 0x06040000)
                             }
                         }
                     }
+
                     Device (PRT2)
                     {
                         Name (_ADR, 0x02)
@@ -9430,8 +10074,8 @@ DefinitionBlock ("dsdt.aml", "DSDT", 2, "Intel ", "CALPELLA", 0x06040000)
                             Name (_T_0, Zero)
                             If (LEqual (Arg0, Buffer (0x10)
                                     {
-                                        /* 0000 */    0x8F, 0x70, 0xFC, 0xA5, 0x75, 0x87, 0xA6, 0x4B, 
-                                        /* 0008 */    0xBD, 0x0C, 0xBA, 0x90, 0xA1, 0xEC, 0x72, 0xF8
+                                        /* 0000 */   0x8F, 0x70, 0xFC, 0xA5, 0x75, 0x87, 0xA6, 0x4B,
+                                        /* 0008 */   0xBD, 0x0C, 0xBA, 0x90, 0xA1, 0xEC, 0x72, 0xF8
                                     }))
                             {
                                 Store (ToInteger (Arg2), _T_0)
@@ -9442,14 +10086,14 @@ DefinitionBlock ("dsdt.aml", "DSDT", 2, "Intel ", "CALPELLA", 0x06040000)
                                     {
                                         Return (Buffer (One)
                                         {
-                                            0x07
+                                             0x07
                                         })
                                     }
                                     Else
                                     {
                                         Return (Buffer (One)
                                         {
-                                            0x00
+                                             0x00
                                         })
                                     }
                                 }
@@ -9479,84 +10123,58 @@ DefinitionBlock ("dsdt.aml", "DSDT", 2, "Intel ", "CALPELLA", 0x06040000)
                         }
                     }
                 }
+
                 Name (_PRW, Package (0x02)
                 {
                     0x25, 
                     0x03
                 })
             }
+
             Device (HDEF)
             {
                 Name (_ADR, 0x001B0000)
-                Method (_DSM, 4, NotSerialized)
-                {
-                    Store (Package (0x0A)
-                        {
-                            "codec-id",
-                            Buffer (0x04)
-                            {
-                                0x69, 0x02, 0xEC, 0x10
-                            },
-                            "layout-id",
-                            Buffer (0x04)
-                            {
-                                0x0D, 0x01, 0x00, 0x00
-                            },
-                            "device-type",
-                            Buffer (0x25)
-                            {
-                                "Realtek ALC269 @ Intel Ibex Peak PCH"
-                            },
-                            "hda-gfx",
-                            Buffer (0x0A)
-                            {
-                                "onboard-1"
-                            },
-                            "PinConfigurations",
-                            Buffer (Zero) {}
-                        }, Local0)
-                    DTGP (Arg0, Arg1, Arg2, Arg3, RefOf (Local0))
-                    Return (Local0)
-                }
                 OperationRegion (HDAR, PCI_Config, 0x4C, 0x10)
                 Field (HDAR, WordAcc, NoLock, Preserve)
                 {
                     DCKA,   1, 
-                            Offset (0x01), 
+                    Offset (0x01), 
                     DCKM,   1, 
                         ,   6, 
                     DCKS,   1, 
-                            Offset (0x08), 
+                    Offset (0x08), 
                         ,   15, 
                     PMES,   1
                 }
+
                 Name (_PRW, Package (0x02)
                 {
                     0x0D, 
                     0x04
                 })
             }
+
             Device (RP01)
             {
                 Name (_ADR, 0x001C0000)
                 OperationRegion (PXCS, PCI_Config, 0x40, 0xC0)
                 Field (PXCS, AnyAcc, NoLock, WriteAsZeros)
                 {
-                            Offset (0x12), 
+                    Offset (0x12), 
                         ,   13, 
                     LASX,   1, 
-                            Offset (0x1A), 
+                    Offset (0x1A), 
                     ABPX,   1, 
                         ,   2, 
                     PDCX,   1, 
                         ,   2, 
                     PDSX,   1, 
-                            Offset (0x1B), 
+                    Offset (0x1B), 
                     LSCX,   1, 
-                            Offset (0x20), 
-                            Offset (0x22), 
+                    Offset (0x20), 
+                    Offset (0x22), 
                     PSPX,   1, 
-                            Offset (0x98), 
+                    Offset (0x98), 
                         ,   30, 
                     HPEX,   1, 
                     PMEX,   1, 
@@ -9564,10 +10182,12 @@ DefinitionBlock ("dsdt.aml", "DSDT", 2, "Intel ", "CALPELLA", 0x06040000)
                     HPSX,   1, 
                     PMSX,   1
                 }
+
                 Device (PXSX)
                 {
                     Name (_ADR, Zero)
                 }
+
                 Name (_PRW, Package (0x02)
                 {
                     0x09, 
@@ -9579,30 +10199,32 @@ DefinitionBlock ("dsdt.aml", "DSDT", 2, "Intel ", "CALPELLA", 0x06040000)
                     {
                         Return (AR04 ())
                     }
+
                     Return (PR04 ())
                 }
             }
+
             Device (RP02)
             {
                 Name (_ADR, 0x001C0001)
                 OperationRegion (PXCS, PCI_Config, 0x40, 0xC0)
                 Field (PXCS, AnyAcc, NoLock, WriteAsZeros)
                 {
-                            Offset (0x12), 
+                    Offset (0x12), 
                         ,   13, 
                     LASX,   1, 
-                            Offset (0x1A), 
+                    Offset (0x1A), 
                     ABPX,   1, 
                         ,   2, 
                     PDCX,   1, 
                         ,   2, 
                     PDSX,   1, 
-                            Offset (0x1B), 
+                    Offset (0x1B), 
                     LSCX,   1, 
-                            Offset (0x20), 
-                            Offset (0x22), 
+                    Offset (0x20), 
+                    Offset (0x22), 
                     PSPX,   1, 
-                            Offset (0x98), 
+                    Offset (0x98), 
                         ,   30, 
                     HPEX,   1, 
                     PMEX,   1, 
@@ -9610,10 +10232,12 @@ DefinitionBlock ("dsdt.aml", "DSDT", 2, "Intel ", "CALPELLA", 0x06040000)
                     HPSX,   1, 
                     PMSX,   1
                 }
+
                 Device (PXSX)
                 {
                     Name (_ADR, Zero)
                 }
+
                 Name (_PRW, Package (0x02)
                 {
                     0x09, 
@@ -9625,30 +10249,32 @@ DefinitionBlock ("dsdt.aml", "DSDT", 2, "Intel ", "CALPELLA", 0x06040000)
                     {
                         Return (AR05 ())
                     }
+
                     Return (PR05 ())
                 }
             }
+
             Device (RP03)
             {
                 Name (_ADR, 0x001C0002)
                 OperationRegion (PXCS, PCI_Config, 0x40, 0xC0)
                 Field (PXCS, AnyAcc, NoLock, WriteAsZeros)
                 {
-                            Offset (0x12), 
+                    Offset (0x12), 
                         ,   13, 
                     LASX,   1, 
-                            Offset (0x1A), 
+                    Offset (0x1A), 
                     ABPX,   1, 
                         ,   2, 
                     PDCX,   1, 
                         ,   2, 
                     PDSX,   1, 
-                            Offset (0x1B), 
+                    Offset (0x1B), 
                     LSCX,   1, 
-                            Offset (0x20), 
-                            Offset (0x22), 
+                    Offset (0x20), 
+                    Offset (0x22), 
                     PSPX,   1, 
-                            Offset (0x98), 
+                    Offset (0x98), 
                         ,   30, 
                     HPEX,   1, 
                     PMEX,   1, 
@@ -9656,11 +10282,13 @@ DefinitionBlock ("dsdt.aml", "DSDT", 2, "Intel ", "CALPELLA", 0x06040000)
                     HPSX,   1, 
                     PMSX,   1
                 }
+
                 Device (PXSX)
                 {
                     Name (_ADR, Zero)
                     Name (_RMV, One)
                 }
+
                 Name (_PRW, Package (0x02)
                 {
                     0x09, 
@@ -9672,30 +10300,32 @@ DefinitionBlock ("dsdt.aml", "DSDT", 2, "Intel ", "CALPELLA", 0x06040000)
                     {
                         Return (AR06 ())
                     }
+
                     Return (PR06 ())
                 }
             }
+
             Device (RP04)
             {
                 Name (_ADR, 0x001C0003)
                 OperationRegion (PXCS, PCI_Config, 0x40, 0xC0)
                 Field (PXCS, AnyAcc, NoLock, WriteAsZeros)
                 {
-                            Offset (0x12), 
+                    Offset (0x12), 
                         ,   13, 
                     LASX,   1, 
-                            Offset (0x1A), 
+                    Offset (0x1A), 
                     ABPX,   1, 
                         ,   2, 
                     PDCX,   1, 
                         ,   2, 
                     PDSX,   1, 
-                            Offset (0x1B), 
+                    Offset (0x1B), 
                     LSCX,   1, 
-                            Offset (0x20), 
-                            Offset (0x22), 
+                    Offset (0x20), 
+                    Offset (0x22), 
                     PSPX,   1, 
-                            Offset (0x98), 
+                    Offset (0x98), 
                         ,   30, 
                     HPEX,   1, 
                     PMEX,   1, 
@@ -9703,10 +10333,12 @@ DefinitionBlock ("dsdt.aml", "DSDT", 2, "Intel ", "CALPELLA", 0x06040000)
                     HPSX,   1, 
                     PMSX,   1
                 }
+
                 Device (PXSX)
                 {
                     Name (_ADR, Zero)
                 }
+
                 Name (_PRW, Package (0x02)
                 {
                     0x09, 
@@ -9718,30 +10350,32 @@ DefinitionBlock ("dsdt.aml", "DSDT", 2, "Intel ", "CALPELLA", 0x06040000)
                     {
                         Return (AR07 ())
                     }
+
                     Return (PR07 ())
                 }
             }
+
             Device (RP05)
             {
                 Name (_ADR, 0x001C0004)
                 OperationRegion (PXCS, PCI_Config, 0x40, 0xC0)
                 Field (PXCS, AnyAcc, NoLock, WriteAsZeros)
                 {
-                            Offset (0x12), 
+                    Offset (0x12), 
                         ,   13, 
                     LASX,   1, 
-                            Offset (0x1A), 
+                    Offset (0x1A), 
                     ABPX,   1, 
                         ,   2, 
                     PDCX,   1, 
                         ,   2, 
                     PDSX,   1, 
-                            Offset (0x1B), 
+                    Offset (0x1B), 
                     LSCX,   1, 
-                            Offset (0x20), 
-                            Offset (0x22), 
+                    Offset (0x20), 
+                    Offset (0x22), 
                     PSPX,   1, 
-                            Offset (0x98), 
+                    Offset (0x98), 
                         ,   30, 
                     HPEX,   1, 
                     PMEX,   1, 
@@ -9749,10 +10383,12 @@ DefinitionBlock ("dsdt.aml", "DSDT", 2, "Intel ", "CALPELLA", 0x06040000)
                     HPSX,   1, 
                     PMSX,   1
                 }
+
                 Device (PXSX)
                 {
                     Name (_ADR, Zero)
                 }
+
                 Name (_PRW, Package (0x02)
                 {
                     0x09, 
@@ -9764,30 +10400,32 @@ DefinitionBlock ("dsdt.aml", "DSDT", 2, "Intel ", "CALPELLA", 0x06040000)
                     {
                         Return (AR08 ())
                     }
+
                     Return (PR08 ())
                 }
             }
+
             Device (RP07)
             {
                 Name (_ADR, 0x001C0006)
                 OperationRegion (PXCS, PCI_Config, 0x40, 0xC0)
                 Field (PXCS, AnyAcc, NoLock, WriteAsZeros)
                 {
-                            Offset (0x12), 
+                    Offset (0x12), 
                         ,   13, 
                     LASX,   1, 
-                            Offset (0x1A), 
+                    Offset (0x1A), 
                     ABPX,   1, 
                         ,   2, 
                     PDCX,   1, 
                         ,   2, 
                     PDSX,   1, 
-                            Offset (0x1B), 
+                    Offset (0x1B), 
                     LSCX,   1, 
-                            Offset (0x20), 
-                            Offset (0x22), 
+                    Offset (0x20), 
+                    Offset (0x22), 
                     PSPX,   1, 
-                            Offset (0x98), 
+                    Offset (0x98), 
                         ,   30, 
                     HPEX,   1, 
                     PMEX,   1, 
@@ -9795,10 +10433,12 @@ DefinitionBlock ("dsdt.aml", "DSDT", 2, "Intel ", "CALPELLA", 0x06040000)
                     HPSX,   1, 
                     PMSX,   1
                 }
+
                 Device (PXSX)
                 {
                     Name (_ADR, Zero)
                 }
+
                 Name (_PRW, Package (0x02)
                 {
                     0x09, 
@@ -9810,30 +10450,32 @@ DefinitionBlock ("dsdt.aml", "DSDT", 2, "Intel ", "CALPELLA", 0x06040000)
                     {
                         Return (AR0E)
                     }
+
                     Return (PR0E)
                 }
             }
+
             Device (RP08)
             {
                 Name (_ADR, 0x001C0007)
                 OperationRegion (PXCS, PCI_Config, 0x40, 0xC0)
                 Field (PXCS, AnyAcc, NoLock, WriteAsZeros)
                 {
-                            Offset (0x12), 
+                    Offset (0x12), 
                         ,   13, 
                     LASX,   1, 
-                            Offset (0x1A), 
+                    Offset (0x1A), 
                     ABPX,   1, 
                         ,   2, 
                     PDCX,   1, 
                         ,   2, 
                     PDSX,   1, 
-                            Offset (0x1B), 
+                    Offset (0x1B), 
                     LSCX,   1, 
-                            Offset (0x20), 
-                            Offset (0x22), 
+                    Offset (0x20), 
+                    Offset (0x22), 
                     PSPX,   1, 
-                            Offset (0x98), 
+                    Offset (0x98), 
                         ,   30, 
                     HPEX,   1, 
                     PMEX,   1, 
@@ -9841,10 +10483,12 @@ DefinitionBlock ("dsdt.aml", "DSDT", 2, "Intel ", "CALPELLA", 0x06040000)
                     HPSX,   1, 
                     PMSX,   1
                 }
+
                 Device (PXSX)
                 {
                     Name (_ADR, Zero)
                 }
+
                 Name (_PRW, Package (0x02)
                 {
                     0x09, 
@@ -9856,9 +10500,11 @@ DefinitionBlock ("dsdt.aml", "DSDT", 2, "Intel ", "CALPELLA", 0x06040000)
                     {
                         Return (AR0F)
                     }
+
                     Return (PR0F)
                 }
             }
+
             Device (GLAN)
             {
                 Name (_ADR, 0x00190000)
@@ -9868,6 +10514,7 @@ DefinitionBlock ("dsdt.aml", "DSDT", 2, "Intel ", "CALPELLA", 0x06040000)
                     0x04
                 })
             }
+
             Device (IO10)
             {
                 Name (_ADR, 0x00080000)
@@ -9878,19 +10525,20 @@ DefinitionBlock ("dsdt.aml", "DSDT", 2, "Intel ", "CALPELLA", 0x06040000)
                     TOLM,   6, 
                         ,   26, 
                     TOHM,   38, 
-                            Offset (0xB0), 
+                    Offset (0xB0), 
                     VTEN,   1, 
                         ,   11, 
                     VTBA,   20
                 }
             }
+
             Device (IO1X)
             {
                 Name (_ADR, 0x00080001)
                 OperationRegion (PBIC, PCI_Config, Zero, 0xF0)
                 Field (PBIC, DWordAcc, NoLock, Preserve)
                 {
-                            Offset (0x7C), 
+                    Offset (0x7C), 
                     SR0,    32, 
                     SR1,    32, 
                     SR2,    32, 
@@ -9903,6 +10551,7 @@ DefinitionBlock ("dsdt.aml", "DSDT", 2, "Intel ", "CALPELLA", 0x06040000)
                     SR9,    32
                 }
             }
+
             Device (IIO0)
             {
                 Name (_ADR, 0x00140000)
@@ -9913,19 +10562,20 @@ DefinitionBlock ("dsdt.aml", "DSDT", 2, "Intel ", "CALPELLA", 0x06040000)
                     TOLM,   6, 
                         ,   26, 
                     TOHM,   38, 
-                            Offset (0xB0), 
+                    Offset (0xB0), 
                     VTEN,   1, 
                         ,   11, 
                     VTBA,   20
                 }
             }
+
             Device (IIOX)
             {
                 Name (_ADR, 0x00140001)
                 OperationRegion (PBIC, PCI_Config, Zero, 0xF0)
                 Field (PBIC, DWordAcc, NoLock, Preserve)
                 {
-                            Offset (0x7C), 
+                    Offset (0x7C), 
                     SR0,    32, 
                     SR1,    32, 
                     SR2,    32, 
@@ -9938,6 +10588,7 @@ DefinitionBlock ("dsdt.aml", "DSDT", 2, "Intel ", "CALPELLA", 0x06040000)
                     SR9,    32
                 }
             }
+
             Device (PEG3)
             {
                 Name (_ADR, 0x00030000)
@@ -9952,9 +10603,11 @@ DefinitionBlock ("dsdt.aml", "DSDT", 2, "Intel ", "CALPELLA", 0x06040000)
                     {
                         Return (AR0A ())
                     }
+
                     Return (PR0A ())
                 }
             }
+
             Device (PEG4)
             {
                 Name (_ADR, 0x00040000)
@@ -9964,6 +10617,7 @@ DefinitionBlock ("dsdt.aml", "DSDT", 2, "Intel ", "CALPELLA", 0x06040000)
                     0x04
                 })
             }
+
             Device (PEG5)
             {
                 Name (_ADR, 0x00050000)
@@ -9978,9 +10632,11 @@ DefinitionBlock ("dsdt.aml", "DSDT", 2, "Intel ", "CALPELLA", 0x06040000)
                     {
                         Return (AR0C)
                     }
+
                     Return (PR0C)
                 }
             }
+
             Device (PEG6)
             {
                 Name (_ADR, 0x00060000)
@@ -9992,114 +10648,95 @@ DefinitionBlock ("dsdt.aml", "DSDT", 2, "Intel ", "CALPELLA", 0x06040000)
             }
         }
     }
+
     Scope (_PR)
     {
-        Processor (CPU0, 0x00, 0x00000410, 0x06)
-        {
-        }
-        Processor (CPU1, 0x01, 0x00000410, 0x06)
-        {
-        }
-        Processor (CPU2, 0x02, 0x00000410, 0x06)
-        {
-        }
-        Processor (CPU3, 0x03, 0x00000410, 0x06)
-        {
-        }
-        Processor (CPU4, 0x04, 0x00000410, 0x06)
-        {
-        }
-        Processor (CPU5, 0x05, 0x00000410, 0x06)
-        {
-        }
-        Processor (CPU6, 0x06, 0x00000410, 0x06)
-        {
-        }
-        Processor (CPU7, 0x07, 0x00000410, 0x06)
-        {
-        }
+        Processor (CPU0, 0x00, 0x00000410, 0x06) {}
+        Processor (CPU1, 0x01, 0x00000410, 0x06) {}
+        Processor (CPU2, 0x02, 0x00000410, 0x06) {}
+        Processor (CPU3, 0x03, 0x00000410, 0x06) {}
+        Processor (CPU4, 0x04, 0x00000410, 0x06) {}
+        Processor (CPU5, 0x05, 0x00000410, 0x06) {}
+        Processor (CPU6, 0x06, 0x00000410, 0x06) {}
+        Processor (CPU7, 0x07, 0x00000410, 0x06) {}
     }
+
     Mutex (MUTX, 0x00)
     OperationRegion (PRT0, SystemIO, 0x80, 0x04)
     Field (PRT0, DWordAcc, Lock, Preserve)
     {
         P80H,   32
     }
+
     Method (P8XH, 2, Serialized)
     {
         If (LEqual (Arg0, Zero))
         {
             Store (Or (And (P80D, 0xFFFFFF00), Arg1), P80D)
         }
+
         If (LEqual (Arg0, One))
         {
             Store (Or (And (P80D, 0xFFFF00FF), ShiftLeft (Arg1, 0x08)
                 ), P80D)
         }
+
         If (LEqual (Arg0, 0x02))
         {
             Store (Or (And (P80D, 0xFF00FFFF), ShiftLeft (Arg1, 0x10)
                 ), P80D)
         }
+
         If (LEqual (Arg0, 0x03))
         {
             Store (Or (And (P80D, 0x00FFFFFF), ShiftLeft (Arg1, 0x18)
                 ), P80D)
         }
+
         Store (P80D, P80H)
     }
+
     OperationRegion (SPRT, SystemIO, 0xB2, 0x02)
     Field (SPRT, ByteAcc, Lock, Preserve)
     {
         SSMP,   8
     }
+
     Method (_PIC, 1, NotSerialized)
     {
         Store (Arg0, GPIC)
         Store (Arg0, PICM)
     }
+
     Method (_PTS, 1, NotSerialized)
     {
-        //Feature: fix bug for shut down
-        If (LEqual (Arg0, 0x05)) {}
-        //Feature: fix bug for shut down
-        Else
+        Store (Zero, P80D)
+        P8XH (Zero, Arg0)
+        Store (Arg0, SLEP)
+        Store (\_SB.PCI0.LPCB.H_EC.B1DF, \_SB.BFCC)
+        If (LEqual (Arg0, 0x03))
         {
-            Store (Zero, P80D)
-            P8XH (Zero, Arg0)
-            Store (Arg0, SLEP)
-            Store (\_SB.PCI0.LPCB.H_EC.B1DF, \_SB.BFCC)
-            If (LEqual (Arg0, 0x03))
+            If (LAnd (DTSE, LGreater (TCNT, One)))
             {
-                If (LAnd (DTSE, LGreater (TCNT, One)))
-                {
-                    TRAP (TRTD, 0x1E)
-                }
-                \_SB.SECS (0xA4)
+                TRAP (TRTD, 0x1E)
             }
-            If (LEqual (Arg0, 0x04))
-            {
-                \_SB.SECS (0xA5)
-            }
-            If (LEqual (Arg0, 0x05))
-            {
-                \_SB.SECS (0xAC)
-            }
+
+            \_SB.SECS (0xA4)
+        }
+
+        If (LEqual (Arg0, 0x04))
+        {
+            \_SB.SECS (0xA5)
+        }
+
+        If (LEqual (Arg0, 0x05))
+        {
+            \_SB.SECS (0xAC)
         }
     }
 
-    // Begin Add for 310m close
-    Method (PINI, 0, NotSerialized)
-    {
-       \_SB.PCI0.P0P2.NVID._OFF ()
-    }
-    // End Add for 310m close
-
     Method (_WAK, 1, Serialized)
     {
-        //Feature: shutdown 310m
-        PINI ()
-        //Feature: shutdown 310m
         P8XH (One, 0xAB)
         Store (Zero, \_SB.CAMN)
         Store (One, ECON)
@@ -10114,25 +10751,30 @@ DefinitionBlock ("dsdt.aml", "DSDT", 2, "Intel ", "CALPELLA", 0x06040000)
                     TRAP (TRTP, PSSS)
                     \_SB.SECS (0xB2)
                 }
+
                 PNOT ()
             }
         }
+
         If (LNotEqual (\_SB.PCI0.LPCB.H_EC.B1DF, \_SB.BFCC))
         {
             Notify (\_SB.PCI0.LPCB.H_EC.BAT1, 0x80)
             Notify (\_SB.PCI0.LPCB.H_EC.BAT1, 0x81)
         }
+
         If (NEXP)
         {
             If (And (OSCC, 0x02))
             {
                 \_SB.PCI0.NHPG ()
             }
+
             If (And (OSCC, 0x04))
             {
                 \_SB.PCI0.NPME ()
             }
         }
+
         If (LEqual (Arg0, 0x03)) {}
         If (LAnd (LEqual (Arg0, 0x04), LEqual (\_SB.OSYS, 0x07D2)))
         {
@@ -10141,12 +10783,14 @@ DefinitionBlock ("dsdt.aml", "DSDT", 2, "Intel ", "CALPELLA", 0x06040000)
                 \_SB.PCI0.GFX0.GDCK (Zero)
             }
         }
+
         If (LOr (LEqual (Arg0, 0x03), LEqual (Arg0, 0x04)))
         {
             If (LAnd (DTSE, LGreater (TCNT, One)))
             {
                 TRAP (TRTD, 0x14)
             }
+
             If (LEqual (\_SB.OSYS, 0x07D2))
             {
                 If (And (CFGD, One))
@@ -10167,49 +10811,54 @@ DefinitionBlock ("dsdt.aml", "DSDT", 2, "Intel ", "CALPELLA", 0x06040000)
                     }
                 }
             }
+
             If (LEqual (RP1D, Zero))
             {
                 Notify (\_SB.PCI0.RP01, Zero)
             }
+
             If (LEqual (RP2D, Zero))
             {
                 Notify (\_SB.PCI0.RP02, Zero)
             }
+
             If (LEqual (RP3D, Zero))
             {
                 Notify (\_SB.PCI0.RP03, Zero)
             }
+
             If (LEqual (RP4D, Zero))
             {
                 Notify (\_SB.PCI0.RP04, Zero)
             }
+
             If (LEqual (RP5D, Zero))
             {
                 Notify (\_SB.PCI0.RP05, Zero)
             }
+
             If (LEqual (RP7D, Zero))
             {
                 Notify (\_SB.PCI0.RP07, Zero)
             }
+
             If (LEqual (RP8D, Zero))
             {
                 Notify (\_SB.PCI0.RP08, Zero)
             }
         }
+
         If (LEqual (\_SB.BMOD, 0x03))
         {
             Notify (\_SB.PWRB, 0x80)
         }
+
         Return (Package (0x02)
         {
             Zero, 
             Zero
         })
     }
-
-
-
-
 
     Method (GETB, 3, Serialized)
     {
@@ -10218,6 +10867,7 @@ DefinitionBlock ("dsdt.aml", "DSDT", 2, "Intel ", "CALPELLA", 0x06040000)
         CreateField (Arg2, Local0, Local1, TBF3)
         Return (TBF3)
     }
+
     Method (PNOT, 0, Serialized)
     {
         If (LGreater (TCNT, One))
@@ -10231,6 +10881,7 @@ DefinitionBlock ("dsdt.aml", "DSDT", 2, "Intel ", "CALPELLA", 0x06040000)
                     Notify (\_PR.CPU0, 0x81)
                 }
             }
+
             If (And (PDC1, 0x08))
             {
                 Notify (\_PR.CPU1, 0x80)
@@ -10240,6 +10891,7 @@ DefinitionBlock ("dsdt.aml", "DSDT", 2, "Intel ", "CALPELLA", 0x06040000)
                     Notify (\_PR.CPU1, 0x81)
                 }
             }
+
             If (And (PDC2, 0x08))
             {
                 Notify (\_PR.CPU2, 0x80)
@@ -10249,6 +10901,7 @@ DefinitionBlock ("dsdt.aml", "DSDT", 2, "Intel ", "CALPELLA", 0x06040000)
                     Notify (\_PR.CPU2, 0x81)
                 }
             }
+
             If (And (PDC3, 0x08))
             {
                 Notify (\_PR.CPU3, 0x80)
@@ -10258,6 +10911,7 @@ DefinitionBlock ("dsdt.aml", "DSDT", 2, "Intel ", "CALPELLA", 0x06040000)
                     Notify (\_PR.CPU3, 0x81)
                 }
             }
+
             If (And (PDC4, 0x08))
             {
                 Notify (\_PR.CPU4, 0x80)
@@ -10267,6 +10921,7 @@ DefinitionBlock ("dsdt.aml", "DSDT", 2, "Intel ", "CALPELLA", 0x06040000)
                     Notify (\_PR.CPU4, 0x81)
                 }
             }
+
             If (And (PDC5, 0x08))
             {
                 Notify (\_PR.CPU5, 0x80)
@@ -10276,6 +10931,7 @@ DefinitionBlock ("dsdt.aml", "DSDT", 2, "Intel ", "CALPELLA", 0x06040000)
                     Notify (\_PR.CPU5, 0x81)
                 }
             }
+
             If (And (PDC6, 0x08))
             {
                 Notify (\_PR.CPU6, 0x80)
@@ -10285,6 +10941,7 @@ DefinitionBlock ("dsdt.aml", "DSDT", 2, "Intel ", "CALPELLA", 0x06040000)
                     Notify (\_PR.CPU6, 0x81)
                 }
             }
+
             If (And (PDC7, 0x08))
             {
                 Notify (\_PR.CPU7, 0x80)
@@ -10302,6 +10959,7 @@ DefinitionBlock ("dsdt.aml", "DSDT", 2, "Intel ", "CALPELLA", 0x06040000)
             Notify (\_PR.CPU0, 0x81)
         }
     }
+
     Method (CPRN, 0, Serialized)
     {
         SPPC ()
@@ -10312,15 +10970,18 @@ DefinitionBlock ("dsdt.aml", "DSDT", 2, "Intel ", "CALPELLA", 0x06040000)
                 Notify (\_PR.CPU0, 0x80)
                 Sleep (0x64)
             }
+
             If (And (PDC1, 0x08))
             {
                 Notify (\_PR.CPU1, 0x80)
                 Sleep (0x64)
             }
+
             If (And (PDC2, 0x08))
             {
                 Notify (\_PR.CPU2, 0x80)
             }
+
             If (And (PDC3, 0x08))
             {
                 Notify (\_PR.CPU3, 0x80)
@@ -10332,6 +10993,7 @@ DefinitionBlock ("dsdt.aml", "DSDT", 2, "Intel ", "CALPELLA", 0x06040000)
             Sleep (0x64)
         }
     }
+
     Method (SPPC, 0, NotSerialized)
     {
         Add (\_SB.PPCM, One, \_SB.NIST)
@@ -10346,11 +11008,13 @@ DefinitionBlock ("dsdt.aml", "DSDT", 2, "Intel ", "CALPELLA", 0x06040000)
                 {
                     Increment (Local2)
                 }
+
                 Store (Local2, \_SB.PPCS)
                 Subtract (\_SB.PPCM, \_SB.PPCS, \_SB.NIST)
                 Increment (\_SB.NIST)
                 Store (\_SB.PPCS, \_PR.CPU0._PPC)
             }
+
             If (LEqual (\_SB.TZON, 0x02))
             {
                 Store (\_SB.PPCM, \_SB.PPCS)
@@ -10358,12 +11022,14 @@ DefinitionBlock ("dsdt.aml", "DSDT", 2, "Intel ", "CALPELLA", 0x06040000)
                 Store (\_SB.PPCS, \_PR.CPU0._PPC)
             }
         }
+
         If (LEqual (\_SB.GSSR, 0x02))
         {
             Subtract (\_SB.PPCM, \_SB.RIST, \_SB.PPCS)
             Store (\_SB.PPCS, \_PR.CPU0._PPC)
         }
     }
+
     Method (CCRN, 0, Serialized)
     {
         If (TCNT)
@@ -10372,14 +11038,17 @@ DefinitionBlock ("dsdt.aml", "DSDT", 2, "Intel ", "CALPELLA", 0x06040000)
             {
                 Notify (\_PR.CPU0, 0x81)
             }
+
             If (And (PDC1, 0x10))
             {
                 Notify (\_PR.CPU1, 0x81)
             }
+
             If (And (PDC2, 0x10))
             {
                 Notify (\_PR.CPU1, 0x81)
             }
+
             If (And (PDC3, 0x10))
             {
                 Notify (\_PR.CPU1, 0x81)
@@ -10390,6 +11059,7 @@ DefinitionBlock ("dsdt.aml", "DSDT", 2, "Intel ", "CALPELLA", 0x06040000)
             Notify (\_PR.CPU0, 0x81)
         }
     }
+
     Method (TRAP, 2, Serialized)
     {
         Store (Arg1, SMIF)
@@ -10397,26 +11067,26 @@ DefinitionBlock ("dsdt.aml", "DSDT", 2, "Intel ", "CALPELLA", 0x06040000)
         {
             Store (Zero, TRP0)
         }
+
         If (LEqual (Arg0, TRTD))
         {
             Store (Arg1, DTSF)
             Store (Zero, TRPD)
             Return (DTSF)
         }
+
         If (LEqual (Arg0, TRTI))
         {
             Store (Zero, TRPH)
         }
+
         Return (SMIF)
     }
+
     Scope (_SB.PCI0)
     {
         Method (_INI, 0, NotSerialized)
         {
-
-            //Feature: shutdown 310m
-            PINI ()
-            //Feature: shutdown 310m
             Store (0x07D0, \OSYS)
             Store (0x07D0, OSYS)
             If (CondRefOf (_OSI, Local0))
@@ -10426,31 +11096,37 @@ DefinitionBlock ("dsdt.aml", "DSDT", 2, "Intel ", "CALPELLA", 0x06040000)
                     Store (0x03E8, \OSYS)
                     Store (0x03E8, OSYS)
                 }
+
                 If (_OSI ("Windows 2001"))
                 {
                     Store (0x07D1, \OSYS)
                     Store (0x07D1, OSYS)
                 }
+
                 If (_OSI ("Windows 2001 SP1"))
                 {
                     Store (0x07D1, \OSYS)
                     Store (0x07D1, OSYS)
                 }
+
                 If (_OSI ("Windows 2001 SP2"))
                 {
                     Store (0x07D2, \OSYS)
                     Store (0x07D2, OSYS)
                 }
+
                 If (_OSI ("Windows 2006"))
                 {
                     Store (0x07D6, \OSYS)
                     Store (0x07D6, OSYS)
                 }
+
                 If (_OSI ("Windows 2009"))
                 {
                     Store (0x07D9, \OSYS)
                     Store (0x07D9, OSYS)
                 }
+
                 SECS (0xA8)
                 SECS (0xAB)
                 If (LEqual (OSYS, 0x07D6))
@@ -10459,8 +11135,10 @@ DefinitionBlock ("dsdt.aml", "DSDT", 2, "Intel ", "CALPELLA", 0x06040000)
                     PNOT ()
                 }
             }
+
             SECS (Zero)
         }
+
         Method (NHPG, 0, Serialized)
         {
             Store (Zero, ^RP01.HPEX)
@@ -10472,6 +11150,7 @@ DefinitionBlock ("dsdt.aml", "DSDT", 2, "Intel ", "CALPELLA", 0x06040000)
             Store (One, ^RP03.HPSX)
             Store (One, ^RP04.HPSX)
         }
+
         Method (NPME, 0, Serialized)
         {
             Store (Zero, ^RP01.PMEX)
@@ -10490,10 +11169,12 @@ DefinitionBlock ("dsdt.aml", "DSDT", 2, "Intel ", "CALPELLA", 0x06040000)
             Store (One, ^RP08.PMSX)
         }
     }
+
     Scope (\)
     {
         Name (PICM, Zero)
     }
+
     Scope (_TZ)
     {
         Name (ETMD, One)
@@ -10504,15 +11185,18 @@ DefinitionBlock ("dsdt.aml", "DSDT", 2, "Intel ", "CALPELLA", 0x06040000)
             {
                 Return (VFN0)
             }
+
             Method (_ON, 0, Serialized)
             {
                 Store (One, VFN0)
             }
+
             Method (_OFF, 0, Serialized)
             {
                 Store (Zero, VFN0)
             }
         }
+
         Device (FAN0)
         {
             Name (_HID, EisaId ("PNP0C0B"))
@@ -10522,21 +11206,25 @@ DefinitionBlock ("dsdt.aml", "DSDT", 2, "Intel ", "CALPELLA", 0x06040000)
                 FN00
             })
         }
+
         PowerResource (FN01, 0x00, 0x0000)
         {
             Method (_STA, 0, Serialized)
             {
                 Return (VFN1)
             }
+
             Method (_ON, 0, Serialized)
             {
                 Store (One, VFN1)
             }
+
             Method (_OFF, 0, Serialized)
             {
                 Store (Zero, VFN1)
             }
         }
+
         Device (FAN1)
         {
             Name (_HID, EisaId ("PNP0C0B"))
@@ -10546,6 +11234,7 @@ DefinitionBlock ("dsdt.aml", "DSDT", 2, "Intel ", "CALPELLA", 0x06040000)
                 FN01
             })
         }
+
         ThermalZone (TZ00)
         {
             Name (PTMP, 0x0BB8)
@@ -10553,18 +11242,22 @@ DefinitionBlock ("dsdt.aml", "DSDT", 2, "Intel ", "CALPELLA", 0x06040000)
             {
                 Store (Arg0, CTYP)
             }
+
             Method (_CRT, 0, Serialized)
             {
                 Return (Add (0x0AAC, Multiply (CRTT, 0x0A)))
             }
+
             Method (_AC0, 0, Serialized)
             {
                 Return (Add (0x0AAC, Multiply (ACTT, 0x0A)))
             }
+
             Method (_AC1, 0, Serialized)
             {
                 Return (Add (0x0AAC, Multiply (ACT1, 0x0A)))
             }
+
             Name (_AL0, Package (0x01)
             {
                 FAN1
@@ -10587,8 +11280,10 @@ DefinitionBlock ("dsdt.aml", "DSDT", 2, "Intel ", "CALPELLA", 0x06040000)
                         Return (0x0C1C)
                     }
                 }
+
                 Return (0x0BC2)
             }
+
             Method (_PSL, 0, Serialized)
             {
                 If (LEqual (TCNT, 0x08))
@@ -10605,6 +11300,7 @@ DefinitionBlock ("dsdt.aml", "DSDT", 2, "Intel ", "CALPELLA", 0x06040000)
                         \_PR.CPU7
                     })
                 }
+
                 If (LEqual (TCNT, 0x04))
                 {
                     Return (Package (0x04)
@@ -10615,6 +11311,7 @@ DefinitionBlock ("dsdt.aml", "DSDT", 2, "Intel ", "CALPELLA", 0x06040000)
                         \_PR.CPU3
                     })
                 }
+
                 If (LEqual (TCNT, 0x02))
                 {
                     Return (Package (0x02)
@@ -10623,28 +11320,34 @@ DefinitionBlock ("dsdt.aml", "DSDT", 2, "Intel ", "CALPELLA", 0x06040000)
                         \_PR.CPU1
                     })
                 }
+
                 Return (Package (0x01)
                 {
                     \_PR.CPU0
                 })
             }
+
             Method (_PSV, 0, Serialized)
             {
                 Return (Add (0x0AAC, Multiply (PSVT, 0x0A)))
             }
+
             Method (_TC1, 0, Serialized)
             {
                 Return (Zero)
             }
+
             Method (_TC2, 0, Serialized)
             {
                 Return (0x0A)
             }
+
             Method (_TSP, 0, Serialized)
             {
                 Return (0x02)
             }
         }
+
         ThermalZone (TZ01)
         {
             Name (PTMP, 0x0BB8)
@@ -10652,10 +11355,12 @@ DefinitionBlock ("dsdt.aml", "DSDT", 2, "Intel ", "CALPELLA", 0x06040000)
             {
                 Store (Arg0, CTYP)
             }
+
             Method (_CRT, 0, Serialized)
             {
                 Return (Add (0x0AAC, Multiply (CRTT, 0x0A)))
             }
+
             Method (_TMP, 0, Serialized)
             {
                 If (ECON)
@@ -10670,6 +11375,7 @@ DefinitionBlock ("dsdt.aml", "DSDT", 2, "Intel ", "CALPELLA", 0x06040000)
                         Return (0x0C1C)
                     }
                 }
+
                 If (DTSE)
                 {
                     If (LGreater (DTS2, DTS1))
@@ -10680,10 +11386,13 @@ DefinitionBlock ("dsdt.aml", "DSDT", 2, "Intel ", "CALPELLA", 0x06040000)
                     {
                         Store (DTS1, Local0)
                     }
+
                     Return (Add (0x0AAC, Multiply (Local0, 0x0A)))
                 }
+
                 Return (0x0BD6)
             }
+
             Method (_PSL, 0, Serialized)
             {
                 If (LEqual (TCNT, 0x08))
@@ -10700,6 +11409,7 @@ DefinitionBlock ("dsdt.aml", "DSDT", 2, "Intel ", "CALPELLA", 0x06040000)
                         \_PR.CPU7
                     })
                 }
+
                 If (LEqual (TCNT, 0x04))
                 {
                     Return (Package (0x04)
@@ -10710,6 +11420,7 @@ DefinitionBlock ("dsdt.aml", "DSDT", 2, "Intel ", "CALPELLA", 0x06040000)
                         \_PR.CPU3
                     })
                 }
+
                 If (LEqual (TCNT, 0x02))
                 {
                     Return (Package (0x02)
@@ -10718,29 +11429,35 @@ DefinitionBlock ("dsdt.aml", "DSDT", 2, "Intel ", "CALPELLA", 0x06040000)
                         \_PR.CPU1
                     })
                 }
+
                 Return (Package (0x01)
                 {
                     \_PR.CPU0
                 })
             }
+
             Method (_PSV, 0, Serialized)
             {
                 Return (Add (0x0AAC, Multiply (PSVT, 0x0A)))
             }
+
             Method (_TC1, 0, Serialized)
             {
                 Return (TC1V)
             }
+
             Method (_TC2, 0, Serialized)
             {
                 Return (TC2V)
             }
+
             Method (_TSP, 0, Serialized)
             {
                 Return (TSPV)
             }
         }
     }
+
     Scope (_SB.PCI0)
     {
         Device (PDRC)
@@ -10752,31 +11469,31 @@ DefinitionBlock ("dsdt.aml", "DSDT", 2, "Intel ", "CALPELLA", 0x06040000)
                 Memory32Fixed (ReadWrite,
                     0x00000000,         // Address Base
                     0x00004000,         // Address Length
-                    )
+                    _Y10)
                 Memory32Fixed (ReadWrite,
                     0x00000000,         // Address Base
                     0x00004000,         // Address Length
-                    )
+                    _Y13)
                 Memory32Fixed (ReadWrite,
                     0x00000000,         // Address Base
                     0x00001000,         // Address Length
-                    )
+                    _Y14)
                 Memory32Fixed (ReadWrite,
                     0x00000000,         // Address Base
                     0x00001000,         // Address Length
-                    )
+                    _Y15)
                 Memory32Fixed (ReadWrite,
                     0x00000000,         // Address Base
                     0x00000000,         // Address Length
-                    )
+                    _Y16)
                 Memory32Fixed (ReadWrite,
                     0x00000000,         // Address Base
                     0x00001000,         // Address Length
-                    )
+                    _Y11)
                 Memory32Fixed (ReadWrite,
                     0x00000000,         // Address Base
                     0x00001000,         // Address Length
-                    )
+                    _Y12)
                 Memory32Fixed (ReadWrite,
                     0xFED20000,         // Address Base
                     0x00020000,         // Address Length
@@ -10784,7 +11501,7 @@ DefinitionBlock ("dsdt.aml", "DSDT", 2, "Intel ", "CALPELLA", 0x06040000)
                 Memory32Fixed (ReadOnly,
                     0xFED90000,         // Address Base
                     0x00004000,         // Address Length
-                    )
+                    _Y17)
                 Memory32Fixed (ReadWrite,
                     0xFED40000,         // Address Base
                     0x00005000,         // Address Length
@@ -10804,59 +11521,63 @@ DefinitionBlock ("dsdt.aml", "DSDT", 2, "Intel ", "CALPELLA", 0x06040000)
             })
             Method (_CRS, 0, Serialized)
             {
-                CreateDWordField (BUF0, 0x04, RBR0)
+                CreateDWordField (BUF0, \_SB.PCI0.PDRC._Y10._BAS, RBR0)
                 ShiftLeft (^^LPCB.RCBA, 0x0E, RBR0)
                 If (LEqual (^^TMRP.TRID, 0x3B32))
                 {
-                    CreateDWordField (BUF0, 0x44, TMRL)
+                    CreateDWordField (BUF0, \_SB.PCI0.PDRC._Y11._LEN, TMRL)
                     Store (Zero, TMRL)
-                    CreateDWordField (BUF0, 0x4C, TMB0)
+                    CreateDWordField (BUF0, \_SB.PCI0.PDRC._Y12._BAS, TMB0)
                     ShiftLeft (^^TMRP.TARB, 0x0C, TMB0)
                 }
                 Else
                 {
                     Store (Zero, TTDR)
-                    CreateDWordField (BUF0, 0x40, TMR1)
+                    CreateDWordField (BUF0, \_SB.PCI0.PDRC._Y11._BAS, TMR1)
                     ShiftLeft (^^TMRP.TBAR, 0x0C, TMR1)
-                    CreateDWordField (BUF0, 0x4C, TMB1)
+                    CreateDWordField (BUF0, \_SB.PCI0.PDRC._Y12._BAS, TMB1)
                     ShiftLeft (^^TMRP.TARB, 0x0C, TMB1)
                     Store (One, TTDR)
                 }
+
                 If (Or (LEqual (And (PNHM, 0x000FFFF0), 0x000106E0), LEqual (And (
                     PNHM, 0x000FFFF0), 0x000106A0)))
                 {
-                    CreateDWordField (BUF0, 0x14, MBLN)
+                    CreateDWordField (BUF0, \_SB.PCI0.PDRC._Y13._LEN, MBLN)
                     Store (Zero, MBLN)
                 }
                 Else
                 {
-                    CreateDWordField (BUF0, 0x10, MBR0)
+                    CreateDWordField (BUF0, \_SB.PCI0.PDRC._Y13._BAS, MBR0)
                     ShiftLeft (MHBR, 0x0E, MBR0)
                 }
-                CreateDWordField (BUF0, 0x1C, DBR0)
+
+                CreateDWordField (BUF0, \_SB.PCI0.PDRC._Y14._BAS, DBR0)
                 ShiftLeft (DIBR, 0x0C, DBR0)
                 If (Or (LEqual (And (PNHM, 0x000FFFF0), 0x000106E0), LEqual (And (
                     PNHM, 0x000FFFF0), 0x000106A0)))
                 {
                     ShiftLeft (DIBI, 0x0C, DBR0)
                 }
+
                 If (Or (LEqual (And (PNHM, 0x000FFFF0), 0x000106E0), LEqual (And (
                     PNHM, 0x000FFFF0), 0x000106A0)))
                 {
-                    CreateDWordField (BUF0, 0x2C, EBLN)
+                    CreateDWordField (BUF0, \_SB.PCI0.PDRC._Y15._LEN, EBLN)
                     Store (Zero, EBLN)
                 }
                 Else
                 {
-                    CreateDWordField (BUF0, 0x28, EBR0)
+                    CreateDWordField (BUF0, \_SB.PCI0.PDRC._Y15._BAS, EBR0)
                     ShiftLeft (EPBR, 0x0C, EBR0)
                 }
-                CreateDWordField (BUF0, 0x34, XBR0)
+
+                CreateDWordField (BUF0, \_SB.PCI0.PDRC._Y16._BAS, XBR0)
                 ShiftLeft (^^^CPBG.IMCH.PXBR, 0x14, XBR0)
-                CreateDWordField (BUF0, 0x38, XSZ0)
+                CreateDWordField (BUF0, \_SB.PCI0.PDRC._Y16._LEN, XSZ0)
                 ShiftRight (0x10000000, ^^^CPBG.IMCH.PXSZ, XSZ0)
-                CreateDWordField (BUF0, 0x64, VTB0)
-                CreateDWordField (BUF0, 0x68, VTLN)
+                CreateDWordField (BUF0, \_SB.PCI0.PDRC._Y17._BAS, VTB0)
+                CreateDWordField (BUF0, \_SB.PCI0.PDRC._Y17._LEN, VTLN)
                 If (Or (LEqual (And (PNHM, 0x000FFFF0), 0x000106E0), LEqual (And (
                     PNHM, 0x000FFFF0), 0x000106A0)))
                 {
@@ -10894,48 +11615,59 @@ DefinitionBlock ("dsdt.aml", "DSDT", 2, "Intel ", "CALPELLA", 0x06040000)
                         Store (Zero, VTLN)
                     }
                 }
+
                 Return (BUF0)
             }
         }
     }
+
     Method (BRTN, 1, Serialized)
     {
         If (LEqual (And (DID1, 0x0F00), 0x0400))
         {
             Notify (\_SB.PCI0.GFX0.DD01, Arg0)
         }
+
         If (LEqual (And (DID2, 0x0F00), 0x0400))
         {
             Notify (\_SB.PCI0.GFX0.DD02, Arg0)
         }
+
         If (LEqual (And (DID3, 0x0F00), 0x0400))
         {
             Notify (\_SB.PCI0.GFX0.DD03, Arg0)
         }
+
         If (LEqual (And (DID4, 0x0F00), 0x0400))
         {
             Notify (\_SB.PCI0.GFX0.DD04, Arg0)
         }
+
         If (LEqual (And (DID5, 0x0F00), 0x0400))
         {
             Notify (\_SB.PCI0.GFX0.DD05, Arg0)
         }
+
         If (LEqual (And (DID6, 0x0F00), 0x0400))
         {
             Notify (\_SB.PCI0.GFX0.DD06, Arg0)
         }
+
         If (LEqual (And (DID7, 0x0F00), 0x0400))
         {
             Notify (\_SB.PCI0.GFX0.DD07, Arg0)
         }
+
         If (LEqual (And (DID8, 0x0F00), 0x0400))
         {
             Notify (\_SB.PCI0.GFX0.DD08, Arg0)
         }
     }
+
     Method (BRTW, 0, Serialized)
     {
     }
+
     Name (IBVT, Package (0x09)
     {
         0x05, 
@@ -10967,11 +11699,14 @@ DefinitionBlock ("dsdt.aml", "DSDT", 2, "Intel ", "CALPELLA", 0x06040000)
                         {
                             Notify (\_SB.PCI0.GFX0, Zero)
                         }
+
                         Sleep (0x02EE)
                     }
+
                     Notify (\_SB.PCI0.GFX0, 0x80)
                 }
             }
+
             If (LEqual (One, And (0x03, DSEN)))
             {
                 If (LEqual (TRAP (TRTI, Increment (Arg0)), Zero))
@@ -10998,11 +11733,14 @@ DefinitionBlock ("dsdt.aml", "DSDT", 2, "Intel ", "CALPELLA", 0x06040000)
                         {
                             Notify (\_SB.PCI0.P0P2.NVID, Zero)
                         }
+
                         Sleep (0x02EE)
                     }
+
                     Notify (\_SB.PCI0.P0P2.NVID, 0x80)
                 }
             }
+
             If (LEqual (One, DSEN))
             {
                 Store (Increment (Arg0), Local1)
@@ -11014,6 +11752,7 @@ DefinitionBlock ("dsdt.aml", "DSDT", 2, "Intel ", "CALPELLA", 0x06040000)
             }
         }
     }
+
     Method (LSDS, 1, Serialized)
     {
         If (Arg0)
@@ -11024,6 +11763,7 @@ DefinitionBlock ("dsdt.aml", "DSDT", 2, "Intel ", "CALPELLA", 0x06040000)
         {
             HKDS (DSLC)
         }
+
         If (LNotEqual (And (0x03, DSEN), One))
         {
             Sleep (0x32)
@@ -11033,48 +11773,53 @@ DefinitionBlock ("dsdt.aml", "DSDT", 2, "Intel ", "CALPELLA", 0x06040000)
             }
         }
     }
+
     Scope (\)
     {
         OperationRegion (IO_T, SystemIO, 0x0500, 0x10)
         Field (IO_T, ByteAcc, NoLock, Preserve)
         {
             TRPI,   16, 
-                    Offset (0x04), 
-                    Offset (0x06), 
-                    Offset (0x08), 
+            Offset (0x04), 
+            Offset (0x06), 
+            Offset (0x08), 
             TRP0,   8, 
-                    Offset (0x0A), 
-                    Offset (0x0B), 
-                    Offset (0x0C), 
-                    Offset (0x0D), 
-                    Offset (0x0E), 
-                    Offset (0x0F), 
-                    Offset (0x10)
+            Offset (0x0A), 
+            Offset (0x0B), 
+            Offset (0x0C), 
+            Offset (0x0D), 
+            Offset (0x0E), 
+            Offset (0x0F), 
+            Offset (0x10)
         }
+
         OperationRegion (IO_D, SystemIO, 0x0600, 0x04)
         Field (IO_D, ByteAcc, NoLock, Preserve)
         {
             TRPD,   8
         }
+
         OperationRegion (IO_H, SystemIO, 0x1000, 0x04)
         Field (IO_H, ByteAcc, NoLock, Preserve)
         {
             TRPH,   8
         }
+
         OperationRegion (PMIO, SystemIO, PMBS, 0x80)
         Field (PMIO, ByteAcc, NoLock, Preserve)
         {
-                    Offset (0x20), 
+            Offset (0x20), 
                 ,   2, 
             SPST,   1, 
-                    Offset (0x42), 
+            Offset (0x42), 
                 ,   1, 
             GPEC,   1, 
-                    Offset (0x64), 
+            Offset (0x64), 
                 ,   9, 
             SCIS,   1, 
-                    Offset (0x66)
+            Offset (0x66)
         }
+
         OperationRegion (GPIO, SystemIO, GPBS, 0x64)
         Field (GPIO, ByteAcc, NoLock, Preserve)
         {
@@ -11086,20 +11831,20 @@ DefinitionBlock ("dsdt.aml", "DSDT", 2, "Intel ", "CALPELLA", 0x06040000)
             GIO1,   8, 
             GIO2,   8, 
             GIO3,   8, 
-                    Offset (0x0C), 
+            Offset (0x0C), 
             GL00,   8, 
             GL01,   8, 
             GL02,   8, 
                 ,   3, 
             GP27,   1, 
             GP28,   1, 
-                    Offset (0x10), 
-                    Offset (0x18), 
+            Offset (0x10), 
+            Offset (0x18), 
             GB00,   8, 
             GB01,   8, 
             GB02,   8, 
             GB03,   8, 
-                    Offset (0x2C), 
+            Offset (0x2C), 
             GIV0,   8, 
             GIV1,   8, 
             GIV2,   8, 
@@ -11114,11 +11859,11 @@ DefinitionBlock ("dsdt.aml", "DSDT", 2, "Intel ", "CALPELLA", 0x06040000)
             GIO7,   8, 
                 ,   5, 
                 ,   1, 
-                    Offset (0x39), 
+            Offset (0x39), 
             GL05,   8, 
             GL06,   8, 
             GL07,   8, 
-                    Offset (0x40), 
+            Offset (0x40), 
             GU08,   8, 
             GU09,   8, 
             GU0A,   8, 
@@ -11132,22 +11877,23 @@ DefinitionBlock ("dsdt.aml", "DSDT", 2, "Intel ", "CALPELLA", 0x06040000)
             GL0A,   8, 
             GL0B,   8
         }
+
         OperationRegion (RCRB, SystemMemory, SRCB, 0x4000)
         Field (RCRB, DWordAcc, Lock, Preserve)
         {
-                    Offset (0x1000), 
-                    Offset (0x3000), 
-                    Offset (0x3404), 
+            Offset (0x1000), 
+            Offset (0x3000), 
+            Offset (0x3404), 
             HPAS,   2, 
                 ,   5, 
             HPAE,   1, 
-                    Offset (0x3418), 
+            Offset (0x3418), 
                 ,   1, 
                 ,   1, 
             SATD,   1, 
             SMBD,   1, 
             HDAD,   1, 
-                    Offset (0x341A), 
+            Offset (0x341A), 
             RP1D,   1, 
             RP2D,   1, 
             RP3D,   1, 
@@ -11158,34 +11904,39 @@ DefinitionBlock ("dsdt.aml", "DSDT", 2, "Intel ", "CALPELLA", 0x06040000)
             RP8D,   1, 
             TTDR,   1
         }
+
         OperationRegion (PTBA, SystemMemory, TBAB, 0x1000)
         Field (PTBA, AnyAcc, NoLock, Preserve)
         {
-                    Offset (0x12), 
+            Offset (0x12), 
             PCTA,   16, 
-                    Offset (0x1A), 
+            Offset (0x1A), 
             PTRC,   16, 
-                    Offset (0x30), 
+            Offset (0x30), 
             CTV1,   16, 
             CTV2,   16, 
-                    Offset (0x60), 
+            Offset (0x60), 
             PMCP,   16
         }
+
         Method (GETP, 1, Serialized)
         {
             If (LEqual (And (Arg0, 0x09), Zero))
             {
                 Return (0xFFFFFFFF)
             }
+
             If (LEqual (And (Arg0, 0x09), 0x08))
             {
                 Return (0x0384)
             }
+
             ShiftRight (And (Arg0, 0x0300), 0x08, Local0)
             ShiftRight (And (Arg0, 0x3000), 0x0C, Local1)
             Return (Multiply (0x1E, Subtract (0x09, Add (Local0, Local1))
                 ))
         }
+
         Method (GDMA, 5, Serialized)
         {
             If (Arg0)
@@ -11194,19 +11945,24 @@ DefinitionBlock ("dsdt.aml", "DSDT", 2, "Intel ", "CALPELLA", 0x06040000)
                 {
                     Return (0x14)
                 }
+
                 If (LAnd (Arg2, Arg4))
                 {
                     Return (Multiply (Subtract (0x04, Arg3), 0x0F))
                 }
+
                 Return (Multiply (Subtract (0x04, Arg3), 0x1E))
             }
+
             Return (0xFFFFFFFF)
         }
+
         Method (GETT, 1, Serialized)
         {
             Return (Multiply (0x1E, Subtract (0x09, Add (And (ShiftRight (Arg0, 0x02
                 ), 0x03), And (Arg0, 0x03)))))
         }
+
         Method (GETF, 3, Serialized)
         {
             Name (TMPF, Zero)
@@ -11214,24 +11970,30 @@ DefinitionBlock ("dsdt.aml", "DSDT", 2, "Intel ", "CALPELLA", 0x06040000)
             {
                 Or (TMPF, One, TMPF)
             }
+
             If (And (Arg2, 0x02))
             {
                 Or (TMPF, 0x02, TMPF)
             }
+
             If (Arg1)
             {
                 Or (TMPF, 0x04, TMPF)
             }
+
             If (And (Arg2, 0x20))
             {
                 Or (TMPF, 0x08, TMPF)
             }
+
             If (And (Arg2, 0x4000))
             {
                 Or (TMPF, 0x10, TMPF)
             }
+
             Return (TMPF)
         }
+
         Method (SETP, 3, Serialized)
         {
             If (LGreater (Arg0, 0xF0))
@@ -11246,38 +12008,47 @@ DefinitionBlock ("dsdt.aml", "DSDT", 2, "Intel ", "CALPELLA", 0x06040000)
                     {
                         Return (0x2301)
                     }
+
                     If (LAnd (LLessEqual (Arg0, 0xB4), And (Arg2, One)))
                     {
                         Return (0x2101)
                     }
                 }
+
                 Return (0x1001)
             }
         }
+
         Method (SDMA, 1, Serialized)
         {
             If (LLessEqual (Arg0, 0x14))
             {
                 Return (One)
             }
+
             If (LLessEqual (Arg0, 0x1E))
             {
                 Return (0x02)
             }
+
             If (LLessEqual (Arg0, 0x2D))
             {
                 Return (One)
             }
+
             If (LLessEqual (Arg0, 0x3C))
             {
                 Return (0x02)
             }
+
             If (LLessEqual (Arg0, 0x5A))
             {
                 Return (One)
             }
+
             Return (Zero)
         }
+
         Method (SETT, 3, Serialized)
         {
             If (And (Arg1, 0x02))
@@ -11286,14 +12057,17 @@ DefinitionBlock ("dsdt.aml", "DSDT", 2, "Intel ", "CALPELLA", 0x06040000)
                 {
                     Return (0x0B)
                 }
+
                 If (LAnd (LLessEqual (Arg0, 0xB4), And (Arg2, One)))
                 {
                     Return (0x09)
                 }
             }
+
             Return (0x04)
         }
     }
+
     Scope (_SB.PCI0)
     {
         Device (SAT0)
@@ -11306,27 +12080,28 @@ DefinitionBlock ("dsdt.aml", "DSDT", 2, "Intel ", "CALPELLA", 0x06040000)
                 SECT,   16, 
                 PSIT,   4, 
                 SSIT,   4, 
-                        Offset (0x08), 
+                Offset (0x08), 
                 SYNC,   4, 
-                        Offset (0x0A), 
+                Offset (0x0A), 
                 SDT0,   2, 
                     ,   2, 
                 SDT1,   2, 
-                        Offset (0x0B), 
+                Offset (0x0B), 
                 SDT2,   2, 
                     ,   2, 
                 SDT3,   2, 
-                        Offset (0x14), 
+                Offset (0x14), 
                 ICR0,   4, 
                 ICR1,   4, 
                 ICR2,   4, 
                 ICR3,   4, 
                 ICR4,   4, 
                 ICR5,   4, 
-                        Offset (0x50), 
+                Offset (0x50), 
                 MAPV,   2
             }
         }
+
         Device (SAT1)
         {
             Name (_ADR, 0x001F0005)
@@ -11337,27 +12112,28 @@ DefinitionBlock ("dsdt.aml", "DSDT", 2, "Intel ", "CALPELLA", 0x06040000)
                 SECT,   16, 
                 PSIT,   4, 
                 SSIT,   4, 
-                        Offset (0x08), 
+                Offset (0x08), 
                 SYNC,   4, 
-                        Offset (0x0A), 
+                Offset (0x0A), 
                 SDT0,   2, 
                     ,   2, 
                 SDT1,   2, 
-                        Offset (0x0B), 
+                Offset (0x0B), 
                 SDT2,   2, 
                     ,   2, 
                 SDT3,   2, 
-                        Offset (0x14), 
+                Offset (0x14), 
                 ICR0,   4, 
                 ICR1,   4, 
                 ICR2,   4, 
                 ICR3,   4, 
                 ICR4,   4, 
                 ICR5,   4, 
-                        Offset (0x50), 
+                Offset (0x50), 
                 MAPV,   2
             }
         }
+
         Device (SBUS)
         {
             Name (_ADR, 0x001F0003)
@@ -11367,17 +12143,19 @@ DefinitionBlock ("dsdt.aml", "DSDT", 2, "Intel ", "CALPELLA", 0x06040000)
                     ,   2, 
                 I2CE,   1
             }
+
             OperationRegion (SMPB, PCI_Config, 0x20, 0x04)
             Field (SMPB, DWordAcc, NoLock, Preserve)
             {
                     ,   5, 
                 SBAR,   11
             }
+
             OperationRegion (SMBI, SystemIO, ShiftLeft (SBAR, 0x05), 0x10)
             Field (SMBI, ByteAcc, NoLock, Preserve)
             {
                 HSTS,   8, 
-                        Offset (0x02), 
+                Offset (0x02), 
                 HCON,   8, 
                 HCOM,   8, 
                 TXSA,   8, 
@@ -11388,12 +12166,14 @@ DefinitionBlock ("dsdt.aml", "DSDT", 2, "Intel ", "CALPELLA", 0x06040000)
                 RXSA,   8, 
                 SDAT,   16
             }
+
             Method (SSXB, 2, Serialized)
             {
                 If (STRT ())
                 {
                     Return (Zero)
                 }
+
                 Store (Zero, I2CE)
                 Store (0xBF, HSTS)
                 Store (Arg0, TXSA)
@@ -11404,14 +12184,17 @@ DefinitionBlock ("dsdt.aml", "DSDT", 2, "Intel ", "CALPELLA", 0x06040000)
                     Or (HSTS, 0xFF, HSTS)
                     Return (One)
                 }
+
                 Return (Zero)
             }
+
             Method (SRXB, 1, Serialized)
             {
                 If (STRT ())
                 {
                     Return (0xFFFF)
                 }
+
                 Store (Zero, I2CE)
                 Store (0xBF, HSTS)
                 Store (Or (Arg0, One), TXSA)
@@ -11421,14 +12204,17 @@ DefinitionBlock ("dsdt.aml", "DSDT", 2, "Intel ", "CALPELLA", 0x06040000)
                     Or (HSTS, 0xFF, HSTS)
                     Return (DAT0)
                 }
+
                 Return (0xFFFF)
             }
+
             Method (SWRB, 3, Serialized)
             {
                 If (STRT ())
                 {
                     Return (Zero)
                 }
+
                 Store (Zero, I2CE)
                 Store (0xBF, HSTS)
                 Store (Arg0, TXSA)
@@ -11440,14 +12226,17 @@ DefinitionBlock ("dsdt.aml", "DSDT", 2, "Intel ", "CALPELLA", 0x06040000)
                     Or (HSTS, 0xFF, HSTS)
                     Return (One)
                 }
+
                 Return (Zero)
             }
+
             Method (SRDB, 2, Serialized)
             {
                 If (STRT ())
                 {
                     Return (0xFFFF)
                 }
+
                 Store (Zero, I2CE)
                 Store (0xBF, HSTS)
                 Store (Or (Arg0, One), TXSA)
@@ -11458,14 +12247,17 @@ DefinitionBlock ("dsdt.aml", "DSDT", 2, "Intel ", "CALPELLA", 0x06040000)
                     Or (HSTS, 0xFF, HSTS)
                     Return (DAT0)
                 }
+
                 Return (0xFFFF)
             }
+
             Method (SWRW, 3, Serialized)
             {
                 If (STRT ())
                 {
                     Return (Zero)
                 }
+
                 Store (Zero, I2CE)
                 Store (0xBF, HSTS)
                 Store (Arg0, TXSA)
@@ -11478,14 +12270,17 @@ DefinitionBlock ("dsdt.aml", "DSDT", 2, "Intel ", "CALPELLA", 0x06040000)
                     Or (HSTS, 0xFF, HSTS)
                     Return (One)
                 }
+
                 Return (Zero)
             }
+
             Method (SRDW, 2, Serialized)
             {
                 If (STRT ())
                 {
                     Return (0xFFFF)
                 }
+
                 Store (Zero, I2CE)
                 Store (0xBF, HSTS)
                 Store (Or (Arg0, One), TXSA)
@@ -11496,14 +12291,17 @@ DefinitionBlock ("dsdt.aml", "DSDT", 2, "Intel ", "CALPELLA", 0x06040000)
                     Or (HSTS, 0xFF, HSTS)
                     Return (Or (ShiftLeft (DAT0, 0x08), DAT1))
                 }
+
                 Return (0xFFFFFFFF)
             }
+
             Method (SBLW, 4, Serialized)
             {
                 If (STRT ())
                 {
                     Return (Zero)
                 }
+
                 Store (Arg3, I2CE)
                 Store (0xBF, HSTS)
                 Store (Arg0, TXSA)
@@ -11520,11 +12318,13 @@ DefinitionBlock ("dsdt.aml", "DSDT", 2, "Intel ", "CALPELLA", 0x06040000)
                         Decrement (Local0)
                         Stall (0x32)
                     }
+
                     If (LNot (Local0))
                     {
                         KILL ()
                         Return (Zero)
                     }
+
                     Store (0x80, HSTS)
                     Increment (Local1)
                     If (LGreater (SizeOf (Arg2), Local1))
@@ -11532,13 +12332,16 @@ DefinitionBlock ("dsdt.aml", "DSDT", 2, "Intel ", "CALPELLA", 0x06040000)
                         Store (DerefOf (Index (Arg2, Local1)), HBDR)
                     }
                 }
+
                 If (COMP ())
                 {
                     Or (HSTS, 0xFF, HSTS)
                     Return (One)
                 }
+
                 Return (Zero)
             }
+
             Method (SBLR, 3, Serialized)
             {
                 Name (TBUF, Buffer (0x0100) {})
@@ -11546,6 +12349,7 @@ DefinitionBlock ("dsdt.aml", "DSDT", 2, "Intel ", "CALPELLA", 0x06040000)
                 {
                     Return (Zero)
                 }
+
                 Store (Arg2, I2CE)
                 Store (0xBF, HSTS)
                 Store (Or (Arg0, One), TXSA)
@@ -11557,11 +12361,13 @@ DefinitionBlock ("dsdt.aml", "DSDT", 2, "Intel ", "CALPELLA", 0x06040000)
                     Decrement (Local0)
                     Stall (0x32)
                 }
+
                 If (LNot (Local0))
                 {
                     KILL ()
                     Return (Zero)
                 }
+
                 Store (DAT0, Index (TBUF, Zero))
                 Store (0x80, HSTS)
                 Store (One, Local1)
@@ -11573,22 +12379,27 @@ DefinitionBlock ("dsdt.aml", "DSDT", 2, "Intel ", "CALPELLA", 0x06040000)
                         Decrement (Local0)
                         Stall (0x32)
                     }
+
                     If (LNot (Local0))
                     {
                         KILL ()
                         Return (Zero)
                     }
+
                     Store (HBDR, Index (TBUF, Local1))
                     Store (0x80, HSTS)
                     Increment (Local1)
                 }
+
                 If (COMP ())
                 {
                     Or (HSTS, 0xFF, HSTS)
                     Return (TBUF)
                 }
+
                 Return (Zero)
             }
+
             Method (STRT, 0, Serialized)
             {
                 Store (0xC8, Local0)
@@ -11608,6 +12419,7 @@ DefinitionBlock ("dsdt.aml", "DSDT", 2, "Intel ", "CALPELLA", 0x06040000)
                         Store (Zero, Local0)
                     }
                 }
+
                 Store (0x0FA0, Local0)
                 While (Local0)
                 {
@@ -11625,8 +12437,10 @@ DefinitionBlock ("dsdt.aml", "DSDT", 2, "Intel ", "CALPELLA", 0x06040000)
                         Return (Zero)
                     }
                 }
+
                 Return (One)
             }
+
             Method (COMP, 0, Serialized)
             {
                 Store (0x0FA0, Local0)
@@ -11646,33 +12460,37 @@ DefinitionBlock ("dsdt.aml", "DSDT", 2, "Intel ", "CALPELLA", 0x06040000)
                         }
                     }
                 }
+
                 Return (Zero)
             }
+
             Method (KILL, 0, Serialized)
             {
                 Or (HCON, 0x02, HCON)
                 Or (HSTS, 0xFF, HSTS)
             }
         }
+
         Device (TMRP)
         {
             Name (_ADR, 0x001F0006)
             OperationRegion (TRCS, PCI_Config, Zero, 0x50)
             Field (TRCS, DWordAcc, NoLock, Preserve)
             {
-                        Offset (0x02), 
+                Offset (0x02), 
                 TRID,   16, 
-                        Offset (0x10), 
+                Offset (0x10), 
                 SPTP,   1, 
                     ,   11, 
                 TBAR,   20, 
-                        Offset (0x40), 
+                Offset (0x40), 
                 SPEN,   1, 
                     ,   11, 
                 TARB,   20
             }
         }
     }
+
     Scope (_GPE)
     {
         Method (_L01, 0, NotSerialized)
@@ -11694,6 +12512,7 @@ DefinitionBlock ("dsdt.aml", "DSDT", 2, "Intel ", "CALPELLA", 0x06040000)
                     Store (One, \_SB.PCI0.RP01.HPSX)
                 }
             }
+
             If (LAnd (LEqual (RP2D, Zero), \_SB.PCI0.RP02.HPSX))
             {
                 Sleep (0x64)
@@ -11708,6 +12527,7 @@ DefinitionBlock ("dsdt.aml", "DSDT", 2, "Intel ", "CALPELLA", 0x06040000)
                     Store (One, \_SB.PCI0.RP02.HPSX)
                 }
             }
+
             If (LAnd (LEqual (RP3D, Zero), \_SB.PCI0.RP03.HPSX))
             {
                 Sleep (0x64)
@@ -11722,6 +12542,7 @@ DefinitionBlock ("dsdt.aml", "DSDT", 2, "Intel ", "CALPELLA", 0x06040000)
                     Store (One, \_SB.PCI0.RP03.HPSX)
                 }
             }
+
             If (LAnd (LEqual (RP4D, Zero), \_SB.PCI0.RP04.HPSX))
             {
                 Sleep (0x64)
@@ -11736,6 +12557,7 @@ DefinitionBlock ("dsdt.aml", "DSDT", 2, "Intel ", "CALPELLA", 0x06040000)
                     Store (One, \_SB.PCI0.RP04.HPSX)
                 }
             }
+
             If (LAnd (LEqual (RP5D, Zero), \_SB.PCI0.RP05.HPSX))
             {
                 Sleep (0x64)
@@ -11750,6 +12572,7 @@ DefinitionBlock ("dsdt.aml", "DSDT", 2, "Intel ", "CALPELLA", 0x06040000)
                     Store (One, \_SB.PCI0.RP05.HPSX)
                 }
             }
+
             If (LAnd (LEqual (RP7D, Zero), \_SB.PCI0.RP07.HPSX))
             {
                 Sleep (0x64)
@@ -11764,6 +12587,7 @@ DefinitionBlock ("dsdt.aml", "DSDT", 2, "Intel ", "CALPELLA", 0x06040000)
                     Store (One, \_SB.PCI0.RP07.HPSX)
                 }
             }
+
             If (LAnd (LEqual (RP8D, Zero), \_SB.PCI0.RP08.HPSX))
             {
                 Sleep (0x64)
@@ -11779,6 +12603,7 @@ DefinitionBlock ("dsdt.aml", "DSDT", 2, "Intel ", "CALPELLA", 0x06040000)
                 }
             }
         }
+
         Method (_L02, 0, NotSerialized)
         {
             Store (Zero, GPEC)
@@ -11786,6 +12611,7 @@ DefinitionBlock ("dsdt.aml", "DSDT", 2, "Intel ", "CALPELLA", 0x06040000)
             {
                 \_SB.PCI0.IEIT.EITV ()
             }
+
             Notify (\_TZ.TZ00, 0x80)
             Notify (\_TZ.TZ01, 0x80)
             If (CondRefOf (TNOT))
@@ -11793,6 +12619,7 @@ DefinitionBlock ("dsdt.aml", "DSDT", 2, "Intel ", "CALPELLA", 0x06040000)
                 TNOT ()
             }
         }
+
         Method (_L06, 0, NotSerialized)
         {
             If (LAnd (\_SB.PCI0.GFX0.GSSE, LNot (GSMI)))
@@ -11800,18 +12627,22 @@ DefinitionBlock ("dsdt.aml", "DSDT", 2, "Intel ", "CALPELLA", 0x06040000)
                 \_SB.PCI0.GFX0.GSCI ()
             }
         }
+
         Method (_L07, 0, NotSerialized)
         {
             Store (0x20, \_SB.PCI0.SBUS.HSTS)
         }
+
         Method (_L1E, 0, NotSerialized)
         {
             Notify (\_SB.PWRB, 0x02)
         }
+
         Method (_L1D, 0, NotSerialized)
         {
             P8XH (Zero, 0xA2)
         }
+
         Method (_L09, 0, NotSerialized)
         {
             Notify (\_SB.PCI0.P0P2, 0x02)
@@ -11827,10 +12658,12 @@ DefinitionBlock ("dsdt.aml", "DSDT", 2, "Intel ", "CALPELLA", 0x06040000)
             Notify (\_SB.PCI0.PEG5, 0x02)
             Notify (\_SB.PCI0.PEG6, 0x02)
         }
+
         Method (_L0B, 0, NotSerialized)
         {
             Notify (\_SB.PCI0.P0P1, 0x02)
         }
+
         Method (_L0D, 0, NotSerialized)
         {
             Notify (\_SB.PCI0.EHC1, 0x02)
@@ -11839,53 +12672,61 @@ DefinitionBlock ("dsdt.aml", "DSDT", 2, "Intel ", "CALPELLA", 0x06040000)
             Notify (\_SB.PCI0.GLAN, 0x02)
             Notify (\_SB.PWRB, 0x02)
         }
+
         Method (_L03, 0, NotSerialized)
         {
             Notify (\_SB.PCI0.USB1, 0x02)
             Notify (\_SB.PWRB, 0x02)
         }
+
         Method (_L04, 0, NotSerialized)
         {
             Notify (\_SB.PCI0.USB2, 0x02)
             Notify (\_SB.PWRB, 0x02)
         }
+
         Method (_L0C, 0, NotSerialized)
         {
             Notify (\_SB.PCI0.USB3, 0x02)
             Notify (\_SB.PWRB, 0x02)
         }
+
         Method (_L0E, 0, NotSerialized)
         {
             Notify (\_SB.PCI0.USB4, 0x02)
             Notify (\_SB.PWRB, 0x02)
         }
+
         Method (_L05, 0, NotSerialized)
         {
             Notify (\_SB.PCI0.USB5, 0x02)
         }
+
         Method (_L20, 0, NotSerialized)
         {
             Notify (\_SB.PCI0.USB6, 0x02)
         }
+
         Method (_L25, 0, NotSerialized)
         {
             Notify (\_SB.PCI0.USB7, 0x02)
         }
     }
+
     Scope (_SB)
     {
-        OperationRegion (SNVS, SystemMemory, 0xAB79BAA5, 0x000000FF)
+        OperationRegion (SNVS, SystemMemory, 0xDB79BAA5, 0x000000FF)
         Field (SNVS, AnyAcc, NoLock, Preserve)
         {
             SECI,   8, 
             DB00,   8, 
             DW00,   16, 
             OSYS,   16, 
-                    Offset (0x20), 
-                    Offset (0x40), 
+            Offset (0x20), 
+            Offset (0x40), 
             BFCC,   16, 
             BMOD,   8, 
-                    Offset (0x50), 
+            Offset (0x50), 
             PVFN,   8, 
             IGDS,   8, 
             TLST,   8, 
@@ -11897,14 +12738,14 @@ DefinitionBlock ("dsdt.aml", "DSDT", 2, "Intel ", "CALPELLA", 0x06040000)
             NDID,   8, 
             BRTL,   8, 
             LCDT,   8, 
-                    Offset (0x60), 
+            Offset (0x60), 
             PSVT,   8, 
             TC1V,   8, 
             TC2V,   8, 
             TSPV,   8, 
             CRTT,   8, 
             ACTT,   8, 
-                    Offset (0x70), 
+            Offset (0x70), 
             MPEN,   8, 
             PPCS,   8, 
             PPCM,   8, 
@@ -11924,12 +12765,14 @@ DefinitionBlock ("dsdt.aml", "DSDT", 2, "Intel ", "CALPELLA", 0x06040000)
             TEST,   8, 
             MDEL,   8
         }
+
         Mutex (MSEC, 0x00)
         OperationRegion (SECT, SystemIO, 0x5000, 0x10)
         Field (SECT, ByteAcc, NoLock, Preserve)
         {
             TRPS,   8
         }
+
         Method (SECS, 1, Serialized)
         {
             Acquire (MSEC, 0xFFFF)
@@ -11937,6 +12780,7 @@ DefinitionBlock ("dsdt.aml", "DSDT", 2, "Intel ", "CALPELLA", 0x06040000)
             Store (Zero, TRPS)
             Release (MSEC)
         }
+
         Method (SECB, 2, Serialized)
         {
             Acquire (MSEC, 0xFFFF)
@@ -11947,6 +12791,7 @@ DefinitionBlock ("dsdt.aml", "DSDT", 2, "Intel ", "CALPELLA", 0x06040000)
             Release (MSEC)
             Return (Local0)
         }
+
         Method (SECW, 3, Serialized)
         {
             Acquire (MSEC, 0xFFFF)
@@ -11958,6 +12803,7 @@ DefinitionBlock ("dsdt.aml", "DSDT", 2, "Intel ", "CALPELLA", 0x06040000)
             Release (MSEC)
             Return (Local1)
         }
+
         Method (STRP, 2, Serialized)
         {
             Acquire (MSEC, 0xFFFF)
@@ -11967,6 +12813,7 @@ DefinitionBlock ("dsdt.aml", "DSDT", 2, "Intel ", "CALPELLA", 0x06040000)
             Release (MSEC)
             Return (SECI)
         }
+
         Method (SOST, 0, Serialized)
         {
             If (CondRefOf (_OSI, Local0))
@@ -12018,6 +12865,7 @@ DefinitionBlock ("dsdt.aml", "DSDT", 2, "Intel ", "CALPELLA", 0x06040000)
             }
         }
     }
+
     Scope (_SB)
     {
         Device (CPBG)
@@ -12028,6 +12876,7 @@ DefinitionBlock ("dsdt.aml", "DSDT", 2, "Intel ", "CALPELLA", 0x06040000)
             {
                 Return (Subtract (ShiftRight (PELN, 0x14), One))
             }
+
             Name (_ADR, Zero)
             Name (BUF0, ResourceTemplate ()
             {
@@ -12037,54 +12886,55 @@ DefinitionBlock ("dsdt.aml", "DSDT", 2, "Intel ", "CALPELLA", 0x06040000)
                     0x00FF,             // Range Maximum
                     0x0000,             // Translation Offset
                     0x0001,             // Length
-                    ,, )
+                    ,, _Y18)
             })
             Method (_CRS, 0, Serialized)
             {
-                CreateWordField (BUF0, 0x08, PBMN)
+                CreateWordField (BUF0, \_SB.CPBG._Y18._MIN, PBMN)
                 Store (Subtract (ShiftRight (PELN, 0x14), One), PBMN)
-                CreateWordField (BUF0, 0x0A, PBMX)
+                CreateWordField (BUF0, \_SB.CPBG._Y18._MAX, PBMX)
                 Store (Subtract (ShiftRight (PELN, 0x14), One), PBMX)
                 Return (BUF0)
             }
+
             Device (IMCH)
             {
                 Name (_ADR, One)
                 OperationRegion (PBUS, PCI_Config, Zero, 0xC0)
                 Field (PBUS, DWordAcc, NoLock, Preserve)
                 {
-                            Offset (0x40), 
+                    Offset (0x40), 
                         ,   4, 
                     PM0H,   2, 
-                            Offset (0x41), 
+                    Offset (0x41), 
                     PM1L,   2, 
                         ,   2, 
                     PM1H,   2, 
-                            Offset (0x42), 
+                    Offset (0x42), 
                     PM2L,   2, 
                         ,   2, 
                     PM2H,   2, 
-                            Offset (0x43), 
+                    Offset (0x43), 
                     PM3L,   2, 
                         ,   2, 
                     PM3H,   2, 
-                            Offset (0x44), 
+                    Offset (0x44), 
                     PM4L,   2, 
                         ,   2, 
                     PM4H,   2, 
-                            Offset (0x45), 
+                    Offset (0x45), 
                     PM5L,   2, 
                         ,   2, 
                     PM5H,   2, 
-                            Offset (0x46), 
+                    Offset (0x46), 
                     PM6L,   2, 
                         ,   2, 
                     PM6H,   2, 
-                            Offset (0x47), 
-                            Offset (0x48), 
+                    Offset (0x47), 
+                    Offset (0x48), 
                         ,   7, 
                     HENA,   1, 
-                            Offset (0x50), 
+                    Offset (0x50), 
                     PXEN,   1, 
                     PXSZ,   2, 
                         ,   17, 
@@ -12093,6 +12943,7 @@ DefinitionBlock ("dsdt.aml", "DSDT", 2, "Intel ", "CALPELLA", 0x06040000)
             }
         }
     }
+
     Name (_S0, Package (0x04)
     {
         Zero, 
@@ -12122,3 +12973,4 @@ DefinitionBlock ("dsdt.aml", "DSDT", 2, "Intel ", "CALPELLA", 0x06040000)
         Zero
     })
 }
+
