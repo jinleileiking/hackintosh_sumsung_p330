@@ -3,7 +3,7 @@
  * AML Disassembler version 20120320-64 [Mar 21 2012]
  * Copyright (c) 2000 - 2012 Intel Corporation
  * 
- * Disassembly of /Applications/tools/driver_install/p330/acpi/aida64/ssdt-3.aml, Tue Apr 30 23:52:26 2013
+ * Disassembly of /Extra/ssdt-3.aml, Wed May  1 01:46:21 2013
  *
  * Original Table Header:
  *     Signature        "SSDT"
@@ -17,7 +17,7 @@
  *     Compiler Version 0x20061109 (537268489)
  */
 
-DefinitionBlock ("/Applications/tools/driver_install/p330/acpi/aida64/ssdt-3.aml", "SSDT", 1, "PmRef", "Cpu0Ist", 0x00003000)
+DefinitionBlock ("/Extra/ssdt-3.aml", "SSDT", 1, "PmRef", "Cpu0Ist", 0x00003000)
 {
     External (NPSS, IntObj)
     External (PDC0)

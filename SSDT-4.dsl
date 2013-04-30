@@ -3,13 +3,13 @@
  * AML Disassembler version 20120320-64 [Mar 21 2012]
  * Copyright (c) 2000 - 2012 Intel Corporation
  * 
- * Disassembly of /Applications/tools/driver_install/p330/acpi/aida64/ssdt-4.aml, Tue Apr 30 23:52:28 2013
+ * Disassembly of /Extra/ssdt-4.aml, Wed May  1 01:46:23 2013
  *
  * Original Table Header:
  *     Signature        "SSDT"
  *     Length           0x000009F1 (2545)
  *     Revision         0x01
- *     Checksum         0x0A
+ *     Checksum         0xCA
  *     OEM ID           "PmRef"
  *     OEM Table ID     "CpuPm"
  *     OEM Revision     0x00003000 (12288)
@@ -17,7 +17,7 @@
  *     Compiler Version 0x20061109 (537268489)
  */
 
-DefinitionBlock ("/Applications/tools/driver_install/p330/acpi/aida64/ssdt-4.aml", "SSDT", 1, "PmRef", "CpuPm", 0x00003000)
+DefinitionBlock ("/Extra/ssdt-4.aml", "SSDT", 1, "PmRef", "CpuPm", 0x00003000)
 {
     External (\_PR_.CPU7, DeviceObj)
     External (\_PR_.CPU6, DeviceObj)
@@ -33,16 +33,16 @@ DefinitionBlock ("/Applications/tools/driver_install/p330/acpi/aida64/ssdt-4.aml
         Name (SSDT, Package (0x0C)
         {
             "CPU0IST ", 
-            0xDB719918, 
+            0xAB719918, 
             0x00000432, 
             "APIST   ", 
-            0xDB718A98, 
+            0xAB718A98, 
             0x00000303, 
             "CPU0CST ", 
-            0xDB717718, 
+            0xAB717718, 
             0x0000067E, 
             "APCST   ", 
-            0xDB716D98, 
+            0xAB716D98, 
             0x00000119
         })
         Name (CFGD, 0x012B0651)
