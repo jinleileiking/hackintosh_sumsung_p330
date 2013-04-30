@@ -3958,6 +3958,259 @@ DefinitionBlock ("dsdt.aml", "DSDT", 2, "Intel ", "CALPELLA", 0x06040000)
                 Device (NVID)
                 {
                     Name (_ADR, Zero)
+
+                    //Begin Add for Stop 310m
+                    OperationRegion (BPCI, SystemMemory, Add (PEBS, 0x00200000), 0x0800)
+                    Field (BPCI, ByteAcc, NoLock, Preserve)
+                    {
+                        VGAR,   2048, 
+                        Offset (0x48B), 
+                        VGHA,   8
+                    }
+                    Name (VGAB, Buffer (0x0100) {})
+                    Name (DGOS, Zero)
+                    Name (OMPR, 0x02)
+                    OperationRegion (RPCI, SystemMemory, Add (PEBS, 0x8000), 0x1000)
+                    Field (RPCI, DWordAcc, Lock, Preserve)
+                    {
+                        Offset (0xB0), 
+                        ASPM,   2, 
+                            ,   2, 
+                        LNKD,   1, 
+                        Offset (0x1FC), 
+                            ,   9, 
+                        SGL1,   1, 
+                        Offset (0x214), 
+                        Offset (0x216), 
+                        LNKS,   4, 
+                        Offset (0x224), 
+                        Offset (0x225), 
+                        DQDA,   1, 
+                        Offset (0xC28), 
+                        HCLQ,   1, 
+                        Offset (0xC34), 
+                            ,   30, 
+                        PEDQ,   1, 
+                        PIDQ,   1, 
+                        Offset (0xDFC), 
+                        PEPO,   3, 
+                        Offset (0xE08), 
+                            ,   31, 
+                        ROE0,   1, 
+                        Offset (0xE28), 
+                            ,   31, 
+                        ROE1,   1, 
+                        Offset (0xE48), 
+                            ,   31, 
+                        ROE2,   1, 
+                        Offset (0xE68), 
+                            ,   31, 
+                        ROE3,   1, 
+                        Offset (0xE88), 
+                            ,   31, 
+                        ROE4,   1, 
+                        Offset (0xEA8), 
+                            ,   31, 
+                        ROE5,   1, 
+                        Offset (0xEC8), 
+                            ,   31, 
+                        ROE6,   1, 
+                        Offset (0xEE8), 
+                            ,   31, 
+                        ROE7,   1, 
+                        Offset (0xF08), 
+                            ,   31, 
+                        ROE8,   1, 
+                        Offset (0xF28), 
+                            ,   31, 
+                        ROE9,   1, 
+                        Offset (0xF48), 
+                            ,   31, 
+                        ROEA,   1, 
+                        Offset (0xF68), 
+                            ,   31, 
+                        ROEB,   1, 
+                        Offset (0xF88), 
+                            ,   31, 
+                        ROEC,   1, 
+                        Offset (0xFA8), 
+                            ,   31, 
+                        ROED,   1, 
+                        Offset (0xFC8), 
+                            ,   31, 
+                        ROEE,   1, 
+                        Offset (0xFE8), 
+                            ,   31, 
+                        ROEF,   1
+                    }
+                    OperationRegion (DMIB, SystemMemory, 0xFED18000, 0x1000)
+                    Field (DMIB, DWordAcc, Lock, Preserve)
+                    {
+                        Offset (0xC34), 
+                        LLGE,   1, 
+                            ,   28, 
+                        PCGE,   1, 
+                            ,   1, 
+                        LGGE,   1
+                    }
+
+                    OperationRegion (GPIO, SystemIO, 0x1180, 0x60)
+                    Field (GPIO, ByteAcc, Lock, Preserve)
+                    {
+                        Offset (0x0C), 
+                        Offset (0x0E), 
+                        PO16,   1, 
+                        PI17,   1, 
+                        Offset (0x38), 
+                            ,   4, 
+                        PO36,   1, 
+                        PI37,   1, 
+                            ,   14, 
+                        PO52,   1, 
+                        PO53,   1, 
+                        Offset (0x48), 
+                            ,   3, 
+                        PO67,   1
+                    }
+                    Method (_ON, 0, Serialized)
+                    {
+                        If (LEqual (PO36, One))
+                        {
+                            Store (Zero, PO16)
+                            Sleep (0x32)
+                            Store (Zero, PO36)
+                            Sleep (0x32)
+                            Store (One, PO16)
+                            Sleep (0x32)
+                            Store (Zero, LLGE)
+                            Store (Zero, LGGE)
+                            Store (Zero, PEPO)
+                            Store (Zero, ROE0)
+                            Store (Zero, ROE1)
+                            Store (Zero, ROE2)
+                            Store (Zero, ROE3)
+                            Store (Zero, ROE4)
+                            Store (Zero, ROE5)
+                            Store (Zero, ROE6)
+                            Store (Zero, ROE7)
+                            Store (Zero, ROE8)
+                            Store (Zero, ROE9)
+                            Store (Zero, ROEA)
+                            Store (Zero, ROEB)
+                            Store (Zero, ROEC)
+                            Store (Zero, ROED)
+                            Store (Zero, ROEE)
+                            Store (Zero, ROEF)
+                            Store (Zero, HCLQ)
+                            Store (Zero, SGL1)
+                            Store (Zero, PEDQ)
+                            Store (Zero, LNKD)
+                            Store (One, LLGE)
+                            Store (One, LGGE)
+                            While (LLess (LNKS, 0x07))
+                            {
+                                Sleep (One)
+                            }
+
+                            Store (Zero, VGHA)
+                            Store (VGAB, VGAR)
+                            Sleep (0x32)
+                            If (LEqual (\ECON, Zero))
+                            {
+                                \_SB.SECS (0xB0)
+                            }
+                            Else
+                            {
+                                Store (One, \_SB.PCI0.LPCB.H_EC.OPST)
+                            }
+                        }
+                    }
+
+                    Method (_OFF, 0, Serialized)
+                    {
+                        Store (VGAR, VGAB)
+                        Sleep (0x32)
+                        Store (Zero, LLGE)
+                        Store (Zero, LGGE)
+                        Store (One, LNKD)
+                        While (LNotEqual (LNKS, Zero))
+                        {
+                            Sleep (One)
+                        }
+
+                        Store (One, PEDQ)
+                        Store (Zero, LNKD)
+                        While (LNotEqual (PIDQ, One))
+                        {
+                            Sleep (One)
+                        }
+
+                        Store (One, HCLQ)
+                        Store (One, SGL1)
+                        Store (0x07, PEPO)
+                        Store (One, ROE0)
+                        Store (One, ROE1)
+                        Store (One, ROE2)
+                        Store (One, ROE3)
+                        Store (One, ROE4)
+                        Store (One, ROE5)
+                        Store (One, ROE6)
+                        Store (One, ROE7)
+                        Store (One, ROE8)
+                        Store (One, ROE9)
+                        Store (One, ROEA)
+                        Store (One, ROEB)
+                        Store (One, ROEC)
+                        Store (One, ROED)
+                        Store (One, ROEE)
+                        Store (One, ROEF)
+                        Store (One, LLGE)
+                        Store (One, LGGE)
+                        Store (Zero, PO16)
+                        Sleep (0x32)
+                        Store (One, PO36)
+                        Sleep (0x32)
+                        If (LEqual (\ECON, Zero))
+                        {
+                            \_SB.SECS (0xB1)
+                        }
+                        Else
+                        {
+                            Store (Zero, \_SB.PCI0.LPCB.H_EC.OPST)
+                        }
+                        //add
+                        //Store (One, DGOS)
+                    }
+
+                    Method (_PS0, 0, NotSerialized)
+                    {
+                        If (LNotEqual (DGOS, Zero))
+                        {
+                            \_SB.PCI0.P0P2.NVID._ON ()
+                            Store (Zero, DGOS)
+                        }
+                    }
+
+                    Method (_PS3, 0, NotSerialized)
+                    {
+                        If (LEqual (OMPR, 0x03))
+                        {
+                            If (LEqual (DGOS, Zero))
+                            {
+                                \_SB.PCI0.P0P2.NVID._OFF ()
+                                //Store (One, DGOS)
+                                Store (One, DGOS)
+                            }
+
+                            Store (0x02, OMPR)
+                        }
+                    }
+
+
+                    //End Add for Stop 310m
+
+
+
                     Method (_DOS, 1, NotSerialized)
                     {
                         Store (And (Arg0, 0x03), DSEN)
@@ -7475,7 +7728,7 @@ DefinitionBlock ("dsdt.aml", "DSDT", 2, "Intel ", "CALPELLA", 0x06040000)
                             0x0070,             // Range Minimum
                             0x0070,             // Range Maximum
                             0x01,               // Alignment
-                            0x08,               // Length
+                            0x02,               // Length // bios bug
                             )
                         IRQNoFlags ()
                             {8}
@@ -7486,7 +7739,7 @@ DefinitionBlock ("dsdt.aml", "DSDT", 2, "Intel ", "CALPELLA", 0x06040000)
                             0x0070,             // Range Minimum
                             0x0070,             // Range Maximum
                             0x01,               // Alignment
-                            0x08,               // Length
+                            0x02,               // Length //bios bug
                             )
                     })
                     Method (_CRS, 0, NotSerialized)
@@ -9747,29 +10000,46 @@ DefinitionBlock ("dsdt.aml", "DSDT", 2, "Intel ", "CALPELLA", 0x06040000)
     }
     Method (_PTS, 1, NotSerialized)
     {
-        Store (Zero, P80D)
-        P8XH (Zero, Arg0)
-        Store (Arg0, SLEP)
-        Store (\_SB.PCI0.LPCB.H_EC.B1DF, \_SB.BFCC)
-        If (LEqual (Arg0, 0x03))
+        //Feature: fix bug for shut down
+        If (LEqual (Arg0, 0x05)) {}
+        //Feature: fix bug for shut down
+        Else
         {
-            If (LAnd (DTSE, LGreater (TCNT, One)))
+            Store (Zero, P80D)
+            P8XH (Zero, Arg0)
+            Store (Arg0, SLEP)
+            Store (\_SB.PCI0.LPCB.H_EC.B1DF, \_SB.BFCC)
+            If (LEqual (Arg0, 0x03))
             {
-                TRAP (TRTD, 0x1E)
+                If (LAnd (DTSE, LGreater (TCNT, One)))
+                {
+                    TRAP (TRTD, 0x1E)
+                }
+                \_SB.SECS (0xA4)
             }
-            \_SB.SECS (0xA4)
-        }
-        If (LEqual (Arg0, 0x04))
-        {
-            \_SB.SECS (0xA5)
-        }
-        If (LEqual (Arg0, 0x05))
-        {
-            \_SB.SECS (0xAC)
+            If (LEqual (Arg0, 0x04))
+            {
+                \_SB.SECS (0xA5)
+            }
+            If (LEqual (Arg0, 0x05))
+            {
+                \_SB.SECS (0xAC)
+            }
         }
     }
+
+    // Begin Add for 310m close
+    Method (PINI, 0, NotSerialized)
+    {
+       \_SB.PCI0.P0P2.NVID._OFF ()
+    }
+    // End Add for 310m close
+
     Method (_WAK, 1, Serialized)
     {
+        //Feature: shutdown 310m
+        PINI ()
+        //Feature: shutdown 310m
         P8XH (One, 0xAB)
         Store (Zero, \_SB.CAMN)
         Store (One, ECON)
@@ -10078,6 +10348,10 @@ DefinitionBlock ("dsdt.aml", "DSDT", 2, "Intel ", "CALPELLA", 0x06040000)
     {
         Method (_INI, 0, NotSerialized)
         {
+
+            //Feature: shutdown 310m
+            PINI ()
+            //Feature: shutdown 310m
             Store (0x07D0, \OSYS)
             Store (0x07D0, OSYS)
             If (CondRefOf (_OSI, Local0))
